@@ -9,6 +9,11 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
     if (evt.keysym.sym == SDLK_ESCAPE){
         getRoot()->queueEndRendering();
     }
+    else if (evt.keysym.sym == SDLK_k) {
+        cout << "Position of Sinbad: " << mSinbadNode->getPosition() << endl;
+        cout << "Position of Dragon: " << mDragonNode->getPosition() << endl;
+        cout << "Position of the camera: " << mCamNode->getPosition() << endl;
+    }
     
   return true;
 }
@@ -99,13 +104,31 @@ void IG2App::setupScene(void){
     mSinbadNode->showBoundingBox(true);
     
     // Set position of Sinbad
-    //mSinbadNode->setPosition(x, y, z);
+    mSinbadNode->setPosition(0, 0, 0);
     
     // Set scale of Sinbad
     mSinbadNode->setScale(20, 20, 20);
     
     //mSinbadNode->yaw(Ogre::Degree(-45));
-    //mSinbadNode->setVisible(false);    
+    //mSinbadNode->setVisible(false);  
+     
+    
+    //------------------------------------------------------------------------
+    // Creating Dragon
+
+    Ogre::Entity* ent2 = mSM->createEntity("dragon.mesh");
+    mDragonNode = mSM->getRootSceneNode()->createChildSceneNode("nDragon");
+    mDragonNode->attachObject(ent2);
+
+    // Show bounding box
+    mDragonNode->showBoundingBox(false);
+    
+    mDragonNode->lookAt(Ogre::Vector3(0, 0, 1), Ogre::Node::TS_WORLD);
+
+    // Set position of Dragon
+    mDragonNode->setPosition(200, 200, 0);
+
+
 }
 
 
