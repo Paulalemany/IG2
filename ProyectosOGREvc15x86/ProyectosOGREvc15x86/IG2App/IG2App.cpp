@@ -34,22 +34,26 @@ void IG2App::shutdown(){
 
 void IG2App::setup(void){
     
-    // do not forget to call the base first
+    // do not forget to call the base first 
+    // (llama al setup del padre)
     IG2ApplicationContext::setup();
 
     // Create the scene manager
     mSM = mRoot->createSceneManager();
 
-    // Register our scene with the RTSS
+    // Registra el scene manager en el RTSS
     mShaderGenerator->addSceneManager(mSM);
 
+    // Configuracion del overlay system
     mSM->addRenderQueueListener(mOverlaySystem);
     mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
-    mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+    mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT); // el cuadro de fps, etc
     addInputListener(mTrayMgr);
     
-    // Adds the listener for this object
+    // Anyade el objeto en el Listener
     addInputListener(this);
+
+    // Invoca setupScene()
     setupScene();
 }
 

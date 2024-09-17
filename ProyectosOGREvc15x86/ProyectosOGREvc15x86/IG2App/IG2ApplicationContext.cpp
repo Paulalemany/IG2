@@ -69,6 +69,7 @@ namespace OgreBites {
 	void IG2ApplicationContext::createRoot()
 	{
 	    Ogre::String pluginsPath;
+		// Config de las rutas para los ficheros .cfg
 		pluginsPath = mFSLayer->getConfigFilePath("plugins.cfg");
 
 		if (!Ogre::FileSystemLayer::fileExists(pluginsPath))    
@@ -82,8 +83,10 @@ namespace OgreBites {
 		mFSLayer->setHomePath(mSolutionPath);   // IG2: para los archivos de configuración ogre. (en el bin de la solubión)
 		mSolutionPath.erase(mSolutionPath.find_last_of("\\") + 1, mSolutionPath.size() - 1);   // IG2: Quito /bin
 
+		// Creacion de Root
 		mRoot = new Ogre::Root(pluginsPath, mFSLayer->getWritablePath("ogre.cfg"), mFSLayer->getWritablePath("ogre.log"));
 
+		// Creacion del OverlaySystem
 		mOverlaySystem = new Ogre::OverlaySystem();
 	}
 
@@ -111,15 +114,16 @@ namespace OgreBites {
 
 	void IG2ApplicationContext::setup()
 	{
-		mRoot->initialise(false);
+		mRoot->initialise(false); // Inicializa Root
 		createWindow(mAppName);
-		setWindowGrab(false);   // IG2: ratón libre
+		setWindowGrab(false);   // El raton no permanece en la ventana
 
+		// Localiza y carga los recursos
 		locateResources();
 		initialiseRTShaderSystem();
 		loadResources();
 
-		// adds context as listener to process context-level (above the sample level) events
+		// Anyade la clase como listener
 		mRoot->addFrameListener(this);
 	}
 
