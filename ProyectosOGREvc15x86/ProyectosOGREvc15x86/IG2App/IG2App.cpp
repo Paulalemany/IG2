@@ -100,7 +100,7 @@ void IG2App::setupScene(void){
     //------------------------------------------------------------------------
     // Creating Sinbad
 
-    Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+    Ogre::Entity* ent = mSM->createEntity("Sword.mesh");
     mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
     mSinbadNode->attachObject(ent);
 
@@ -113,7 +113,7 @@ void IG2App::setupScene(void){
     // Set scale of Sinbad
     mSinbadNode->setScale(20, 20, 20);
     
-    //mSinbadNode->yaw(Ogre::Degree(-45));
+    mSinbadNode->yaw(Ogre::Degree(-45));
     //mSinbadNode->setVisible(false);  
      
     
