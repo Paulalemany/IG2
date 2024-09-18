@@ -30,6 +30,19 @@ protected:
     Ogre::SceneNode* mSinbadNode = nullptr;
     Ogre::SceneNode* mDragonNode = nullptr;
     Ogre::SceneNode* mColumnsNode = nullptr;
+
+
+    Ogre::SceneNode* mPadreNode = nullptr;
+    Ogre::SceneNode* mCuelloNode = nullptr;
+
+    Ogre::SceneNode* mCabezaNode = nullptr;
+    Ogre::SceneNode* mOjoIzqNode = nullptr;
+    Ogre::SceneNode* mOjoDerNode = nullptr;
+    Ogre::SceneNode* mNarizNode = nullptr;
+    Ogre::SceneNode* mBocaNode = nullptr;
+
+    Ogre::SceneNode* mCuerpoNode = nullptr;
+    Ogre::SceneNode* mOmbligoNode = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
