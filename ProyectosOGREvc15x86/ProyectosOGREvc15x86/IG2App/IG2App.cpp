@@ -98,26 +98,26 @@ void IG2App::setupScene(void){
     
 
     
+#pragma region Pj
     //------------------------------------------------------------------------
     // Creating Sinbad
 
-    Ogre::Entity* ent = mSM->createEntity("Sword.mesh");
+    Ogre::Entity* ent4 = mSM->createEntity("Sinbad.mesh");
     mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-    mSinbadNode->attachObject(ent);
+    mSinbadNode->attachObject(ent4);
 
     // Show bounding box
     mSinbadNode->showBoundingBox(true);
-    
+
     // Set position of Sinbad
-    mSinbadNode->setPosition(0, 0, 0);
-    
+    mSinbadNode->setPosition(0, 30, 0);
+
     // Set scale of Sinbad
     mSinbadNode->setScale(20, 20, 20);
-    
-    mSinbadNode->yaw(Ogre::Degree(-45));
+
     //mSinbadNode->setVisible(false);  
-     
-    
+
+
     //------------------------------------------------------------------------
     // Creating Dragon
 
@@ -127,11 +127,55 @@ void IG2App::setupScene(void){
 
     //// Show bounding box
     //mDragonNode->showBoundingBox(false);
-    
+
     //mDragonNode->lookAt(Ogre::Vector3(0, 0, 1), Ogre::Node::TS_WORLD);
 
     // Set position of Dragon
     //mDragonNode->setPosition(200, 200, 0);
+#pragma endregion
+
+#pragma region Escenario
+
+//Columnas
+    Ogre::Entity* ent = mSM->createEntity("Columns.mesh");
+    mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
+    mColumnsNode->attachObject(ent);
+
+    // Show bounding box
+    //mColumnsNode->showBoundingBox(true);
+
+    // Set position of Sinbad
+    mColumnsNode->setPosition(0, 0, 0);
+
+
+    //mColumnsNode->yaw(Ogre::Degree(-45));
+   //mColumnsNode->setVisible(false);
+
+//BathLower
+    Ogre::Entity* ent2 = mSM->createEntity("RomanBathLower.mesh");
+    //mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
+    mColumnsNode->attachObject(ent2);
+
+    // Show bounding box
+    //mColumnsNode->showBoundingBox(true);
+
+    // Set position of Sinbad
+    mColumnsNode->setPosition(0, 0, 0);
+
+//BathUpper
+    Ogre::Entity* ent3 = mSM->createEntity("RomanBathUpper.mesh");
+    //mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
+    mColumnsNode->attachObject(ent3);
+
+    // Show bounding box
+    //mColumnsNode->showBoundingBox(true);
+
+    // Set position of Sinbad
+    mColumnsNode->setPosition(0, 0, 0);
+#pragma endregion
+
+
+    
 
 
 }
