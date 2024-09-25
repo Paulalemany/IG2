@@ -27,7 +27,8 @@ protected:
     virtual void setupScene();
     
     
-    Ogre::SceneNode* mSinbadNode = nullptr;
+#pragma region practica_0
+    /*Ogre::SceneNode* mSinbadNode = nullptr;
     Ogre::SceneNode* mDragonNode = nullptr;
     Ogre::SceneNode* mColumnsNode = nullptr;
 
@@ -42,7 +43,10 @@ protected:
     Ogre::SceneNode* mBocaNode = nullptr;
 
     Ogre::SceneNode* mCuerpoNode = nullptr;
-    Ogre::SceneNode* mOmbligoNode = nullptr;
+    Ogre::SceneNode* mOmbligoNode = nullptr;*/
+#pragma endregion
+
+    Ogre::SceneNode* mCubeNode = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
