@@ -97,133 +97,134 @@ void IG2App::setupScene(void){
     mLightNode->setDirection(Ogre::Vector3(0, 0, -1));
     
 
+#pragma region Practica_0
 #pragma region Bano Romano
-//
-//#pragma region Pj
-//    //------------------------------------------------------------------------
-//    // Creating Sinbad
-//
-//    Ogre::Entity* ent4 = mSM->createEntity("Sinbad.mesh");
-//    mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-//    mSinbadNode->attachObject(ent4);
-//
-//    // Show bounding box
-//    mSinbadNode->showBoundingBox(true);
-//
-//    // Set position of Sinbad
-//    mSinbadNode->setPosition(0, 30, 0);
-//
-//    // Set scale of Sinbad
-//    mSinbadNode->setScale(20, 20, 20);
-//
-//    //mSinbadNode->setVisible(false);  
-//
-//
-//    //------------------------------------------------------------------------
-//    // Creating Dragon
-//
-//    //Ogre::Entity* ent2 = mSM->createEntity("ogrehead.mesh");
-//    //mDragonNode = mSM->getRootSceneNode()->createChildSceneNode("nDragon");
-//    //mDragonNode->attachObject(ent2);
-//
-//    //// Show bounding box
-//    //mDragonNode->showBoundingBox(false);
-//
-//    //mDragonNode->lookAt(Ogre::Vector3(0, 0, 1), Ogre::Node::TS_WORLD);
-//
-//    // Set position of Dragon
-//    //mDragonNode->setPosition(200, 200, 0);
-//#pragma endregion
-//
-//#pragma region Escenario
-//
-////Columnas
-//    Ogre::Entity* ent = mSM->createEntity("Columns.mesh");
-//    mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
-//    mColumnsNode->attachObject(ent);
-//
-//    // Show bounding box
-//    //mColumnsNode->showBoundingBox(true);
-//
-//    // Set position of Sinbad
-//    mColumnsNode->setPosition(0, 0, 0);
-//
-//
-//    //mColumnsNode->yaw(Ogre::Degree(-45));
-//   //mColumnsNode->setVisible(false);
-//
-////BathLower
-//    Ogre::Entity* ent2 = mSM->createEntity("RomanBathLower.mesh");
-//    //mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
-//    mColumnsNode->attachObject(ent2);
-//
-//    // Show bounding box
-//    //mColumnsNode->showBoundingBox(true);
-//
-//    // Set position of Sinbad
-//    mColumnsNode->setPosition(0, 0, 0);
-//
-//    //BathUpper
-//    Ogre::Entity* ent3 = mSM->createEntity("RomanBathUpper.mesh");
-//    //mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
-//    mColumnsNode->attachObject(ent3);
-//
-//    // Show bounding box
-//    //mColumnsNode->showBoundingBox(true);
-//
-//    // Set position of Sinbad
-//    mColumnsNode->setPosition(0, 0, 0);
-//#pragma endregion
+    //
+    //#pragma region Pj
+    //    //------------------------------------------------------------------------
+    //    // Creating Sinbad
+    //
+    //    Ogre::Entity* ent4 = mSM->createEntity("Sinbad.mesh");
+    //    mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+    //    mSinbadNode->attachObject(ent4);
+    //
+    //    // Show bounding box
+    //    mSinbadNode->showBoundingBox(true);
+    //
+    //    // Set position of Sinbad
+    //    mSinbadNode->setPosition(0, 30, 0);
+    //
+    //    // Set scale of Sinbad
+    //    mSinbadNode->setScale(20, 20, 20);
+    //
+    //    //mSinbadNode->setVisible(false);  
+    //
+    //
+    //    //------------------------------------------------------------------------
+    //    // Creating Dragon
+    //
+    //    //Ogre::Entity* ent2 = mSM->createEntity("ogrehead.mesh");
+    //    //mDragonNode = mSM->getRootSceneNode()->createChildSceneNode("nDragon");
+    //    //mDragonNode->attachObject(ent2);
+    //
+    //    //// Show bounding box
+    //    //mDragonNode->showBoundingBox(false);
+    //
+    //    //mDragonNode->lookAt(Ogre::Vector3(0, 0, 1), Ogre::Node::TS_WORLD);
+    //
+    //    // Set position of Dragon
+    //    //mDragonNode->setPosition(200, 200, 0);
+    //#pragma endregion
+    //
+    //#pragma region Escenario
+    //
+    ////Columnas
+    //    Ogre::Entity* ent = mSM->createEntity("Columns.mesh");
+    //    mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
+    //    mColumnsNode->attachObject(ent);
+    //
+    //    // Show bounding box
+    //    //mColumnsNode->showBoundingBox(true);
+    //
+    //    // Set position of Sinbad
+    //    mColumnsNode->setPosition(0, 0, 0);
+    //
+    //
+    //    //mColumnsNode->yaw(Ogre::Degree(-45));
+    //   //mColumnsNode->setVisible(false);
+    //
+    ////BathLower
+    //    Ogre::Entity* ent2 = mSM->createEntity("RomanBathLower.mesh");
+    //    //mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
+    //    mColumnsNode->attachObject(ent2);
+    //
+    //    // Show bounding box
+    //    //mColumnsNode->showBoundingBox(true);
+    //
+    //    // Set position of Sinbad
+    //    mColumnsNode->setPosition(0, 0, 0);
+    //
+    //    //BathUpper
+    //    Ogre::Entity* ent3 = mSM->createEntity("RomanBathUpper.mesh");
+    //    //mColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nColumns");
+    //    mColumnsNode->attachObject(ent3);
+    //
+    //    // Show bounding box
+    //    //mColumnsNode->showBoundingBox(true);
+    //
+    //    // Set position of Sinbad
+    //    mColumnsNode->setPosition(0, 0, 0);
+    //#pragma endregion
 #pragma endregion
 
 #pragma region muneco nieve
 
-    //Nodo padre
-    mPadreNode = mSM->getRootSceneNode()->createChildSceneNode("nPadre");
+    ////Nodo padre
+    //mPadreNode = mSM->getRootSceneNode()->createChildSceneNode("nPadre");
 
-    //Nodo cuello
-    mCuelloNode = mPadreNode->createChildSceneNode("nCuello");
+    ////Nodo cuello
+    //mCuelloNode = mPadreNode->createChildSceneNode("nCuello");
 
-    //Cabeza
-    Ogre::Entity* cabeza = mSM->createEntity("sphere.mesh");
-    mCabezaNode = mCuelloNode->createChildSceneNode("nCabeza");
-    mCabezaNode->attachObject(cabeza);
-    mCabezaNode->setPosition(0, 180, 0);
+    ////Cabeza
+    //Ogre::Entity* cabeza = mSM->createEntity("sphere.mesh");
+    //mCabezaNode = mCuelloNode->createChildSceneNode("nCabeza");
+    //mCabezaNode->attachObject(cabeza);
+    //mCabezaNode->setPosition(0, 180, 0);
 
-    //OjoIzq
-    Ogre::Entity* ojoIzq = mSM->createEntity("sphere.mesh");
-    mOjoIzqNode = mCabezaNode->createChildSceneNode("nOjoIzq");
-    mOjoIzqNode->attachObject(ojoIzq);
-    mOjoIzqNode->setScale(0.1, 0.1, 0.1);
-    mOjoIzqNode->setPosition(-50, 0, 90);
+    ////OjoIzq
+    //Ogre::Entity* ojoIzq = mSM->createEntity("sphere.mesh");
+    //mOjoIzqNode = mCabezaNode->createChildSceneNode("nOjoIzq");
+    //mOjoIzqNode->attachObject(ojoIzq);
+    //mOjoIzqNode->setScale(0.1, 0.1, 0.1);
+    //mOjoIzqNode->setPosition(-50, 0, 90);
 
-    //OjoDer
-    Ogre::Entity* ojoDer = mSM->createEntity("sphere.mesh");
-    mOjoDerNode = mCabezaNode->createChildSceneNode("nOjoDer");
-    mOjoDerNode->attachObject(ojoDer);
-    mOjoDerNode->setScale(0.1, 0.1, 0.1);
-    mOjoDerNode->setPosition(50, 0, 90);
+    ////OjoDer
+    //Ogre::Entity* ojoDer = mSM->createEntity("sphere.mesh");
+    //mOjoDerNode = mCabezaNode->createChildSceneNode("nOjoDer");
+    //mOjoDerNode->attachObject(ojoDer);
+    //mOjoDerNode->setScale(0.1, 0.1, 0.1);
+    //mOjoDerNode->setPosition(50, 0, 90);
 
-    //Cuerpo
-    Ogre::Entity* cuerpo = mSM->createEntity("sphere.mesh");
-    mCuerpoNode = mCuelloNode->createChildSceneNode("nCuerpo");
-    mCuerpoNode->attachObject(cuerpo);
-    mCuerpoNode->setScale(1.5, 1.5, 1.5);
-    mCuerpoNode->setPosition(0, -60, 0);
+    ////Cuerpo
+    //Ogre::Entity* cuerpo = mSM->createEntity("sphere.mesh");
+    //mCuerpoNode = mCuelloNode->createChildSceneNode("nCuerpo");
+    //mCuerpoNode->attachObject(cuerpo);
+    //mCuerpoNode->setScale(1.5, 1.5, 1.5);
+    //mCuerpoNode->setPosition(0, -60, 0);
 
-    //Ombligo
-    Ogre::Entity* ombligo = mSM->createEntity("sphere.mesh");
-    mOmbligoNode = mCuerpoNode->createChildSceneNode("nOmbligo");
-    mOmbligoNode->attachObject(ombligo);
-    mOmbligoNode->setScale(0.1, 0.1, 0.1);
-    mOmbligoNode->setPosition(0, -40, 100);
+    ////Ombligo
+    //Ogre::Entity* ombligo = mSM->createEntity("sphere.mesh");
+    //mOmbligoNode = mCuerpoNode->createChildSceneNode("nOmbligo");
+    //mOmbligoNode->attachObject(ombligo);
+    //mOmbligoNode->setScale(0.1, 0.1, 0.1);
+    //mOmbligoNode->setPosition(0, -40, 100);
 
 
+#pragma endregion
 #pragma endregion
 
 
 
-    
 
 
 }
