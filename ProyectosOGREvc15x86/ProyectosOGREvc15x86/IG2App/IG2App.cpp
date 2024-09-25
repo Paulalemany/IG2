@@ -227,25 +227,17 @@ void IG2App::setupScene(void){
 #pragma endregion
 
     //------------------------------------------------------------------------
-    //Creando un cubo
-//Ogre::Entity* ent4 = mSM->createEntity("Sinbad.mesh");
-//    mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-//    mSinbadNode->attachObject(ent4);
-//
-//    // Show bounding box
-//    mSinbadNode->showBoundingBox(true);
-//
-//    // Set position of Sinbad
-//    mSinbadNode->setPosition(0, 30, 0);
-//
-//    // Set scale of Sinbad
-//    mSinbadNode->setScale(20, 20, 20);
-//
-//    //mSinbadNode->setVisible(false);  
+    //Creando un cubo 
 
-    Ogre::Entity* cubo = mSM->createEntity("cube.mesh");
+    /*Ogre::Entity* cubo = mSM->createEntity("cube.mesh");
     mCubeNode = mSM->getRootSceneNode()->createChildSceneNode("nCube");
     mCubeNode->attachObject(cubo);
+    
+    Ogre::Entity* cubo2 = mSM->createEntity("cube.mesh");
+    mCube2Node = mSM->getRootSceneNode()->createChildSceneNode("nCube2");
+    mCube2Node->attachObject(cubo2);
+
+    mCube2Node->setPosition(100, 0, 0);*/
 
 
 
