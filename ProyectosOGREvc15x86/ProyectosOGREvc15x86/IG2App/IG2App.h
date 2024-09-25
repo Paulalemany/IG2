@@ -14,6 +14,8 @@
 #include <iostream>
 #include <string>
 
+#include "Laberinto.h"
+
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 
 public:
@@ -58,6 +60,8 @@ protected:
     
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
+
+    Laberinto* lab = nullptr;
 };
 
 #endif

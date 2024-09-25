@@ -230,7 +230,7 @@ void IG2App::setupScene(void){
     //Creando un cubo 
 
     /*Ogre::Entity* cubo = mSM->createEntity("cube.mesh");
-    mCubeNode = mSM->getRootSceneNode()->createChildSceneNode("nCube");
+    
     mCubeNode->attachObject(cubo);
     
     Ogre::Entity* cubo2 = mSM->createEntity("cube.mesh");
@@ -238,6 +238,9 @@ void IG2App::setupScene(void){
     mCube2Node->attachObject(cubo2);
 
     mCube2Node->setPosition(100, 0, 0);*/
+
+    //Creación Laberinto
+    lab = new Laberinto(mSM, "stage1.txt");
 
 
 
