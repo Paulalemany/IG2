@@ -2,6 +2,7 @@
 
 #include "Muro.h"
 #include "Perla.h"
+#include "Heroe.h"
 #include <vector>
 #include <iostream> 
 #include <fstream>
@@ -25,6 +26,8 @@ protected:
 
 	std::vector<Muro*> muros;
 	std::vector<Perla*> perlas;
+	Heroe* sinbad;
+	
 
 	int NumFilas = 0;
 	int NumColumnas = 0;

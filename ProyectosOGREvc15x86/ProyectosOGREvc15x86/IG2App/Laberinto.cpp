@@ -19,7 +19,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 		input >> fila;
 
 		for (int j = 0; j < NumColumnas; j++) {
-			pos = Vector3(i * 100 - 1000, j * 100, 0);
+			pos = Vector3(-i * 100, 0, - j * 100);
 			nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 
 			if (fila[j] == 'x') {
@@ -28,9 +28,14 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 			else if (fila[j] == 'o') {
 				perlas.push_back(new Perla(pos, nodes[node], Sm));
 			}
+			else if (fila[j] == 'h') {
+				sinbad = new Heroe(pos, nodes[node], Sm);
+			}
 			node++;
 		}
 	}
 
 	input.close();
 }
+
+
