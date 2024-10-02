@@ -13,49 +13,7 @@ class Laberinto
 public:
 
 	//Constructora
-	Laberinto(Ogre::SceneManager* scene, const string& mapa) {
-		Sm = scene;
-
-		//Lee el fichero
-		ifstream input;
-		input.open(mapa);
-
-		if (!input.is_open()) cout << "No se encuentra el fichero" << endl;
-		else cout << "Fichero abierto correctamente" << endl;
-		
-		//Construye el laberinto a partir del fichero
-		input >> NumFilas;
-		input >> NumColumnas;
-		
-		node = 0;
-
-		for (int i = 0; i < NumFilas; i++)
-		{
-			input >> fila;
-
-			for (int j = 0; j < NumColumnas; j++)
-			{
-				pos = Vector3(i * 100, j * 100, 0);
-
-				if (fila[j] == 'x')
-				{
-					nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-
-					muros.push_back(new Muro(pos, nodes[node], Sm));
-				}
-				else if (fila[j] == 'o')
-				{
-					nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-
-					perlas.push_back(new Perla(pos, nodes[node], Sm));
-				}
-				node++;
-				
-			}
-		}
-		
-		input.close();
-	}
+	Laberinto(Ogre::SceneManager* scene, const string& mapa);
 
 protected:
 
