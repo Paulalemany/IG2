@@ -48,8 +48,8 @@ protected:
     Ogre::SceneNode* mOmbligoNode = nullptr;*/
 #pragma endregion
 
-    Ogre::SceneNode* mCubeNode = nullptr;
-    Ogre::SceneNode* mCube2Node = nullptr;
+    //Ogre::SceneNode* mCubeNode = nullptr;
+    //Ogre::SceneNode* mCube2Node = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
