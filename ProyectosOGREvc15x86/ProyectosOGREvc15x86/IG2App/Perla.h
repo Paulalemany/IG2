@@ -13,7 +13,7 @@ public:
 	//Pendiente
 	~Perla();
 
-	void init() override;
+	//void init() override;
 protected:
 
 

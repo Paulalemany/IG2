@@ -45,10 +45,10 @@ class IG2Object : public OgreBites::InputListener {
          */
         ~IG2Object();
     
-        /**
-         * Abtstract method for initialization purposes                 
-         */
-        virtual void init () = 0;
+        ///**
+        // * Abtstract method for initialization purposes                 
+        // */
+        //virtual void init () = 0;
     
         /**
          * Sets an initial position for this element

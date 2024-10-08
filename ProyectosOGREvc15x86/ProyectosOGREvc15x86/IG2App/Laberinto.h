@@ -16,6 +16,8 @@ public:
 	//Constructora
 	Laberinto(Ogre::SceneManager* scene, const string& mapa);
 
+	Heroe* getHero() { return sinbad; }
+
 protected:
 
 	Ogre::SceneManager* Sm = nullptr;

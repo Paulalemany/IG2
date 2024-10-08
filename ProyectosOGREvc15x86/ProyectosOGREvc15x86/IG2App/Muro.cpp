@@ -17,7 +17,7 @@ Muro::~Muro()
 
 }
 
-void Muro::init()
-{
-
-}
+//void Muro::init()
+//{
+//
+//}

@@ -15,6 +15,7 @@
 #include <string>
 
 #include "Laberinto.h"
+#include "Heroe.h"
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 

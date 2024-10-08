@@ -13,7 +13,7 @@ public:
 	//Pendiente
 	~Muro();
 
-	void init() override;
+	//void init() override;
 protected:
 
 

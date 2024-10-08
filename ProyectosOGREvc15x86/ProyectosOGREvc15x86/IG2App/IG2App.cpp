@@ -4,18 +4,37 @@ using namespace Ogre;
 using namespace std;
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
-        
-    // ESC key finished the rendering...
-    if (evt.keysym.sym == SDLK_ESCAPE){
-        getRoot()->queueEndRendering();
-    }
-    else if (evt.keysym.sym == SDLK_k) {
-#pragma region Practica_0
-        /*cout << "Position of Sinbad: " << mSinbadNode->getPosition() << endl;
-        cout << "Position of Dragon: " << mDragonNode->getPosition() << endl;*/
-#pragma endregion
 
+    switch (evt.keysym.sym) {
+
+        // ESC key finished the rendering...
+    case SDLK_ESCAPE:
+        getRoot()->queueEndRendering();
+        break;
+
+    case SDLK_k:
         cout << "Position of the camera: " << mCamNode->getPosition() << endl;
+        break; 
+
+    case SDLK_UP:
+        cout << "up" << endl;
+        lab->getHero()->move(Vector3(0, 0, -1));
+        break;
+
+    case SDLK_DOWN:
+        cout << "down" << endl;
+        lab->getHero()->move(Vector3(0, 0, 1));
+        break;
+
+    case SDLK_RIGHT:
+        cout << "right" << endl;
+        lab->getHero()->move(Vector3(1, 0, 0));
+        break;
+
+    case SDLK_LEFT:
+        cout << "left" << endl;
+        lab->getHero()->move(Vector3(-1, 0, 0));
+        break;
     }
     
   return true;
