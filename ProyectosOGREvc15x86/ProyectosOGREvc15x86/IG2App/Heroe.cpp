@@ -14,13 +14,19 @@ Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 	node->yaw(Ogre::Degree(180));
 
 	Snode = node;
+	dir = Vector3(0, 0, 0);
 }
 
-void Heroe::move(Vector3 dir)
+void Heroe::move(Vector3 newDir)
 {
-	std::cout << "Se mueve en proceso" << endl;
+	if (dir != newDir) {	//Cambiamos la direccion del movimiento
+		dir = newDir;
+	}
+}
 
-	Snode->translate(dir * 100);
+void Heroe::frameRendered(const Ogre::FrameEvent& evt)
+{
+	IG2Object::move(dir);
 }
 
 

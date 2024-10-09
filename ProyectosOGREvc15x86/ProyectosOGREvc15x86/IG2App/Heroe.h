@@ -8,10 +8,14 @@ public:
 
 	Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
 
-	void move(Vector3 dir);
+	void move(Vector3 newDir);
+
+	void frameRendered(const Ogre::FrameEvent& evt) override;
 
 private:
+
 	Ogre::Entity* sinbad;
 	SceneNode* Snode;
+	Vector3 dir; 
 };
 

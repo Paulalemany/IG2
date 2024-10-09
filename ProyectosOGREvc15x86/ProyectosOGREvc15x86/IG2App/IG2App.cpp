@@ -262,8 +262,10 @@ void IG2App::setupScene(void){
     //Creación Laberinto
     lab = new Laberinto(mSM, "stage1.txt");
 
-
+    addInputListener(lab->getHero());
 
 }
+
+
 
 
