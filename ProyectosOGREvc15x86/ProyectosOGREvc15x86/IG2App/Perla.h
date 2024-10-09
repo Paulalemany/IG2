@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IG2Object.h"
+#include "Bloque.h"
 
-class Perla : public IG2Object
+class Perla : public Bloque
 {
 public:
 

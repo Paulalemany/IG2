@@ -23,10 +23,11 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 			nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 
 			if (fila[j] == 'x') {
-				muros.push_back(new Muro(pos, nodes[node], Sm));
+				bloques.push_back(new Muro(pos, nodes[node], Sm));
+				bloques[node]->setTraspasable(false);
 			}
 			else if (fila[j] == 'o') {
-				perlas.push_back(new Perla(pos, nodes[node], Sm));
+				bloques.push_back(new Perla(pos, nodes[node], Sm));
 			}
 			else if (fila[j] == 'h') {
 				sinbad = new Heroe(pos, nodes[node], Sm);
@@ -36,6 +37,8 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 	}
 
 	input.close();
+
+	getBloque(Vector3(0, 0, 0), 0, bloques.size() - 1);
 }
 
 

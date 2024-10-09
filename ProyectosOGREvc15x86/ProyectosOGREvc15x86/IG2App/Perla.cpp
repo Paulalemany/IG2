@@ -6,7 +6,7 @@ Perla::Perla()
 }
 
 Perla::Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
-	: IG2Object(initPos, node, sceneMng)
+	: Bloque(initPos, node, sceneMng)
 {
 	Ogre::Entity* esfera = mSM->createEntity("sphere.mesh");
 	node->attachObject(esfera);
