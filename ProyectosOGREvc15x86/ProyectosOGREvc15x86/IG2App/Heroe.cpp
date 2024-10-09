@@ -21,6 +21,10 @@ void Heroe::move(Vector3 newDir)
 {
 	if (dir != newDir) {	//Cambiamos la direccion del movimiento
 		dir = newDir;
+
+		//Rotacion
+		Quaternion q = this->getOrientation().getRotationTo(newDir);
+		Snode->rotate(q, Ogre::Node::TS_LOCAL);
 	}
 }
 
