@@ -17,22 +17,18 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         break; 
 
     case SDLK_UP:
-        cout << "up" << endl;
         lab->getHero()->move(Vector3(0, 0, -1));
         break;
 
     case SDLK_DOWN:
-        cout << "down" << endl;
         lab->getHero()->move(Vector3(0, 0, 1));
         break;
 
     case SDLK_RIGHT:
-        cout << "right" << endl;
         lab->getHero()->move(Vector3(1, 0, 0));
         break;
 
     case SDLK_LEFT:
-        cout << "left" << endl;
         lab->getHero()->move(Vector3(-1, 0, 0));
         break;
     }
