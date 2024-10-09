@@ -17,6 +17,8 @@
 #include "Laberinto.h"
 #include "Heroe.h"
 
+class MovablePlane;
+
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
 
 public:
@@ -63,6 +65,9 @@ protected:
     OgreBites::CameraMan* mCamMgr = nullptr;
 
     Laberinto* lab = nullptr;
+
+    // para el plano
+    size_t gridSize = 1000;
 };
 
 #endif

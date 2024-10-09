@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Bloque.h"
 #include "Muro.h"
 #include "Perla.h"
 #include "Heroe.h"
@@ -18,6 +19,8 @@ public:
 
 	Heroe* getHero() { return sinbad; }
 
+	int getBloque(Vector3 coord, int ini, int fin);
+
 protected:
 
 	Ogre::SceneManager* Sm = nullptr;
@@ -26,8 +29,7 @@ protected:
 	std::vector< Ogre::SceneNode*> nodes;
 	int node;
 
-	std::vector<Muro*> muros;
-	std::vector<Perla*> perlas;
+	std::vector<Bloque*> bloques;
 	Heroe* sinbad;
 	
 

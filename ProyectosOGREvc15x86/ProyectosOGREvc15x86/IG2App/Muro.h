@@ -1,14 +1,14 @@
 #pragma once
 
-#include "IG2Object.h"
+#include "Bloque.h"
 
-class Muro : public IG2Object
+class Muro : public Bloque
 {
 public:
 
 	Muro();
 
-	Muro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
+	Muro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasable);
 
 	//Pendiente
 	~Muro();

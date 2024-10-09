@@ -1,14 +1,14 @@
 #pragma once
 
-#include "IG2Object.h"
+#include "Bloque.h"
 
-class Perla : public IG2Object
+class Perla : public Bloque
 {
 public:
 
 	Perla();
 
-	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
+	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasable);
 
 	//Pendiente
 	~Perla();
