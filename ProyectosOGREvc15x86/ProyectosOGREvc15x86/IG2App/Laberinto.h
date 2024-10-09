@@ -19,27 +19,7 @@ public:
 
 	Heroe* getHero() { return sinbad; }
 
-	Bloque* getBloque(Vector3 coord, int ini, int fin) {
-
-		// puede q el bloque no este
-		if (coord == bloques[ini]->getPosition()) {
-			return bloques[ini];
-		}
-
-		int mitad = (ini + fin) / 2;
-
-		//Vamos para la izquierda (Es mas pequeña la que buscamos)
-		if (bloques[mitad]->getPosition().x > coord.x) {
-
-			getBloque(coord, ini, mitad);
-		}
-		else {
-			getBloque(coord, mitad, fin);
-		}
-
-
-		return bloques[ini];
-	}
+	int getBloque(Vector3 coord, int ini, int fin);
 
 protected:
 
