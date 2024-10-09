@@ -8,7 +8,7 @@ public:
 
 	Perla();
 
-	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
+	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasable);
 
 	//Pendiente
 	~Perla();

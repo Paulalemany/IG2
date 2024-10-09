@@ -8,11 +8,11 @@ public:
 
 	Bloque() {};
 
-	Bloque(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
+	Bloque(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasable)
 		:IG2Object(initPos, node, sceneMng) {
 
 		pos = initPos;
-		traspasable = true; // default: que se pueda traspasar
+		traspasable = pasable; // default: que se pueda traspasar
 	};
 
 	~Bloque() {};

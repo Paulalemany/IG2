@@ -8,7 +8,7 @@ public:
 
 	Muro();
 
-	Muro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
+	Muro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasable);
 
 	//Pendiente
 	~Muro();
