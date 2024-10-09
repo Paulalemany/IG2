@@ -12,18 +12,14 @@ public:
 		:IG2Object(initPos, node, sceneMng) {
 
 		pos = initPos;
-		traspasable = pasable; // default: que se pueda traspasar
+		traspasable = pasable;
 	};
 
 	~Bloque() {};
 
-	void setTraspasable(bool trasp) {
-		traspasable = trasp;
-	}
+	void setTraspasable(bool trasp) { traspasable = trasp; }
 
-	bool getTraspasable() {
-		return traspasable;
-	}
+	bool getTraspasable() { return traspasable; }
 
 
 
