@@ -1,0 +1,38 @@
+material texture/suelo{
+    technique 
+	{ 
+		pass {  
+			texture_unit 
+			{
+				texture Dirt.jpg
+				
+			}
+		}
+    }
+}
+
+material texture/muro{
+    technique 
+	{ 
+		pass {  
+			texture_unit 
+			{
+				texture BeachStones.jpg
+				
+			}
+		}
+    }
+}
+
+material texture/perla{
+    technique 
+	{ 
+		pass {  
+			texture_unit 
+			{
+				texture nm_up.PNG
+				
+			}
+		}
+    }
+}

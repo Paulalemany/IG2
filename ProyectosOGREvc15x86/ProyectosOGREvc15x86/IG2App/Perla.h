@@ -2,6 +2,7 @@
 
 #include "Bloque.h"
 
+
 class Perla : public Bloque
 {
 public:
@@ -15,7 +16,7 @@ public:
 
 	//void init() override;
 protected:
-
+	//Laberinto* lab = nullptr;
 
 };
 

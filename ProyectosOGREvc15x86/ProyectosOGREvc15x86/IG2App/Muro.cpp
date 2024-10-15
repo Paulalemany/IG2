@@ -9,6 +9,7 @@ Muro::Muro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasabl
 	: Bloque(initPos, node, sceneMng, pasable)
 {
 	Ogre::Entity* cubo = mSM->createEntity("cube.mesh");
+	//cubo->setMaterialName(lab->getTexture(0));
 	node->attachObject(cubo);
 	
 }

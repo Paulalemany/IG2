@@ -274,7 +274,9 @@ void IG2App::setupScene(void){
     );
 
     Entity* planeEnt = mSM->createEntity("suelo", "plane");
+    planeEnt->setMaterialName(lab->getTexture(2));
     SceneNode* planeNode = mSM->getRootSceneNode()->createChildSceneNode("planeNode");
+    //planeEnt->setMaterialName("example/stonesFloor");
     planeNode->attachObject(planeEnt);
 
     //MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
@@ -285,6 +287,7 @@ void IG2App::setupScene(void){
     //ent->setMaterialName("example/stonesFloor");
     //SceneNode* floor = mSM->getRootSceneNode()->createChildSceneNode();
     //floor->attachObject(ent);
+
 
     planeNode->roll(Ogre::Degree(90));
     planeNode->setPosition(Vector3(-900, -50, -900));
