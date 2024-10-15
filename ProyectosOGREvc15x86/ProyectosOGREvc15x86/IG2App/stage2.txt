@@ -1,5 +1,9 @@
 18
 26
+materialPerla
+materialMuro
+materialSuelo
+tipoLuz
 xxxxxxxxxxxxxxxxxxxxxxxxxx
 xoooooxxxxxoooooxxxxooooox
 xoxxxoooooooxxxooooooxxxox

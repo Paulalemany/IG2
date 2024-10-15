@@ -274,9 +274,8 @@ void IG2App::setupScene(void){
     );
 
     Entity* planeEnt = mSM->createEntity("suelo", "plane");
-    //planeEnt->setMaterialName(lab->getTexture(2)); // PREGUNTAR AL PROFE COMO QUIERE ESTO 
+    planeEnt->setMaterialName(lab->getTexture(2)); // CALIDAD FEAAAA
     SceneNode* planeNode = mSM->getRootSceneNode()->createChildSceneNode("planeNode");
-    planeEnt->setMaterialName("texture/suelo"); // PREGUNTAR AL PROFE POR CALIDAD DE TEXTURA. PONER 4 CUADRADOS EN EL SUELO?
     planeNode->attachObject(planeEnt);
 
     // para que cuadre con el laberinto:

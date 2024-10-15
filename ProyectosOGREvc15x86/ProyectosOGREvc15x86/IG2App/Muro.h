@@ -10,7 +10,7 @@ public:
 
 	Muro();
 
-	Muro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasable);
+	Muro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string textura, bool pasable);
 
 	//Pendiente
 	~Muro();

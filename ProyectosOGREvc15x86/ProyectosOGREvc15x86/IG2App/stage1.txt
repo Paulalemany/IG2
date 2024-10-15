@@ -1,8 +1,9 @@
 19
 19
-texture/perla
-texture/muro
-texture/suelo
+mat/nm_up
+mat/floor_diffuse
+mat/grass
+tipoLuz
 xxxxxxxxxxxxxxxxxxx
 xooooooooxoooooooox
 xoxxoxxxoxoxxxoxxox

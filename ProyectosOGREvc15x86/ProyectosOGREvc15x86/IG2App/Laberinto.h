@@ -21,6 +21,7 @@ public:
 
 	int getBloque(Vector3 coord, int ini, int fin);
 
+	// n = muro: 0 ; perla: 1 ; suelo: 2
 	string getTexture(int n) {
 		switch (n) {
 		case 0:
@@ -33,10 +34,12 @@ public:
 			return texturaSuelo;
 			break;
 		default:
-			cout << "No hay textura definida en el metodo Laberinto::getTexture()." << endl;
+			cout << "No hay textura definida en el metodo Laberinto::getTexture()" << endl;
 			break;
 		}
 	}
+
+	string getTipoLuz() { return tipoLuz; }
 
 protected:
 
@@ -49,12 +52,13 @@ protected:
 	std::vector<Bloque*> bloques;
 	Heroe* sinbad;
 	
-
+	// fichero
 	int NumFilas = 0;
 	int NumColumnas = 0;
 	string texturaSuelo = "";
 	string texturaMuro = "";
 	string texturaPerla = "";
+	string tipoLuz = "";
 	string fila = "";
 
 };

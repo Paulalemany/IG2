@@ -12,7 +12,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 	else cout << "Fichero abierto correctamente" << endl;
 
 	input >> NumFilas >> NumColumnas;
-	input >> texturaPerla >> texturaMuro >> texturaSuelo;
+	input >> texturaPerla >> texturaMuro >> texturaSuelo >> tipoLuz;
 
 	// "Pinta" el laberinto a partir del fichero
 	node = 0; // Nosotras haciamos nodes[j], por eso solo se pintaba 1 fila. Necesitabamos un contador para los nodos.
@@ -24,10 +24,10 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 			nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 
 			if (fila[j] == 'x') {
-				bloques.push_back(new Muro(pos, nodes[node], Sm, false));
+				bloques.push_back(new Muro(pos, nodes[node], Sm, texturaMuro, false));
 			}
 			else if (fila[j] == 'o') {
-				bloques.push_back(new Perla(pos, nodes[node], Sm, true));
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 			}
 			else if (fila[j] == 'h') {
 				sinbad = new Heroe(pos, nodes[node], Sm);

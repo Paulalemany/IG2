@@ -1,4 +1,4 @@
-material texture/suelo{
+material mat/grass{
     technique 
 	{ 
 		pass {  
@@ -11,7 +11,7 @@ material texture/suelo{
     }
 }
 
-material texture/muro{
+material mat/floor_diffuse{
     technique 
 	{ 
 		pass {  
@@ -24,7 +24,7 @@ material texture/muro{
     }
 }
 
-material texture/perla{
+material mat/nm_up{
     technique 
 	{ 
 		pass {  
