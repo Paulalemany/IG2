@@ -12,14 +12,14 @@ public:
 
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
-	// Getters
+	/// Getters
 	// devuelve en string el numero de vidas
 	string getVidas() { return to_string(sVidas) ; }
 
 private:
 
 	Ogre::Entity* sinbad;
-	SceneNode* Snode;
+	SceneNode* sNode;
 	Vector3 dir; 
 
 	int sVidas;

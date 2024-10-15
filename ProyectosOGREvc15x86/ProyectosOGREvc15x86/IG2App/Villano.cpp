@@ -1,25 +1,23 @@
-#include "Heroe.h"
+#include "Villano.h"
 
-Heroe::Heroe()
+Villano::Villano()
 {
 
 }
 
-Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int vidas)
+Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 	: IG2Object(initPos, node, sceneMng)
 {
-	sinbad = mSM->createEntity("Sinbad.mesh");
-	node->attachObject(sinbad);
+	villano = mSM->createEntity("ogrehead.mesh");
+	node->attachObject(villano);
 	node->setScale(10, 10, 10);
 	node->yaw(Ogre::Degree(180));
 
 	sNode = node;
 	dir = Vector3(0, 0, 0);
-
-	sVidas = vidas;
 }
 
-void Heroe::move(Vector3 newDir)
+void Villano::move(Vector3 newDir)
 {
 	if (dir != newDir) {	//Cambiamos la direccion del movimiento
 		dir = newDir;
@@ -30,9 +28,8 @@ void Heroe::move(Vector3 newDir)
 	}
 }
 
-void Heroe::frameRendered(const Ogre::FrameEvent& evt)
+void Villano::frameRendered(const Ogre::FrameEvent& evt)
 {
 	IG2Object::move(dir);
 }
-
 

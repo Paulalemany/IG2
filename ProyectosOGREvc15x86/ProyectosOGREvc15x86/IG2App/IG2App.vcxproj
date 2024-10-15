@@ -127,6 +127,7 @@
     <ClInclude Include="Laberinto.h" />
     <ClInclude Include="Muro.h" />
     <ClInclude Include="Perla.h" />
+    <ClInclude Include="Villano.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bloque.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="Laberinto.cpp" />
     <ClCompile Include="Muro.cpp" />
     <ClCompile Include="Perla.cpp" />
+    <ClCompile Include="Villano.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
