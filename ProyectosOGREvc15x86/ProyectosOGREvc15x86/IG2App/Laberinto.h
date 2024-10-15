@@ -21,6 +21,23 @@ public:
 
 	int getBloque(Vector3 coord, int ini, int fin);
 
+	string getTexture(int n) {
+		switch (n) {
+		case 0:
+			return texturaMuro;
+			break;
+		case 1:
+			return texturaPerla;
+			break;
+		case 2:
+			return texturaSuelo;
+			break;
+		default:
+			cout << "No hay textura definida en el metodo Laberinto::getTexture()." << endl;
+			break;
+		}
+	}
+
 protected:
 
 	Ogre::SceneManager* Sm = nullptr;
@@ -35,6 +52,9 @@ protected:
 
 	int NumFilas = 0;
 	int NumColumnas = 0;
+	string texturaSuelo = "";
+	string texturaMuro = "";
+	string texturaPerla = "";
 	string fila = "";
 
 };

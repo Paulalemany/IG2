@@ -277,7 +277,18 @@ void IG2App::setupScene(void){
     SceneNode* planeNode = mSM->getRootSceneNode()->createChildSceneNode("planeNode");
     planeNode->attachObject(planeEnt);
 
+    //MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+    //    Plane(Vector3::UNIT_Y, 0),
+    //    1500, 1500, 200, 200, true, 1, 5, 5, Vector3::UNIT_Z);
+    //// Creating the floor
+    //Entity* ent = mSM->createEntity("exampleFloor", "floor");
+    //ent->setMaterialName("example/stonesFloor");
+    //SceneNode* floor = mSM->getRootSceneNode()->createChildSceneNode();
+    //floor->attachObject(ent);
+
     planeNode->roll(Ogre::Degree(90));
+    planeNode->setPosition(Vector3(-900, -50, -900));
+    planeNode->setScale(Vector3(1.9, 1.9, 1.9));
 
 }
 

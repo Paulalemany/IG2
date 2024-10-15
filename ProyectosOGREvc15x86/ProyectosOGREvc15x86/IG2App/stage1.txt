@@ -1,5 +1,8 @@
 19
 19
+nm_up.PNG
+floor_specular.PNG
+floor_diffuse.PNG
 xxxxxxxxxxxxxxxxxxx
 xooooooooxoooooooox
 xoxxoxxxoxoxxxoxxox

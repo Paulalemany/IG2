@@ -12,6 +12,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 	else cout << "Fichero abierto correctamente" << endl;
 
 	input >> NumFilas >> NumColumnas;
+	input >> texturaPerla >> texturaMuro >> texturaSuelo;
 
 	// "Pinta" el laberinto a partir del fichero
 	node = 0; // Nosotras haciamos nodes[j], por eso solo se pintaba 1 fila. Necesitabamos un contador para los nodos.
@@ -66,9 +67,6 @@ int Laberinto::getBloque(Vector3 coord, int ini, int fin)
 	else {
 		return getBloque(coord, mitad, fin);
 	}
-
-
-	
 }
 
 
