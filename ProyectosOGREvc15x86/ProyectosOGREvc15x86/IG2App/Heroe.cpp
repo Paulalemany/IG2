@@ -5,7 +5,7 @@ Heroe::Heroe()
 
 }
 
-Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
+Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int vidas)
 	: IG2Object(initPos, node, sceneMng)
 {
 	sinbad = mSM->createEntity("Sinbad.mesh");
@@ -15,6 +15,8 @@ Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 
 	Snode = node;
 	dir = Vector3(0, 0, 0);
+
+	sVidas = vidas;
 }
 
 void Heroe::move(Vector3 newDir)

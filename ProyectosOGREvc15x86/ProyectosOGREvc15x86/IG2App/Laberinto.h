@@ -7,6 +7,7 @@
 #include <vector>
 #include <iostream> 
 #include <fstream>
+#include <OgreTrays.h>
 
 using namespace std;
 
@@ -15,7 +16,11 @@ class Laberinto
 public:
 
 	//Constructora
-	Laberinto(Ogre::SceneManager* scene, const string& mapa);
+	Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::TextBox* textB);
+
+	void updateTextBox();
+
+	/// Getters
 
 	Heroe* getHero() { return sinbad; }
 
@@ -60,6 +65,9 @@ protected:
 	string texturaPerla = "";
 	string tipoLuz = "";
 	string fila = "";
+
+	// caja de informacion
+	OgreBites::TextBox* lTextBox = nullptr;
 
 };
 

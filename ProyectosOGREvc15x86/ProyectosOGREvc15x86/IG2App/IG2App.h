@@ -56,6 +56,9 @@ protected:
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
+    OgreBites::TrayManager* mLevelOverlayMgr = nullptr;
+    OgreBites::Label* mLabel;
+    OgreBites::TextBox* mTextBox;
     
     Ogre::Light* light = nullptr;
     Ogre::SceneNode* mLightParent = nullptr;

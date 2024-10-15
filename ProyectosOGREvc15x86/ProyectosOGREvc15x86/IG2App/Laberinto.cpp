@@ -1,8 +1,9 @@
 #include "Laberinto.h"
 
-Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
+Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::TextBox* tb)
 {
 	Sm = scene;
+	lTextBox = tb;
 
 	//Lee el fichero
 	ifstream input;
@@ -30,7 +31,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 			}
 			else if (fila[j] == 'h') {
-				sinbad = new Heroe(pos, nodes[node], Sm);
+				sinbad = new Heroe(pos, nodes[node], Sm, 3);
 			}
 			node++;
 		}
@@ -38,9 +39,20 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 
 	int b = getBloque(Vector3(-1000, 0, -1000), 0, bloques.size() - 1);
 
+	updateTextBox();
+
 	input.close();
 
 
+}
+
+void Laberinto::updateTextBox()
+{
+	lTextBox->clearText();
+	lTextBox->appendText("Lives: " + sinbad->getVidas() +
+						 "\nPoints: " ); // TODO 
+
+	lTextBox->refitContents();
 }
 
 int Laberinto::getBloque(Vector3 coord, int ini, int fin)

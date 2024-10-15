@@ -71,6 +71,13 @@ void IG2App::setup(void){
     mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
     mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT); // el cuadro de fps, etc
     addInputListener(mTrayMgr);
+
+    /// Apartado 5 - Overlay System
+    mLevelOverlayMgr = new OgreBites::TrayManager("LevelMngr", mWindow.render);
+    mLabel = mLevelOverlayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "stageLabel", "Stage", 200);
+    mTextBox = mLevelOverlayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "gameTextBox", "Game Info", 200, 100);
+
+    addInputListener(mLevelOverlayMgr);
     
     // Anyade el objeto en el Listener
     addInputListener(this);
@@ -259,12 +266,12 @@ void IG2App::setupScene(void){
 
     mCube2Node->setPosition(100, 0, 0);*/
 
-    //Creación Laberinto
-    lab = new Laberinto(mSM, "stage1.txt");
+    ///-------LABERINTO---------------------------------------------------------
+    lab = new Laberinto(mSM, "stage1.txt", mTextBox);
 
     addInputListener(lab->getHero());
 
-    // plano
+    ///-------SUELO-------------------------------------------------------------
     MeshManager::getSingleton().createPlane(
         "plane", 
         ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
@@ -281,6 +288,8 @@ void IG2App::setupScene(void){
     // para que cuadre con el laberinto:
     planeNode->roll(Ogre::Degree(90));
     planeNode->setPosition(Vector3(-900, -50, -900));
+
+    ///------------------------------------------------------------------------
 
 }
 
