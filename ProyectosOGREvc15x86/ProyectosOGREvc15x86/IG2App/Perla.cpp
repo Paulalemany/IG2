@@ -10,6 +10,7 @@ Perla::Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasa
 {
 	Ogre::Entity* esfera = mSM->createEntity("sphere.mesh");
 	//esfera->setMaterialName(lab->getTexture(1));
+	esfera->setMaterialName("texture/perla");
 	node->attachObject(esfera);
 	node->setScale(0.1, 0.1, 0.1);
 }

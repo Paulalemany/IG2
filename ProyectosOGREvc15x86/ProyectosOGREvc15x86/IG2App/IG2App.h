@@ -67,7 +67,7 @@ protected:
     Laberinto* lab = nullptr;
 
     // para el plano
-    size_t gridSize = 1000;
+    size_t gridSize = 1800;
 };
 
 #endif

@@ -10,6 +10,7 @@ Muro::Muro(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, bool pasabl
 {
 	Ogre::Entity* cubo = mSM->createEntity("cube.mesh");
 	//cubo->setMaterialName(lab->getTexture(0));
+	cubo->setMaterialName("texture/muro");
 	node->attachObject(cubo);
 	
 }

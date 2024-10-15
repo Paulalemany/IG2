@@ -4,7 +4,7 @@ material texture/suelo{
 		pass {  
 			texture_unit 
 			{
-				texture Dirt.jpg
+				texture grass.PNG
 				
 			}
 		}
@@ -17,7 +17,7 @@ material texture/muro{
 		pass {  
 			texture_unit 
 			{
-				texture BeachStones.jpg
+				texture floor_diffuse.PNG
 				
 			}
 		}
@@ -30,7 +30,7 @@ material texture/perla{
 		pass {  
 			texture_unit 
 			{
-				texture nm_up.PNG
+				texture nm_up.png
 				
 			}
 		}
