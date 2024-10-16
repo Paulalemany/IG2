@@ -1,9 +1,9 @@
 18
 26
-materialPerla
-materialMuro
-materialSuelo
-tipoLuz
+mat/nm_up
+mat/floor_diffuse
+mat/grass
+directional
 xxxxxxxxxxxxxxxxxxxxxxxxxx
 xoooooxxxxxoooooxxxxooooox
 xoxxxoooooooxxxooooooxxxox

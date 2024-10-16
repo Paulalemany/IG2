@@ -16,6 +16,18 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         cout << "Position of the camera: " << mCamNode->getPosition() << endl;
         break; 
 
+    case SDLK_l:
+        if (light->isVisible()) {
+            light->setVisible(false);
+            cout << "Luz apagada" << endl;
+        }
+        else {
+            light->setVisible(true);
+            cout << "Luz encendida" << endl;
+        }
+
+        break;
+
     case SDLK_UP:
         cout << "up" << endl;
         lab->getHero()->move(Vector3(0, 0, -1));
@@ -117,14 +129,17 @@ void IG2App::setupScene(void){
     // Creating the light
     
     mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-    Light* luz = mSM->createLight("Luz");
-    luz->setType(Ogre::Light::LT_DIRECTIONAL);
-    luz->setDiffuseColour(0.75, 0.75, 0.75);
+    light = mSM->createLight("Luz");
+    light->setType(Ogre::Light::LT_DIRECTIONAL);
+    light->setDiffuseColour(0.75, 0.75, 0.75);
 
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-    //mLightNode = mCamNode->createChildSceneNode("nLuz");
-    mLightNode->attachObject(luz);
-    mLightNode->setDirection(Ogre::Vector3(0, 0, -1));
+    mLightNode->attachObject(light);
+
+
+
+
+
     
 
 #pragma region Practica_0
@@ -275,9 +290,12 @@ void IG2App::setupScene(void){
     MeshManager::getSingleton().createPlane(
         "plane", 
         ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-        Plane(Vector3(1, 0, 0), 0),
-        gridSize,
-        gridSize
+        Plane(Vector3::UNIT_Y, 0),                              // orientacion del plano mediante la normal
+        gridSize, gridSize,                                     // anchura
+        gridSize/10, gridSize/10,                               // numero de segmentos 
+        true, 1, 
+        10, 10,                                                 // [!] veces que se repite la textura
+        Vector3::UNIT_Z                                         // orientacion up 
     );
 
     Entity* planeEnt = mSM->createEntity("suelo", "plane");
@@ -286,11 +304,16 @@ void IG2App::setupScene(void){
     planeNode->attachObject(planeEnt);
 
     // para que cuadre con el laberinto:
-    planeNode->roll(Ogre::Degree(90));
     planeNode->setPosition(Vector3(-900, -50, -900));
 
-    ///------------------------------------------------------------------------
+    ///-----CONFIG DE LUCES----------------------------------------------------
+    light->setType(lab->getTipoLuz());
+    mLightNode->setPosition(Vector3(lab->getHero()->getPosition().x, 0, lab->getHero()->getPosition().z));
 
+    if (lab->getTipoLuz() == Ogre::Light::LT_SPOTLIGHT) {
+        mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
+        cout << mLightNode->getPosition() << endl;
+    }
 }
 
 

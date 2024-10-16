@@ -44,7 +44,11 @@ public:
 		}
 	}
 
-	string getTipoLuz() { return tipoLuz; }
+	// Segun string del fichero devuelve el tipo de luz Ogre::Light::LightTypes. Default: directional.
+	Ogre::Light::LightTypes getTipoLuz() { 
+		if (tipoLuz == "spotlight")	return Ogre::Light::LT_SPOTLIGHT;
+		else return Ogre::Light::LT_DIRECTIONAL;
+	}
 
 protected:
 

@@ -3,7 +3,7 @@
 mat/nm_up
 mat/floor_diffuse
 mat/grass
-tipoLuz
+spotlight
 xxxxxxxxxxxxxxxxxxx
 xooooooooxoooooooox
 xoxxoxxxoxoxxxoxxox
