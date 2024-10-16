@@ -10,6 +10,8 @@ public:
 
 	void move(Vector3 newDir);
 
+	bool Centre();
+
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
 	/// Getters
@@ -28,5 +30,6 @@ private:
 	int sVidas;
 
 	bool isMoving;
+	Vector3 proxDir;
 };
 

@@ -77,4 +77,9 @@ Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin)
 	}
 }
 
+int Laberinto::GetCentre(Vector3 pos, int tam)
+{
+	return pos.y / tam;
+}
+
 
