@@ -51,7 +51,8 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         
         break;
     }
-    
+   
+
   return true;
 }
 
@@ -305,16 +306,14 @@ void IG2App::setupScene(void){
 
     ///-----CONFIG DE LUCES----------------------------------------------------
     light->setType(lab->getTipoLuz());
-    mLightNode->setPosition(Vector3(lab->getHero()->getPosition().x, 0, lab->getHero()->getPosition().z));
-
-    updateSpotlightPos();
+    
+    mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
+    updateSpotlightPos(); // en el caso de que sea spotlight se actualizara
 }
 
 void IG2App::updateSpotlightPos()
 {
     if (lab->getTipoLuz() == Ogre::Light::LT_SPOTLIGHT) {
-        mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
-
         int sX, sZ;
         sX = lab->getHero()->getPosition().x;
         sZ = lab->getHero()->getPosition().z;

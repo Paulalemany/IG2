@@ -16,6 +16,9 @@ public:
 	// devuelve en string el numero de vidas
 	string getVidas() { return to_string(sVidas) ; }
 
+	// devuelve si Sinbad esta en movimiento
+	bool getIsMoving() { return isMoving; }
+
 private:
 
 	Ogre::Entity* sinbad;
@@ -23,5 +26,7 @@ private:
 	Vector3 dir; 
 
 	int sVidas;
+
+	bool isMoving;
 };
 

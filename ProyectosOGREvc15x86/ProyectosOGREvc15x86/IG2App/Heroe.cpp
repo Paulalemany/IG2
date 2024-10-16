@@ -17,6 +17,8 @@ Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int vidas
 	dir = Vector3(0, 0, 0);
 
 	sVidas = vidas;
+
+	isMoving = false;
 }
 
 void Heroe::move(Vector3 newDir)
@@ -28,12 +30,13 @@ void Heroe::move(Vector3 newDir)
 		Quaternion q = this->getOrientation().getRotationTo(newDir);
 		sNode->rotate(q, Ogre::Node::TS_LOCAL);
 	}
-}
 
+}
 
 void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
 	IG2Object::move(dir);
+
 }
 
 
