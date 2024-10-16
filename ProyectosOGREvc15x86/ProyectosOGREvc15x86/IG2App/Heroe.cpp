@@ -43,6 +43,7 @@ bool Heroe::Centre()
 
 void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
+	//Falta comprobar si el bloque es un muro
 	if (Centre() && dir != proxDir) {
 
 		dir = proxDir;
