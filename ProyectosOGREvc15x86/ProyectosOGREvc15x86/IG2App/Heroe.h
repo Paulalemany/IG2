@@ -10,6 +10,8 @@ public:
 
 	void move(Vector3 newDir);
 
+	bool Centre();
+
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
 private:
@@ -17,5 +19,6 @@ private:
 	Ogre::Entity* sinbad;
 	SceneNode* Snode;
 	Vector3 dir; 
+	Vector3 proxDir;
 };
 

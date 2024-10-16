@@ -30,10 +30,14 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 			}
 			else if (fila[j] == 'h') {
 				sinbad = new Heroe(pos, nodes[node], Sm);
+				std::cout << "SINBAD: " << node << std::endl;
 			}
 			node++;
 		}
 	}
+
+	int b = GetCentre(sinbad->getPosition(), 100);
+	std::cout << "BLOQUE: " << b << std::endl;
 
 	input.close();
 
@@ -64,6 +68,11 @@ Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin)
 	else {
 		return getBloque(coord, mitad, fin);
 	}
+}
+
+int Laberinto::GetCentre(Vector3 pos, int tam)
+{
+	return pos.y / tam;
 }
 
 
