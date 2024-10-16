@@ -30,6 +30,9 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
+
+    // actualiza posicion del foco segun la posicion de sinbad
+    void updateSpotlightPos();
     
     
 #pragma region practica_0

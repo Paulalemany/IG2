@@ -23,7 +23,10 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         }
         else {
             light->setVisible(true);
-            cout << "Luz encendida" << endl;
+            cout << "Luz encendida en " 
+                << mLightNode->getPosition().x << "," 
+                << mLightNode->getPosition().y << ","
+                << mLightNode->getPosition().z << endl;
         }
 
         break;
@@ -130,16 +133,10 @@ void IG2App::setupScene(void){
     
     mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
     light = mSM->createLight("Luz");
-    light->setType(Ogre::Light::LT_DIRECTIONAL);
     light->setDiffuseColour(0.75, 0.75, 0.75);
 
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
     mLightNode->attachObject(light);
-
-
-
-
-
     
 
 #pragma region Practica_0
@@ -310,9 +307,19 @@ void IG2App::setupScene(void){
     light->setType(lab->getTipoLuz());
     mLightNode->setPosition(Vector3(lab->getHero()->getPosition().x, 0, lab->getHero()->getPosition().z));
 
+    updateSpotlightPos();
+}
+
+void IG2App::updateSpotlightPos()
+{
     if (lab->getTipoLuz() == Ogre::Light::LT_SPOTLIGHT) {
         mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
-        cout << mLightNode->getPosition() << endl;
+
+        int sX, sZ;
+        sX = lab->getHero()->getPosition().x;
+        sZ = lab->getHero()->getPosition().z;
+        mLightNode->setPosition(Vector3(sX, 300, sZ));
+
     }
 }
 
