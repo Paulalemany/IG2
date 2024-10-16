@@ -260,6 +260,21 @@ void IG2App::setupScene(void){
 
     addInputListener(lab->getHero());
 
+    // plano
+    MeshManager::getSingleton().createPlane(
+        "plane", 
+        ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+        Plane(Vector3(1, 0, 0), 0),
+        gridSize,
+        gridSize
+    );
+
+    Entity* planeEnt = mSM->createEntity("suelo", "plane");
+    SceneNode* planeNode = mSM->getRootSceneNode()->createChildSceneNode("planeNode");
+    planeNode->attachObject(planeEnt);
+
+    planeNode->roll(Ogre::Degree(90));
+
 }
 
 

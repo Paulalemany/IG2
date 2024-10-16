@@ -19,14 +19,14 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 		input >> fila;
 
 		for (int j = 0; j < NumColumnas; j++) {
-			pos = Vector3(-i * 100, 0, - j * 100);
+			pos = Vector3(-i * 100, 0, -j * 100);
 			nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 
 			if (fila[j] == 'x') {
-				muros.push_back(new Muro(pos, nodes[node], Sm));
+				bloques.push_back(new Muro(pos, nodes[node], Sm, false));
 			}
 			else if (fila[j] == 'o') {
-				perlas.push_back(new Perla(pos, nodes[node], Sm));
+				bloques.push_back(new Perla(pos, nodes[node], Sm, true));
 			}
 			else if (fila[j] == 'h') {
 				sinbad = new Heroe(pos, nodes[node], Sm);
@@ -35,7 +35,40 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 		}
 	}
 
+	int b = getBloque(Vector3(-1000, 0, -1000), 0, bloques.size() - 1);
+
 	input.close();
+
+
+}
+
+int Laberinto::getBloque(Vector3 coord, int ini, int fin)
+{
+	// puede q el bloque no este
+	if (coord == bloques[ini]->getPosition()) {
+		return ini;
+	}
+
+	int mitad = (ini + fin) / 2;
+
+	//Vamos para la izquierda (Es mas pequeña la que buscamos)
+	//Cuando sean iguales en la x se compara en la z
+	int x = bloques[mitad]->getPosition().x;
+	if ( x < coord.x ) {
+
+		return getBloque(coord, ini, mitad);
+	}
+
+	if (x == coord.x && bloques[mitad]->getPosition().z < coord.z) {
+		return getBloque(coord, ini, mitad);
+	}
+
+	else {
+		return getBloque(coord, mitad, fin);
+	}
+
+
+	
 }
 
 

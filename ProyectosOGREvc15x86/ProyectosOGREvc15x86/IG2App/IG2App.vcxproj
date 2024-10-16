@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bloque.h" />
     <ClInclude Include="Heroe.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
@@ -128,6 +129,7 @@
     <ClInclude Include="Perla.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bloque.cpp" />
     <ClCompile Include="Heroe.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
