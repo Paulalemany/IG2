@@ -36,11 +36,9 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 		}
 	}
 
-	int b = GetCentre(sinbad->getPosition(), 100);
-	std::cout << "BLOQUE: " << b << std::endl;
-
 	input.close();
 
+	//sinbad->setLab(this);
 
 }
 
@@ -68,11 +66,6 @@ Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin)
 	else {
 		return getBloque(coord, mitad, fin);
 	}
-}
-
-int Laberinto::GetCentre(Vector3 pos, int tam)
-{
-	return pos.y / tam;
 }
 
 
