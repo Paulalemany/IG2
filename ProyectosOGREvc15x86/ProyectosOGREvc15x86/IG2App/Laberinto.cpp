@@ -35,18 +35,16 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa)
 		}
 	}
 
-	int b = getBloque(Vector3(-1000, 0, -1000), 0, bloques.size() - 1);
-
 	input.close();
 
 
 }
 
-int Laberinto::getBloque(Vector3 coord, int ini, int fin)
+Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin)
 {
 	// puede q el bloque no este
 	if (coord == bloques[ini]->getPosition()) {
-		return ini;
+		return bloques[ini];
 	}
 
 	int mitad = (ini + fin) / 2;
@@ -66,9 +64,6 @@ int Laberinto::getBloque(Vector3 coord, int ini, int fin)
 	else {
 		return getBloque(coord, mitad, fin);
 	}
-
-
-	
 }
 
 

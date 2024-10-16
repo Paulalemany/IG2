@@ -28,6 +28,7 @@ void Heroe::move(Vector3 newDir)
 	}
 }
 
+
 void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
 	IG2Object::move(dir);

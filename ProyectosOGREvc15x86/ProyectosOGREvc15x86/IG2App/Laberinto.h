@@ -19,7 +19,11 @@ public:
 
 	Heroe* getHero() { return sinbad; }
 
-	int getBloque(Vector3 coord, int ini, int fin);
+	Bloque* getBloque(Vector3 coord, int ini, int fin);
+
+	int GetCentre(Vector3 pos, int tam);
+
+	int getLenght() { return bloques.size() - 1; }
 
 protected:
 
