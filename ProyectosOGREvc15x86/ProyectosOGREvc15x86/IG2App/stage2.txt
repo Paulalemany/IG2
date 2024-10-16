@@ -1,5 +1,9 @@
 18
 26
+mat/nm_up
+mat/floor_diffuse
+mat/grass
+directional
 xxxxxxxxxxxxxxxxxxxxxxxxxx
 xoooooxxxxxoooooxxxxooooox
 xoxxxoooooooxxxooooooxxxox

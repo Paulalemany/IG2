@@ -31,6 +31,9 @@ protected:
     virtual void shutdown();
     virtual void setupScene();
 
+    // actualiza posicion del foco segun la posicion de sinbad
+    void updateSpotlightPos();
+    
     bool canMove(Vector3 newDir);
     
     
@@ -58,6 +61,9 @@ protected:
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;
+    OgreBites::TrayManager* mLevelOverlayMgr = nullptr;
+    OgreBites::Label* mLabel;
+    OgreBites::TextBox* mTextBox;
     
     Ogre::Light* light = nullptr;
     Ogre::SceneNode* mLightParent = nullptr;
@@ -69,7 +75,7 @@ protected:
     Laberinto* lab = nullptr;
 
     // para el plano
-    size_t gridSize = 1000;
+    size_t gridSize = 1800;
 };
 
 #endif

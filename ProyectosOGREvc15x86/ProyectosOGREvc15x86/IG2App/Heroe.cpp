@@ -5,7 +5,7 @@ Heroe::Heroe()
 
 }
 
-Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
+Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int vidas)
 	: IG2Object(initPos, node, sceneMng)
 {
 	sinbad = mSM->createEntity("Sinbad.mesh");
@@ -13,10 +13,14 @@ Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 	node->setScale(10, 10, 10);
 	node->yaw(Ogre::Degree(180));
 
-	Snode = node;
+	sNode = node;
 	dir = Vector3(0, 0, 0);
 	proxDir = Vector3(0, 0, 0);
 
+
+	sVidas = vidas;
+
+	isMoving = false;
 }
 
 void Heroe::move(Vector3 newDir)
@@ -25,7 +29,6 @@ void Heroe::move(Vector3 newDir)
 
 		proxDir = newDir;
 	}
-}
 
 bool Heroe::Centre()
 {
@@ -55,6 +58,7 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 	}
 
 	IG2Object::move(dir);
+
 }
 
 

@@ -1,0 +1,38 @@
+material mat/grass{
+    technique 
+	{ 
+		pass {  
+			texture_unit 
+			{
+				texture grass.PNG
+				
+			}
+		}
+    }
+}
+
+material mat/floor_diffuse{
+    technique 
+	{ 
+		pass {  
+			texture_unit 
+			{
+				texture floor_diffuse.PNG
+				
+			}
+		}
+    }
+}
+
+material mat/nm_up{
+    technique 
+	{ 
+		pass {  
+			texture_unit 
+			{
+				texture nm_up.png
+				
+			}
+		}
+    }
+}

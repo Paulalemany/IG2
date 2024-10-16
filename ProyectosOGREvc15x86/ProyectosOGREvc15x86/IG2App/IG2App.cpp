@@ -16,6 +16,21 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         cout << "Position of the camera: " << mCamNode->getPosition() << endl;
         break; 
 
+    case SDLK_l:
+        if (light->isVisible()) {
+            light->setVisible(false);
+            cout << "Luz apagada" << endl;
+        }
+        else {
+            light->setVisible(true);
+            cout << "Luz encendida en " 
+                << mLightNode->getPosition().x << "," 
+                << mLightNode->getPosition().y << ","
+                << mLightNode->getPosition().z << endl;
+        }
+
+        break;
+
     case SDLK_UP:
         lab->getHero()->move(Vector3(0, 0, -1));
         break;
@@ -36,7 +51,8 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         }*/
         break;
     }
-    
+   
+
   return true;
 }
 
@@ -71,6 +87,13 @@ void IG2App::setup(void){
     mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
     mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT); // el cuadro de fps, etc
     addInputListener(mTrayMgr);
+
+    /// Apartado 5 - Overlay System
+    mLevelOverlayMgr = new OgreBites::TrayManager("LevelMngr", mWindow.render);
+    mLabel = mLevelOverlayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "stageLabel", "Stage", 200);
+    mTextBox = mLevelOverlayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "gameTextBox", "Game Info", 200, 100);
+
+    addInputListener(mLevelOverlayMgr);
     
     // Anyade el objeto en el Listener
     addInputListener(this);
@@ -110,14 +133,11 @@ void IG2App::setupScene(void){
     // Creating the light
     
     mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-    Light* luz = mSM->createLight("Luz");
-    luz->setType(Ogre::Light::LT_DIRECTIONAL);
-    luz->setDiffuseColour(0.75, 0.75, 0.75);
+    light = mSM->createLight("Luz");
+    light->setDiffuseColour(0.75, 0.75, 0.75);
 
     mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-    //mLightNode = mCamNode->createChildSceneNode("nLuz");
-    mLightNode->attachObject(luz);
-    mLightNode->setDirection(Ogre::Vector3(0, 0, -1));
+    mLightNode->attachObject(light);
     
 
 #pragma region Practica_0
@@ -259,26 +279,47 @@ void IG2App::setupScene(void){
 
     mCube2Node->setPosition(100, 0, 0);*/
 
-    //Creación Laberinto
-    lab = new Laberinto(mSM, "stage1.txt");
+    ///-------LABERINTO---------------------------------------------------------
+    lab = new Laberinto(mSM, "stage1.txt", mTextBox);
 
     addInputListener(lab->getHero());
 
-    // plano
+    ///-------SUELO-------------------------------------------------------------
     MeshManager::getSingleton().createPlane(
         "plane", 
         ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-        Plane(Vector3(1, 0, 0), 0),
-        gridSize,
-        gridSize
+        Plane(Vector3::UNIT_Y, 0),                              // orientacion del plano mediante la normal
+        gridSize, gridSize,                                     // anchura
+        gridSize/10, gridSize/10,                               // numero de segmentos 
+        true, 1, 
+        10, 10,                                                 // [!] veces que se repite la textura
+        Vector3::UNIT_Z                                         // orientacion up 
     );
 
     Entity* planeEnt = mSM->createEntity("suelo", "plane");
+    planeEnt->setMaterialName(lab->getTexture(2)); // CALIDAD FEAAAA
     SceneNode* planeNode = mSM->getRootSceneNode()->createChildSceneNode("planeNode");
     planeNode->attachObject(planeEnt);
 
-    planeNode->roll(Ogre::Degree(90));
+    // para que cuadre con el laberinto:
+    planeNode->setPosition(Vector3(-900, -50, -900));
 
+    ///-----CONFIG DE LUCES----------------------------------------------------
+    light->setType(lab->getTipoLuz());
+    
+    mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
+    updateSpotlightPos(); // en el caso de que sea spotlight se actualizara
+}
+
+void IG2App::updateSpotlightPos()
+{
+    if (lab->getTipoLuz() == Ogre::Light::LT_SPOTLIGHT) {
+        int sX, sZ;
+        sX = lab->getHero()->getPosition().x;
+        sZ = lab->getHero()->getPosition().z;
+        mLightNode->setPosition(Vector3(sX, 300, sZ));
+
+    }
 }
 
 bool IG2App::canMove(Vector3 newDir)
