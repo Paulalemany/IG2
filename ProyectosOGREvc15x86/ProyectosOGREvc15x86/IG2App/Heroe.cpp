@@ -1,4 +1,5 @@
 #include "Heroe.h"
+#include "Laberinto.h"
 
 Heroe::Heroe()
 {
@@ -29,13 +30,14 @@ void Heroe::move(Vector3 newDir)
 
 		proxDir = newDir;
 	}
+}
 
 bool Heroe::Centre()
 {
 	int x, y, z;
-	x = Snode->getPosition().x;
-	y = Snode->getPosition().y;
-	z = Snode->getPosition().z;
+	x = sNode->getPosition().x;
+	y = sNode->getPosition().y;
+	z = sNode->getPosition().z;
 
 	Vector3 centro(x % 100, y % 100, z % 100);
 	
@@ -46,16 +48,33 @@ bool Heroe::Centre()
 
 void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
-	//Falta comprobar si el bloque es un muro
-	if (Centre() && dir != proxDir 
-		//&& lab->getBloque(Snode->getPosition() * 100, 0, lab->getLenght() - 1)
-		) {
 
-		dir = proxDir;
+	//Si esta en el centro, la direccion debe cambiar, y el bloque es traspasable, giramos
+	if (Centre() && dir != proxDir) {
+		Bloque* b = lab->getBloque(sNode->getPosition() + (proxDir * 100), 0, lab->getLenght() - 1);
 
-		Quaternion q = this->getOrientation().getRotationTo(dir);
-		Snode->rotate(q, Ogre::Node::TS_LOCAL);
+		if (b == nullptr || b->getTraspasable()) {
+			dir = proxDir;
+
+			Quaternion q = this->getOrientation().getRotationTo(dir);
+			sNode->rotate(q, Ogre::Node::TS_LOCAL);
+		}
+	}		
+
+	//Si estamos en el centro y NO es traspasable hacemos dir = 0;
+
+	if (Centre() && dir == proxDir) {
+
+		Bloque* b = lab->getBloque(sNode->getPosition() + (dir * 100), 0, lab->getLenght() - 1);
+
+		if (b != nullptr && b->getTraspasable() == false) {
+
+			dir = Vector3(0, 0, 0);
+			proxDir = Vector3(0, 0, 0);
+		}
 	}
+
+	
 
 	IG2Object::move(dir);
 

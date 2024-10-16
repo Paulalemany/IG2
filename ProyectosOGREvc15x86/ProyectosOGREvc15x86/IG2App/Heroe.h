@@ -1,6 +1,7 @@
 #pragma once
 #include "IG2Object.h"
-//#include "Laberinto.h"
+
+class Laberinto;
 
 class Heroe : public IG2Object
 {
@@ -22,6 +23,10 @@ public:
 	// devuelve si Sinbad esta en movimiento
 	bool getIsMoving() { return isMoving; }
 
+	///Setters
+
+	void setLab(Laberinto* l) { lab = l; }
+
 private:
 
 	Ogre::Entity* sinbad;
@@ -29,7 +34,7 @@ private:
 	Vector3 dir; 
 	Vector3 proxDir;
 
-	//Laberinto* lab;
+	Laberinto* lab;
 
 	int sVidas;
 

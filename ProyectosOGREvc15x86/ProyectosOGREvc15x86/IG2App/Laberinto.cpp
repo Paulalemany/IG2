@@ -31,6 +31,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 			}
 			else if (fila[j] == 'h') {
+
 				sinbad = new Heroe(pos, nodes[node], Sm, 3);
 			}
 			node++;
@@ -38,6 +39,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	}
 
 	updateTextBox();
+	sinbad->setLab(this);
 
 	input.close();
 }
@@ -51,11 +53,14 @@ void Laberinto::updateTextBox()
 	lTextBox->refitContents();
 }
 
-Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin)
+Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin) const
 {
 	// puede q el bloque no este
 	if (coord == bloques[ini]->getPosition()) {
 		return bloques[ini];
+	}
+	else if (fin - ini == 1) {
+		return nullptr;
 	}
 
 	int mitad = (ini + fin) / 2;
