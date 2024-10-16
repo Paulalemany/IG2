@@ -34,6 +34,8 @@ protected:
     // actualiza posicion del foco segun la posicion de sinbad
     void updateSpotlightPos();
     
+    bool canMove(Vector3 newDir);
+    
     
 #pragma region practica_0
     /*Ogre::SceneNode* mSinbadNode = nullptr;

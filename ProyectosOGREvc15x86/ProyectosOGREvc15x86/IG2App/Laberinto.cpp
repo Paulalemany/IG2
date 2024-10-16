@@ -37,13 +37,9 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 		}
 	}
 
-	int b = getBloque(Vector3(-1000, 0, -1000), 0, bloques.size() - 1);
-
 	updateTextBox();
 
 	input.close();
-
-
 }
 
 void Laberinto::updateTextBox()
@@ -55,16 +51,16 @@ void Laberinto::updateTextBox()
 	lTextBox->refitContents();
 }
 
-int Laberinto::getBloque(Vector3 coord, int ini, int fin)
+Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin)
 {
 	// puede q el bloque no este
 	if (coord == bloques[ini]->getPosition()) {
-		return ini;
+		return bloques[ini];
 	}
 
 	int mitad = (ini + fin) / 2;
 
-	//Vamos para la izquierda (Es mas pequeña la que buscamos)
+	//Vamos para la izquierda (Es mas pequeï¿½a la que buscamos)
 	//Cuando sean iguales en la x se compara en la z
 	int x = bloques[mitad]->getPosition().x;
 	if ( x < coord.x ) {
