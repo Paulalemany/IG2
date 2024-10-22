@@ -74,8 +74,9 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 		}
 	}
 
-	
 
 	IG2Object::move(dir);
+
+	lab->updateLightPos();
 
 }

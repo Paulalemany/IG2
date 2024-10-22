@@ -18,7 +18,13 @@ public:
 	//Constructora
 	Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::TextBox* textB);
 
+	// actualiza datos del textBox
 	void updateTextBox();
+
+	// crea la luz y settea su tipo
+	void configLight(Ogre::SceneManager* s);
+	// actualiza posicion del foco segun la posicion de sinbad
+	void updateLightPos();
 
 	/// Getters
 
@@ -50,6 +56,7 @@ public:
 	// Segun string del fichero devuelve el tipo de luz Ogre::Light::LightTypes. Default: directional.
 	Ogre::Light::LightTypes getTipoLuz() { 
 		if (tipoLuz == "spotlight")	return Ogre::Light::LT_SPOTLIGHT;
+		else if (tipoLuz == "point") return Ogre::Light::LT_POINT;
 		else return Ogre::Light::LT_DIRECTIONAL;
 	}
 
@@ -72,6 +79,10 @@ protected:
 	string texturaPerla = "";
 	string tipoLuz = "";
 	string fila = "";
+
+	// luces
+	Ogre::Light* light = nullptr;
+	Ogre::SceneNode* mLightNode = nullptr;
 
 	// caja de informacion
 	OgreBites::TextBox* lTextBox = nullptr;

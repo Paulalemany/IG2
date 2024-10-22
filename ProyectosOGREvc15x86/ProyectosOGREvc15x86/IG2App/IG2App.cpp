@@ -17,7 +17,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         break; 
 
     case SDLK_l:
-        updateSpotlightPos();
+        lab->updateLightPos();
         break;
 
     case SDLK_UP:
@@ -121,12 +121,14 @@ void IG2App::setupScene(void){
     //------------------------------------------------------------------------
     // Creating the light
     
-    mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-    light = mSM->createLight("Luz");
-    light->setDiffuseColour(0.75, 0.75, 0.75);
+    // [!] La luz la creamos en el laberinto
+    
+    //mSM->setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+    //light = mSM->createLight("Luz");
+    //light->setDiffuseColour(0.75, 0.75, 0.75);
 
-    mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
-    mLightNode->attachObject(light);
+    //mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
+    //mLightNode->attachObject(light);
     
 
 #pragma region Practica_0
@@ -292,25 +294,6 @@ void IG2App::setupScene(void){
 
     // para que cuadre con el laberinto:
     planeNode->setPosition(Vector3(-900, -50, -900));
-
-    ///-----CONFIG DE LUCES----------------------------------------------------
-    light->setType(lab->getTipoLuz());
-
-    if (lab->getTipoLuz() == Ogre::Light::LT_SPOTLIGHT) {
-        mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
-        updateSpotlightPos();
-    }
-    else {
-        cout << "La luz es direccional" << endl;
-    }
-}
-
-void IG2App::updateSpotlightPos()
-{
-    int sX, sZ;
-    sX = lab->getHero()->getPosition().x;
-    sZ = lab->getHero()->getPosition().z;
-    mLightNode->setPosition(Vector3(sX, 300, sZ));
 }
 
 bool IG2App::canMove(Vector3 newDir)

@@ -31,9 +31,6 @@ protected:
     virtual void shutdown();
     virtual void setupScene();
 
-    // actualiza posicion del foco segun la posicion de sinbad
-    void updateSpotlightPos();
-    
     bool canMove(Vector3 newDir);
     
     

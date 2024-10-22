@@ -41,6 +41,8 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	updateTextBox();
 	sinbad->setLab(this);
 
+	configLight(scene);
+
 	input.close();
 }
 
@@ -51,6 +53,35 @@ void Laberinto::updateTextBox()
 						 "\nPoints: " ); // TODO 
 
 	lTextBox->refitContents();
+}
+
+void Laberinto::configLight(Ogre::SceneManager* s)
+{
+	light = s->createLight("Luz");
+	light->setDiffuseColour(0.75, 0.75, 0.75);
+
+	mLightNode = s->getRootSceneNode()->createChildSceneNode("nLuz");
+	mLightNode->attachObject(light);
+
+	light->setType(getTipoLuz());
+
+	if (getTipoLuz() == Ogre::Light::LT_SPOTLIGHT ||
+		getTipoLuz() == Ogre::Light::LT_POINT)
+	{
+		mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
+		updateLightPos();
+	}
+	else {
+		cout << "La luz es direccional" << endl;
+	}
+}
+
+void Laberinto::updateLightPos()
+{
+	int sX, sZ;
+	sX = getHero()->getPosition().x;
+	sZ = getHero()->getPosition().z;
+	mLightNode->setPosition(Vector3(sX, 300, sZ));
 }
 
 Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin) const
