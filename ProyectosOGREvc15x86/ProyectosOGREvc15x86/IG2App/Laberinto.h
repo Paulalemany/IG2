@@ -78,4 +78,3 @@ protected:
 	OgreBites::TextBox* lTextBox = nullptr;
 
 };
-

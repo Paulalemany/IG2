@@ -29,13 +29,15 @@ void Heroe::move(Vector3 newDir)
 
 		proxDir = newDir;
 	}
+}
+
 
 bool Heroe::Centre()
 {
 	int x, y, z;
-	x = Snode->getPosition().x;
-	y = Snode->getPosition().y;
-	z = Snode->getPosition().z;
+	x = sNode->getPosition().x;
+	y = sNode->getPosition().y;
+	z = sNode->getPosition().z;
 
 	Vector3 centro(x % 100, y % 100, z % 100);
 	
@@ -52,11 +54,9 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 		dir = proxDir;
 
 		Quaternion q = this->getOrientation().getRotationTo(dir);
-		Snode->rotate(q, Ogre::Node::TS_LOCAL);
+		sNode->rotate(q, Ogre::Node::TS_LOCAL);
 	}
 
 	IG2Object::move(dir);
 
 }
-
-
