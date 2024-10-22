@@ -17,18 +17,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         break; 
 
     case SDLK_l:
-        if (light->isVisible()) {
-            light->setVisible(false);
-            cout << "Luz apagada" << endl;
-        }
-        else {
-            light->setVisible(true);
-            cout << "Luz encendida en " 
-                << mLightNode->getPosition().x << "," 
-                << mLightNode->getPosition().y << ","
-                << mLightNode->getPosition().z << endl;
-        }
-
+        updateSpotlightPos();
         break;
 
     case SDLK_UP:
@@ -297,7 +286,7 @@ void IG2App::setupScene(void){
     );
 
     Entity* planeEnt = mSM->createEntity("suelo", "plane");
-    planeEnt->setMaterialName(lab->getTexture(2)); // CALIDAD FEAAAA
+    planeEnt->setMaterialName(lab->getTexture(2));
     SceneNode* planeNode = mSM->getRootSceneNode()->createChildSceneNode("planeNode");
     planeNode->attachObject(planeEnt);
 
@@ -306,20 +295,22 @@ void IG2App::setupScene(void){
 
     ///-----CONFIG DE LUCES----------------------------------------------------
     light->setType(lab->getTipoLuz());
-    
-    mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
-    updateSpotlightPos(); // en el caso de que sea spotlight se actualizara
+
+    if (lab->getTipoLuz() == Ogre::Light::LT_SPOTLIGHT) {
+        mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
+        updateSpotlightPos();
+    }
+    else {
+        cout << "La luz es direccional" << endl;
+    }
 }
 
 void IG2App::updateSpotlightPos()
 {
-    if (lab->getTipoLuz() == Ogre::Light::LT_SPOTLIGHT) {
-        int sX, sZ;
-        sX = lab->getHero()->getPosition().x;
-        sZ = lab->getHero()->getPosition().z;
-        mLightNode->setPosition(Vector3(sX, 300, sZ));
-
-    }
+    int sX, sZ;
+    sX = lab->getHero()->getPosition().x;
+    sZ = lab->getHero()->getPosition().z;
+    mLightNode->setPosition(Vector3(sX, 300, sZ));
 }
 
 bool IG2App::canMove(Vector3 newDir)
