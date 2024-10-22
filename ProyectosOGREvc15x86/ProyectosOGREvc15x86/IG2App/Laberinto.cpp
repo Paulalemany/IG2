@@ -39,8 +39,6 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 
 	updateTextBox();
 
-
-
 	input.close();
 }
 
