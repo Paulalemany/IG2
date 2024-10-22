@@ -19,17 +19,11 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 
 void Villano::move(Vector3 newDir)
 {
-	if (dir != newDir) {	//Cambiamos la direccion del movimiento
-		dir = newDir;
-
-		//Rotacion
-		Quaternion q = this->getOrientation().getRotationTo(newDir);
-		sNode->rotate(q, Ogre::Node::TS_LOCAL);
-	}
+	// TODO
 }
 
 void Villano::frameRendered(const Ogre::FrameEvent& evt)
 {
-	IG2Object::move(dir);
+	/*IG2Object::move(dir);*/
 }
 

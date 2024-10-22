@@ -34,6 +34,10 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 
 				sinbad = new Heroe(pos, nodes[node], Sm, 3);
 			}
+			else if (fila[j] == 'v') {
+
+				//villano = new Villano(pos, nodes[node], Sm, 3);
+			}
 			node++;
 		}
 	}

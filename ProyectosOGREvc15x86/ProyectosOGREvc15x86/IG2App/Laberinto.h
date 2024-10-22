@@ -4,6 +4,7 @@
 #include "Muro.h"
 #include "Perla.h"
 #include "Heroe.h"
+#include "Villano.h"
 #include <vector>
 #include <iostream> 
 #include <fstream>
@@ -70,6 +71,7 @@ protected:
 
 	std::vector<Bloque*> bloques;
 	Heroe* sinbad;
+	Villano* villano;
 	
 	// fichero
 	int NumFilas = 0;

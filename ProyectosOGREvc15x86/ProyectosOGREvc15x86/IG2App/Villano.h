@@ -23,5 +23,8 @@ private:
 	Vector3 dir;
 
 
+	//Laberinto* lab;
+
+
 };
 
