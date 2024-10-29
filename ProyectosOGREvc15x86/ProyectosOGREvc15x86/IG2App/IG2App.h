@@ -30,8 +30,6 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
-
-    bool canMove(Vector3 newDir);
     
     
 #pragma region practica_0

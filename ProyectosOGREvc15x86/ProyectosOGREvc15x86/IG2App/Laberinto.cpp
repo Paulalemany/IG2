@@ -54,7 +54,7 @@ void Laberinto::updateTextBox()
 {
 	lTextBox->clearText();
 	lTextBox->appendText("Lives: " + sinbad->getVidas() +
-						 "\nPoints: " ); // TODO 
+						 "\nPoints: " + sinbad->getPoints() ); // TODO 
 
 	lTextBox->refitContents();
 }
@@ -119,23 +119,17 @@ Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin) const
 
 void Laberinto::checkColision()
 {
-	
-	auto bS = sinbad->getAABB();	//Caja de sinbad
-
 	//Necesitamos tambien la caja de la perla
 	Bloque* block = getBloque(sinbad->getPosition(), 0, bloques.size() - 1);
 
 	//Si es nullptr es que ya no tiene perla
 	if (block != nullptr && block->getTraspasable()) {
-		Entity* perl = block->getPerla();
-		
-		if (perl != nullptr) auto bP = block->getAABB();	//No se si esto va a hacer que se las coma nada mas entrar en la caja
+
+		sinbad->GetPerl();
+		updateTextBox();
 	}
 
-	//Debemos comprobar si sinbad esta colisionando con una perla
-	if (bS.AxisAlignedBox::intersects(bS)) {
-
-	}
+	
 }
 
 

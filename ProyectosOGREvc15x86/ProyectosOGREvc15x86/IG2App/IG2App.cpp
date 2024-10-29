@@ -35,9 +35,6 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
     case SDLK_LEFT:
 
         lab->getHero()->move(Vector3(-1, 0, 0));
-        /*if (canMove(Vector3(-1, 0, 0))) {
-            
-        }*/
         break;
     }
    
@@ -294,14 +291,6 @@ void IG2App::setupScene(void){
 
     // para que cuadre con el laberinto:
     planeNode->setPosition(Vector3(-900, -50, -900));
-}
-
-bool IG2App::canMove(Vector3 newDir)
-{
-    Bloque* block = lab->getBloque(lab->getHero()->getPosition() + (newDir * 100),
-        0, lab->getLenght());
-
-    return block->getTraspasable();
 }
 
 

@@ -22,6 +22,8 @@ Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int vidas
 	sVidas = vidas;
 
 	isMoving = false;
+
+	points = 0;
 }
 
 void Heroe::move(Vector3 newDir)
@@ -45,6 +47,11 @@ bool Heroe::Centre()
 	return centro == Vector3().ZERO;	
 }
 
+void Heroe::GetPerl()
+{
+	points += perlpoints;
+}
+
 
 void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
@@ -59,28 +66,29 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 
 void Heroe::movement()
 {
-	//Si esta en el centro, la direccion debe cambiar, y el bloque es traspasable, giramos
-	if (Centre() && dir != proxDir) {
+	//Si está en el centro comprobamos las cosas
+	if (Centre()) {
+		lab->checkColision();	//Comprobamos si va a coger una perla
+
 		Bloque* b = lab->getBloque(sNode->getPosition() + (proxDir * 100), 0, lab->getLenght() - 1);
 
-		if (b == nullptr || b->getTraspasable()) {
-			dir = proxDir;
+		//la direccion debe cambiar, y el bloque es traspasable, giramos
+		if (dir != proxDir) {
 
-			Quaternion q = this->getOrientation().getRotationTo(dir);
-			sNode->rotate(q, Ogre::Node::TS_LOCAL);
+			if (b == nullptr || b->getTraspasable()) {
+				dir = proxDir;
+
+				Quaternion q = this->getOrientation().getRotationTo(dir);
+				sNode->rotate(q, Ogre::Node::TS_LOCAL);
+			}
 		}
-	}
+		else {
 
-	//Si estamos en el centro y NO es traspasable hacemos dir = 0;
+			if (b != nullptr && b->getTraspasable() == false) {
 
-	if (Centre() && dir == proxDir) {
-
-		Bloque* b = lab->getBloque(sNode->getPosition() + (dir * 100), 0, lab->getLenght() - 1);
-
-		if (b != nullptr && b->getTraspasable() == false) {
-
-			dir = Vector3(0, 0, 0);
-			proxDir = Vector3(0, 0, 0);
+				dir = Vector3(0, 0, 0);
+				proxDir = Vector3(0, 0, 0);
+			}
 		}
 	}
 }

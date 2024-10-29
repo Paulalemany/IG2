@@ -14,11 +14,15 @@ public:
 
 	bool Centre();
 
+	void GetPerl();
+
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
 	/// Getters
 	// devuelve en string el numero de vidas
 	string getVidas() { return to_string(sVidas) ; }
+
+	string getPoints() { return to_string(points); }
 
 	// devuelve si Sinbad esta en movimiento
 	bool getIsMoving() { return isMoving; }
@@ -37,6 +41,9 @@ private:
 	Laberinto* lab;
 
 	int sVidas;
+
+	int points;
+	int perlpoints = 10;
 
 	bool isMoving;
 
