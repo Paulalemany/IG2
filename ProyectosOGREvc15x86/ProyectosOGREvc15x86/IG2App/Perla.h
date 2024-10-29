@@ -14,9 +14,10 @@ public:
 	//Pendiente
 	~Perla();
 
-	//void init() override;
+	Entity* getPerla() override  { return perla; }
+
 protected:
-	//Laberinto* lab = nullptr;
+	Ogre::Entity* perla;
 
 };
 

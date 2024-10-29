@@ -49,6 +49,16 @@ bool Heroe::Centre()
 void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 {
 
+	movement();	//Gestiona el movimiento del heroe
+
+	IG2Object::move(dir);
+
+	lab->updateLightPos();
+
+}
+
+void Heroe::movement()
+{
 	//Si esta en el centro, la direccion debe cambiar, y el bloque es traspasable, giramos
 	if (Centre() && dir != proxDir) {
 		Bloque* b = lab->getBloque(sNode->getPosition() + (proxDir * 100), 0, lab->getLenght() - 1);
@@ -59,7 +69,7 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 			Quaternion q = this->getOrientation().getRotationTo(dir);
 			sNode->rotate(q, Ogre::Node::TS_LOCAL);
 		}
-	}		
+	}
 
 	//Si estamos en el centro y NO es traspasable hacemos dir = 0;
 
@@ -73,10 +83,4 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 			proxDir = Vector3(0, 0, 0);
 		}
 	}
-
-
-	IG2Object::move(dir);
-
-	lab->updateLightPos();
-
 }

@@ -21,7 +21,7 @@ public:
 
 	bool getTraspasable() { return traspasable; }
 
-
+	virtual Entity* getPerla() = 0;
 
 private:
 	Vector3 pos;

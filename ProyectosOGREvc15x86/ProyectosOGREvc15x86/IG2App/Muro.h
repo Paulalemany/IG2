@@ -15,7 +15,7 @@ public:
 	//Pendiente
 	~Muro();
 
-	//void init() override;
+	Entity* getPerla() override { return nullptr; };
 protected:
 	//Laberinto* lab = nullptr;
 

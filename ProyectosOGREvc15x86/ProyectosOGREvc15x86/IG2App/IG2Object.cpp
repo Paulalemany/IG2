@@ -4,6 +4,7 @@
 std::vector<IG2Object*> IG2Object::appListeners = std::vector<IG2Object*>(0, nullptr);
 
 
+//Constructoras
 IG2Object::IG2Object() : mNode(nullptr), mSM(nullptr){
     this->initialPosition = Vector3::ZERO;
 }
@@ -20,6 +21,7 @@ IG2Object::IG2Object(Vector3 initPos, SceneNode *node, SceneManager* sceneMng, S
     this->setPosition(initialPosition);
 }
 
+//Destructoras
 IG2Object::~IG2Object() {
     
     this->removeEntity();

@@ -19,7 +19,3 @@ Perla::~Perla()
 
 }
 
-//void Perla::init()
-//{
-//
-//}

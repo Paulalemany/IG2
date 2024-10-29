@@ -39,5 +39,7 @@ private:
 	int sVidas;
 
 	bool isMoving;
+
+	void movement();
 };
 
