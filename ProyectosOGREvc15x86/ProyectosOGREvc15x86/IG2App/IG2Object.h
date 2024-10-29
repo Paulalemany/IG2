@@ -103,6 +103,8 @@ class IG2Object : public OgreBites::InputListener {
          * @param materialName Name of the material.
          */
         void setMaterialName (string materialName);
+
+        void setEntity(Entity* ent);
     
         /**
          * Calculates if this element has an attached entity.

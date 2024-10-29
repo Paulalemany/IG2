@@ -117,16 +117,47 @@ Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin) const
 	}
 }
 
+int Laberinto::getBloqueID(Vector3 coord, int ini, int fin) const
+{
+	// puede q el bloque no este
+	if (coord == bloques[ini]->getPosition()) {
+		return ini;
+	}
+	else if (fin - ini == 1) {
+		return -1;
+	}
+
+	int mitad = (ini + fin) / 2;
+
+	//Vamos para la izquierda (Es mas peque�a la que buscamos)
+	//Cuando sean iguales en la x se compara en la z
+	int x = bloques[mitad]->getPosition().x;
+	if (x < coord.x) {
+
+		return getBloqueID(coord, ini, mitad);
+	}
+
+	if (x == coord.x && bloques[mitad]->getPosition().z < coord.z) {
+		return getBloqueID(coord, ini, mitad);
+	}
+
+	else {
+		return getBloqueID(coord, mitad, fin);
+	}
+}
+
 void Laberinto::checkColision()
 {
 	//Necesitamos tambien la caja de la perla
-	Bloque* block = getBloque(sinbad->getPosition(), 0, bloques.size() - 1);
-
+	int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
+	
 	//Si es nullptr es que ya no tiene perla
-	if (block != nullptr && block->getTraspasable()) {
+	if (ID != -1 && bloques[ID]->getTraspasable()) {
 
 		sinbad->GetPerl();
 		updateTextBox();
+
+		bloques[ID]->removeEntity();
 	}
 
 	

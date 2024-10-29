@@ -11,6 +11,8 @@ public:
 
 	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string textura, bool pasable);
 
+	void GetPerl();
+
 	//Pendiente
 	~Perla();
 

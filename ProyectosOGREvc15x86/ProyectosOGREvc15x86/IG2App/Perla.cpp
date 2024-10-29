@@ -12,6 +12,8 @@ Perla::Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string te
 	esfera->setMaterialName(textura);
 	node->attachObject(esfera);
 	node->setScale(0.1, 0.1, 0.1);
+
+	this->setEntity(esfera);
 }
 
 Perla::~Perla()

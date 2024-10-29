@@ -33,6 +33,7 @@ public:
 	Heroe* getHero() { return sinbad; }
 
 	Bloque* getBloque(Vector3 coord, int ini, int fin) const ;
+	int getBloqueID(Vector3 coord, int ini, int fin) const;
 
 	int getLenght() { return bloques.size(); }
 

@@ -68,6 +68,11 @@ void IG2Object::setMaterialName (string materialName){
     entity->setMaterialName(materialName); 
 }
 
+void IG2Object::setEntity(Entity* ent)
+{
+    entity = ent;
+}
+
 bool IG2Object::hasEntity (){
     return (entity != nullptr);
 }
