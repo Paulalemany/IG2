@@ -16,6 +16,7 @@
 
 #include "Laberinto.h"
 #include "Heroe.h"
+#include "Frankestein.h"
 
 class MovablePlane;
 
@@ -53,6 +54,9 @@ protected:
 
     //Ogre::SceneNode* mCubeNode = nullptr;
     //Ogre::SceneNode* mCube2Node = nullptr;
+
+    Frankestein* Objeto = nullptr;
+    Ogre::SceneNode* FrankNode = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
     OgreBites::TrayManager* mTrayMgr = nullptr;

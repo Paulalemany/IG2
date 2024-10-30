@@ -4,6 +4,7 @@
 #include "Muro.h"
 #include "Perla.h"
 #include "Villano.h"
+#include "Frankestein.h"
 
 #include <vector>
 #include <iostream> 
@@ -79,6 +80,8 @@ protected:
 
 	std::vector<Bloque*> bloques;
 	Heroe* sinbad;
+	Villano* villano;
+	Frankestein* fran;
 	std::vector<Villano*> villanos;
 	
 	// fichero

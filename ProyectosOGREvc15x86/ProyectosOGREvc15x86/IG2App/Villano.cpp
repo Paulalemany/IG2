@@ -8,7 +8,7 @@ Villano::Villano()
 Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 	: IG2Object(initPos, node, sceneMng)
 {
-	villano = mSM->createEntity("ogrehead.mesh");
+	/*villano = mSM->createEntity("ogrehead.mesh");
 	node->attachObject(villano);
 
 	node->yaw(Ogre::Degree(180));
@@ -32,7 +32,7 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 //	// Direccion tomada: minimice distancia euclidea entre heroe y el centro del primer bloque visitado por el villano
 //	//
 //
-//	//Si está en el centro comprobamos las cosas
+//	//Si estï¿½ en el centro comprobamos las cosas
 //	
 //	// IG2Object::entityMovement(newDir);
 //}
