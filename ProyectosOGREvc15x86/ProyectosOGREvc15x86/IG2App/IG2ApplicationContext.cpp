@@ -218,7 +218,7 @@ namespace OgreBites {
 		//SDL_SetRelativeMouseMode(grab);
 		SDL_ShowCursor(grab);
 	}
-
+	
 	bool IG2ApplicationContext::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
 		for (std::set<InputListener*>::iterator it = mInputListeners.begin(); it != mInputListeners.end(); ++it)

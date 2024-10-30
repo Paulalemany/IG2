@@ -168,8 +168,6 @@ void Laberinto::checkColision()
 
 		PerlGetted(ID);
 	}
-
-	
 }
 
 void Laberinto::PerlGetted(int id)
