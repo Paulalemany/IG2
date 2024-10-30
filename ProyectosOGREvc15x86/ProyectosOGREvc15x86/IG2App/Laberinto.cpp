@@ -1,4 +1,5 @@
 #include "Laberinto.h"
+#include "Heroe.h"
 
 Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::TextBox* tb)
 {
@@ -36,7 +37,11 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'v') {
 
-				//villano = new Villano(pos, nodes[node], Sm, 3);
+				villanos.push_back(new Villano(pos, nodes[node], Sm));
+			}
+			else if (fila[j] == 'V') {
+
+
 			}
 			node++;
 		}
@@ -87,6 +92,7 @@ void Laberinto::updateLightPos()
 	sZ = getHero()->getPosition().z;
 	mLightNode->setPosition(Vector3(sX, 300, sZ));
 }
+
 
 Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin) const
 {

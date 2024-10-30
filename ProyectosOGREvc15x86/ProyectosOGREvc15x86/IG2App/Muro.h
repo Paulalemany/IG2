@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Bloque.h"
-#include "Laberinto.h"
-class Laberinto;
 
 class Muro : public Bloque
 {
@@ -17,7 +15,6 @@ public:
 
 	Entity* getPerla() override { return nullptr; };
 protected:
-	//Laberinto* lab = nullptr;
 
 };
 

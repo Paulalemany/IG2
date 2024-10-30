@@ -1,7 +1,6 @@
 #pragma once
 #include "IG2Object.h"
-
-class Laberinto;
+#include "Laberinto.h"
 
 class Heroe : public IG2Object
 {
@@ -10,9 +9,10 @@ public:
 
 	Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int vidas);
 
+	void entityMovement(Vector3 newDir) override;
+
 	void move(Vector3 newDir);
 
-	bool Centre();
 
 	void GetPerl();
 
@@ -34,11 +34,6 @@ public:
 private:
 
 	Ogre::Entity* sinbad;
-	SceneNode* sNode;
-	Vector3 dir; 
-	Vector3 proxDir;
-
-	Laberinto* lab;
 
 	int sVidas;
 
@@ -47,6 +42,6 @@ private:
 
 	bool isMoving;
 
-	void movement();
+	//void movement();
 };
 

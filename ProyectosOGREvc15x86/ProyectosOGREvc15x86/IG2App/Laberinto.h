@@ -3,7 +3,6 @@
 #include "Bloque.h"
 #include "Muro.h"
 #include "Perla.h"
-#include "Heroe.h"
 #include "Villano.h"
 
 #include <vector>
@@ -13,6 +12,7 @@
 
 using namespace std;
 
+class Heroe;
 class Laberinto
 {
 public:
@@ -79,7 +79,7 @@ protected:
 
 	std::vector<Bloque*> bloques;
 	Heroe* sinbad;
-	Villano* villano;
+	std::vector<Villano*> villanos;
 	
 	// fichero
 	int NumFilas = 0;

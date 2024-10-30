@@ -1,5 +1,4 @@
 #pragma once
-
 #include "IG2Object.h"
 
 class Bloque : public IG2Object
