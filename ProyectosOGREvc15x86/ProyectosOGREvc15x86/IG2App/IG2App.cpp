@@ -269,7 +269,9 @@ void IG2App::setupScene(void){
     ///-------LABERINTO---------------------------------------------------------
     lab = new Laberinto(mSM, "stage1.txt", mTextBox);
 
+    // 
     addInputListener(lab->getHero());
+    for (auto v : lab->getVillains()) addInputListener(v);
 
     ///-------SUELO-------------------------------------------------------------
     MeshManager::getSingleton().createPlane(

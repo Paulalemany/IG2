@@ -35,12 +35,11 @@ void Villano::setDir(Vector3 newDir)
 
 void Villano::frameRendered(const Ogre::FrameEvent& evt)
 {
-	// no entra aquiiii
 	cout << "holaa" << endl;
 
-	entityMovement(dir);
+	//entityMovement(dir);
 
-	IG2Object::move(dir);
+	//IG2Object::move(dir);
 }
 
 

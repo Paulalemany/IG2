@@ -32,6 +32,7 @@ public:
 	/// Getters
 
 	Heroe* getHero() { return sinbad; }
+	std::vector<Villano*> getVillains() const { return villanos; }
 
 	Bloque* getBloque(Vector3 coord, int ini, int fin) const ;
 
@@ -80,8 +81,7 @@ protected:
 
 	std::vector<Bloque*> bloques;
 	Heroe* sinbad;
-	Villano* villano;
-	Frankestein* fran;
+	Frankestein* fran; // fran XD
 	std::vector<Villano*> villanos;
 	
 	// fichero
