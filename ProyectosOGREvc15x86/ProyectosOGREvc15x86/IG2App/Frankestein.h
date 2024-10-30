@@ -10,5 +10,9 @@ public:
 
 protected:
 	SceneNode* ObjectNode = nullptr;
+
+	double NodeScale = 0.025;
+	double PetScale = 0.1;
+	double ArmaScale = 0.05;
 };
 

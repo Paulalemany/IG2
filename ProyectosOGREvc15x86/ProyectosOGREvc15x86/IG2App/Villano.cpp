@@ -8,10 +8,10 @@ Villano::Villano()
 Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 	: IG2Object(initPos, node, sceneMng)
 {
-	villano = mSM->createEntity("ogrehead.mesh");
+	/*villano = mSM->createEntity("ogrehead.mesh");
 	node->attachObject(villano);
 
-	node->yaw(Ogre::Degree(180));
+	node->yaw(Ogre::Degree(180));*/
 
 	dir = Vector3(0, 0, 0);
 
