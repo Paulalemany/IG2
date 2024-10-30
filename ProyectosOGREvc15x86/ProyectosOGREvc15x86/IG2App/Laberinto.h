@@ -5,6 +5,7 @@
 #include "Perla.h"
 #include "Heroe.h"
 #include "Villano.h"
+#include "Frankestein.h"
 
 #include <vector>
 #include <iostream> 
@@ -80,6 +81,7 @@ protected:
 	std::vector<Bloque*> bloques;
 	Heroe* sinbad;
 	Villano* villano;
+	Frankestein* fran;
 	
 	// fichero
 	int NumFilas = 0;

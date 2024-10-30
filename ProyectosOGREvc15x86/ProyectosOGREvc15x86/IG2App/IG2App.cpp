@@ -291,6 +291,7 @@ void IG2App::setupScene(void){
 
     // para que cuadre con el laberinto:
     planeNode->setPosition(Vector3(-900, -50, -900));
+
 }
 
 

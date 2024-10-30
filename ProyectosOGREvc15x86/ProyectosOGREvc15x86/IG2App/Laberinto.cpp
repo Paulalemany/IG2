@@ -42,6 +42,9 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 		}
 	}
 
+	nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
+	fran = new Frankestein(Vector3(1000, 0, 0), nodes[node], Sm);
+
 	updateTextBox();
 	sinbad->setLab(this);
 
