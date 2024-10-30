@@ -1,4 +1,6 @@
 #include "IG2Object.h"
+#include "Laberinto.h"
+#include "Bloque.h";
 
 // Init the static vector for listeners
 std::vector<IG2Object*> IG2Object::appListeners = std::vector<IG2Object*>(0, nullptr);
@@ -11,6 +13,10 @@ IG2Object::IG2Object() : mNode(nullptr), mSM(nullptr){
 
 IG2Object::IG2Object(Vector3 initPos, SceneNode *node, SceneManager* sceneMng): initialPosition(initPos), mNode(node), mSM(sceneMng){
     this->setPosition(initialPosition);
+
+    mNode = node;
+    dir = Vector3(0, 0, 0);
+    proxDir = Vector3(0, 0, 0);
 }
 
 IG2Object::IG2Object(Vector3 initPos, SceneNode *node, SceneManager* sceneMng, String mesh): initialPosition(initPos), mNode(node), mSM(sceneMng){
@@ -19,6 +25,10 @@ IG2Object::IG2Object(Vector3 initPos, SceneNode *node, SceneManager* sceneMng, S
     entity = sceneMng->createEntity(mesh);
     mNode->attachObject(entity);
     this->setPosition(initialPosition);
+
+    mNode = node;
+    dir = Vector3(0, 0, 0);
+    proxDir = Vector3(0, 0, 0);
 }
 
 //Destructoras
@@ -106,6 +116,48 @@ Vector3 IG2Object::calculateBoxSize (){
     
     return result;
 }
+
+void IG2Object::entityMovement(Vector3 newDir)
+{
+    //Si está en el centro comprobamos las cosas
+    if (Centre()) {
+        Bloque* b = lab->getBloque(mNode->getPosition() + (proxDir * 100), 0, lab->getLenght() - 1);
+
+        //la direccion debe cambiar, y el bloque es traspasable, giramos
+        if (dir != proxDir) {
+
+            if (b == nullptr || b->getTraspasable()) {
+                dir = proxDir;
+
+                Quaternion q = this->getOrientation().getRotationTo(dir);
+                mNode->rotate(q, Ogre::Node::TS_LOCAL);
+            }
+        }
+        else {
+
+            if (b != nullptr && b->getTraspasable() == false) {
+
+                dir = Vector3(0, 0, 0);
+                proxDir = Vector3(0, 0, 0);
+            }
+        }
+    }
+}
+
+bool IG2Object::Centre()
+{
+    int x, y, z;
+    x = mNode->getPosition().x;
+    y = mNode->getPosition().y;
+    z = mNode->getPosition().z;
+
+    Vector3 centro(x % 100, y % 100, z % 100);
+
+    //Si todos los numeros son multiplos de 100 esta en un centro
+    return centro == Vector3().ZERO;
+}
+
+
 
 const AxisAlignedBox& IG2Object::getAABB(){    
     return mNode->_getWorldAABB();

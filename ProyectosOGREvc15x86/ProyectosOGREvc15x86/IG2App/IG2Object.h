@@ -14,6 +14,9 @@
 using namespace Ogre;
 using namespace std;
 
+class Laberinto;
+class Bloque;
+
 class IG2Object : public OgreBites::InputListener {
 
     public:    
@@ -128,7 +131,15 @@ class IG2Object : public OgreBites::InputListener {
          * @param entidad IG2Object to be added.
          */
         static void addListener(IG2Object* entidad){ appListeners.push_back(entidad); };
-                    
+              
+        // controla el movimiento de las entidades
+        // entidad = 0 si es heroe
+        // entidad = 1 si es villano
+        virtual void entityMovement(Vector3 newDir);
+
+        // calcula el centro del bloque
+        virtual bool Centre();
+
     protected:
     
         // Scene node representing this element in the scene
@@ -145,4 +156,11 @@ class IG2Object : public OgreBites::InputListener {
     
         // Static vector of listeners
         static std::vector<IG2Object*> appListeners;
+
+        // movimiento
+        Vector3 dir;
+        Vector3 proxDir;
+
+        Laberinto* lab = nullptr;
+        Bloque* blq = nullptr;
 };
