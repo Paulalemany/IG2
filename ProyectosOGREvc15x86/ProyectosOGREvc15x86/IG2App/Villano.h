@@ -10,8 +10,18 @@ public:
 
 	Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
 
+	// - Nunca cambia de sentido
+	// Calcula direccion si:
+	// - esta bloqueado
+	// - esta en posicion donde es posible hacer giro de 90 grados y avanzar
+	// 
+	// Direccion tomada: minimice distancia euclidea entre heroe y el centro del primer bloque visitado por el villano
+	
 	//void entityMovement(Vector3 newDir) override;
 
+	void setDir(Vector3 newDir);
+
+	void frameRendered(const Ogre::FrameEvent& evt) override;
 
 	/// Getters
 	

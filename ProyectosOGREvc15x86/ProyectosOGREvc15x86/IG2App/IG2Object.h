@@ -133,8 +133,6 @@ class IG2Object : public OgreBites::InputListener {
         static void addListener(IG2Object* entidad){ appListeners.push_back(entidad); };
               
         // controla el movimiento de las entidades
-        // entidad = 0 si es heroe
-        // entidad = 1 si es villano
         virtual void entityMovement(Vector3 newDir);
 
         // calcula el centro del bloque

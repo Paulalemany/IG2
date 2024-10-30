@@ -8,7 +8,7 @@ Villano::Villano()
 Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 	: IG2Object(initPos, node, sceneMng)
 {
-	/*villano = mSM->createEntity("ogrehead.mesh");
+	villano = mSM->createEntity("ogrehead.mesh");
 	node->attachObject(villano);
 
 	node->yaw(Ogre::Degree(180));
@@ -19,22 +19,29 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 
 	estado = PERSEGUIR;
 
-	//attackTimer->reset();
+	//attackTimer->reset
+
+	setDir(Vector3(1, 0, 0));
+
 }
 
-//void Villano::entityMovement(Vector3 newDir)
-//{
-//	// - Nunca cambia de sentido
-//	// Calcula direccion si:
-//	// - esta bloqueado
-//	// - esta en posicion donde es posible hacer giro de 90 grados y avanzar
-//	// 
-//	// Direccion tomada: minimice distancia euclidea entre heroe y el centro del primer bloque visitado por el villano
-//	//
-//
-//	//Si est� en el centro comprobamos las cosas
-//	
-//	// IG2Object::entityMovement(newDir);
-//}
+void Villano::setDir(Vector3 newDir)
+{
+	if (dir != newDir) {	//Cambiamos la direccion del movimiento
+
+		proxDir = newDir;
+	}
+}
+
+void Villano::frameRendered(const Ogre::FrameEvent& evt)
+{
+	// no entra aquiiii
+	cout << "holaa" << endl;
+
+	entityMovement(dir);
+
+	IG2Object::move(dir);
+}
+
 
 

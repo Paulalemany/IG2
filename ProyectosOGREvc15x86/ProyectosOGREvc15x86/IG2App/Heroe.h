@@ -11,7 +11,7 @@ public:
 
 	void entityMovement(Vector3 newDir) override;
 
-	void move(Vector3 newDir);
+	void setDir(Vector3 newDir);
 
 
 	void GetPerl();

@@ -21,24 +21,23 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         break;
 
     case SDLK_UP:
-        lab->getHero()->move(Vector3(0, 0, -1));
+        lab->getHero()->setDir(Vector3(0, 0, -1));
         break;
 
     case SDLK_DOWN:
-        lab->getHero()->move(Vector3(0, 0, 1));
+        lab->getHero()->setDir(Vector3(0, 0, 1));
         break;
 
     case SDLK_RIGHT:
-        lab->getHero()->move(Vector3(1, 0, 0));
+        lab->getHero()->setDir(Vector3(1, 0, 0));
         break;
 
     case SDLK_LEFT:
 
-        lab->getHero()->move(Vector3(-1, 0, 0));
+        lab->getHero()->setDir(Vector3(-1, 0, 0));
         break;
     }
    
-
   return true;
 }
 
