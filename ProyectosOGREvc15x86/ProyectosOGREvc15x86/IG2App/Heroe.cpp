@@ -31,6 +31,8 @@ void Heroe::move(Vector3 newDir)
 void Heroe::entityMovement(Vector3 newDir)
 {
 	if (Centre()) lab->checkColision();
+
+	// para que llame al del padre (si no no lo llamaria)
 	IG2Object::entityMovement(newDir);
 }
 
