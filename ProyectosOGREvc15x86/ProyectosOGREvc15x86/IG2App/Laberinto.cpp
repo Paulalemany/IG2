@@ -152,15 +152,22 @@ void Laberinto::checkColision()
 	int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
 	
 	//Si es nullptr es que ya no tiene perla
-	if (ID != -1 && bloques[ID]->getTraspasable()) {
+	if (ID != -1 && bloques[ID]->perl()) {
 
 		sinbad->GetPerl();
 		updateTextBox();
 
-		bloques[ID]->removeEntity();
+		PerlGetted(ID);
 	}
 
 	
+}
+
+void Laberinto::PerlGetted(int id)
+{
+	//Quitamos la imagen de la perla
+	bloques[id]->removeEntity();
+	bloques[id]->setPerl(false);
 }
 
 

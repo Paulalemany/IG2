@@ -13,6 +13,8 @@ public:
 
 		pos = initPos;
 		traspasable = pasable;
+
+		perla = pasable;	//Cuando se crean todos los bloques pasables tendran perlas
 	};
 
 	~Bloque() {};
@@ -23,10 +25,15 @@ public:
 
 	virtual Entity* getPerla() = 0;
 
+	bool perl() { return perla; }
+
+	void setPerl(bool p) { perla = p; }
+
 private:
 	Vector3 pos;
 
 	bool traspasable;
+	bool perla;
 
 };
 
