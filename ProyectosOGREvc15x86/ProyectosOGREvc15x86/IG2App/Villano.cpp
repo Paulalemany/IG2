@@ -31,18 +31,16 @@ void Villano::setDir(Vector3 newDir)
 
 void Villano::frameRendered(const Ogre::FrameEvent& evt)
 {
-
+	//cout << "dir: " << dir << endl;
+	cout << "proxdir: " << proxDir << endl;
 	// - si esta en un cruce (dir == 0,0,0) se calculan las distancias euclideas y
 	// setteamos setDir la direccion que minimice la distancia
 		// va a ir en la unica posible (no puede volver atras)
 
-
-
-	// --- proxDir sera distinta a dir que llevaba antes (dir = lastDir)
-
 	if (dir == Vector3(0,0,0)) {
 		
-		calculateEuclideanDistance();
+		//proxDir = calculateEuclideanDistance();
+		// no entiendo por que peta
 	}
 
 
@@ -56,17 +54,35 @@ Vector3 Villano::calculateEuclideanDistance()
 	// h: posicion del bloque destino del heroe
 	Vector3 h = heroe->getProxBlock()->getPosition();
 
-	// saca dist entre a y h
-	//Vector3 a = getProxBlock()->getPosition();
+	Vector3 a, b;
 
-	// saca dist entre b y h 
-	//Vector3 b = getProxBlock()->getPosition();
+	// direcciones posibles
+	if (lastDir == Vector3(0, 0, -1) || lastDir == Vector3(0, 0, 1)) 
+	{
+		// la proxima sera o left o right
+
+		proxDir = Vector3(1, 0, 0);
+		a = getProxBlock()->getPosition();		
+		
+		proxDir = Vector3(-1, 0, 0);
+		b = getProxBlock()->getPosition();
+	}
+	else if (lastDir == Vector3(1, 0, 0) || lastDir == Vector3(-1, 0, 0)) 
+	{
+		// la proxima sera o up o down
+		proxDir = Vector3(0, 0, 1);
+		a = getProxBlock()->getPosition();
+
+		proxDir = Vector3(0, 0, -1);
+		b = getProxBlock()->getPosition();
+	}
+
 
 	
 	// dist entre a y h
-	//float ah = a.distance(h);
+	float ah = a.distance(h);
 	// dist entre b y h
-	//float bh = b.distance(h);
+	float bh = b.distance(h);
 
 	// comparar cual es menor
 	//if(ah < bh) hacia ah
@@ -78,6 +94,7 @@ Vector3 Villano::calculateEuclideanDistance()
 	// 	Vector3 direction;
 	// ...
 
+	// TO DO
 
 	return Vector3();
 }

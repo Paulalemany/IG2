@@ -17,6 +17,7 @@ IG2Object::IG2Object(Vector3 initPos, SceneNode *node, SceneManager* sceneMng): 
     mNode = node;
     dir = Vector3(0, 0, 0);
     proxDir = Vector3(0, 0, 0);
+    lastDir = Vector3(0, 0, 0);
 }
 
 IG2Object::IG2Object(Vector3 initPos, SceneNode *node, SceneManager* sceneMng, String mesh): initialPosition(initPos), mNode(node), mSM(sceneMng){
@@ -29,6 +30,7 @@ IG2Object::IG2Object(Vector3 initPos, SceneNode *node, SceneManager* sceneMng, S
     mNode = node;
     dir = Vector3(0, 0, 0);
     proxDir = Vector3(0, 0, 0);
+    lastDir = Vector3(0, 0, 0);
 }
 
 //Destructoras
@@ -143,6 +145,8 @@ void IG2Object::entityMovement(Vector3 newDir)
             }
         }
     }
+
+    if (proxDir != Vector3(0, 0, 0)) lastDir = proxDir;
 }
 
 bool IG2Object::Centre()

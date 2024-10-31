@@ -158,6 +158,7 @@ class IG2Object : public OgreBites::InputListener {
         // movimiento
         Vector3 dir;
         Vector3 proxDir;
+        Vector3 lastDir;
 
         Laberinto* lab = nullptr;
         Bloque* proxBlock = nullptr;
