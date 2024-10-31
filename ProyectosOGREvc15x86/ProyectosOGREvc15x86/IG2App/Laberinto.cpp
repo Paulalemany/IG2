@@ -37,7 +37,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'v') {
 
-				villanos.push_back(new Villano(pos, nodes[node], Sm, sinbad));
+				villanos.push_back(new Villano(pos, nodes[node], Sm));
 			}
 			else if (fila[j] == 'V') {
 
@@ -54,7 +54,10 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	updateTextBox();
 
 	sinbad->setLab(this);
-	for (auto v : getVillains()) v->setLab(this);
+	for (auto v : getVillains()) {
+		v->setLab(this);
+		v->setHeroe(sinbad);
+	}
 
 	configLight(scene);
 

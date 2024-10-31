@@ -6,14 +6,12 @@ Villano::Villano()
 
 }
 
-Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Heroe* h)
+Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 	: IG2Object(initPos, node, sceneMng)
 {
 	villano = mSM->createEntity("ogrehead.mesh");
 	node->attachObject(villano);
 	node->yaw(Ogre::Degree(180));
-
-	heroe = h;
 
 	estado = PERSEGUIR;
 
@@ -44,7 +42,7 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 
 	if (dir == Vector3(0,0,0)) {
 		
-		
+		calculateEuclideanDistance();
 	}
 
 
@@ -56,7 +54,7 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 Vector3 Villano::calculateEuclideanDistance()
 {
 	// h: posicion del bloque destino del heroe
-	//Vector3 h = heroe->getProxBlock()->getPosition();
+	Vector3 h = heroe->getProxBlock()->getPosition();
 
 	// saca dist entre a y h
 	//Vector3 a = getProxBlock()->getPosition();

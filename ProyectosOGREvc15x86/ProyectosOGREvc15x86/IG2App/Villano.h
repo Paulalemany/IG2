@@ -10,7 +10,7 @@ class Villano : public IG2Object
 public:
 	Villano();
 
-	Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Heroe* h);
+	Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
 
 	// - Nunca cambia de sentido
 	// Calcula direccion si:
@@ -30,13 +30,14 @@ public:
 	/// Getters & Setters
 	
 	void setLab(Laberinto* l) { lab = l; }
+	void setHeroe(Heroe* h) { heroe = h; }
 
 private:
 
 	Ogre::Entity* villano;
 
 	// al que vamos a perseguir
-	Heroe* heroe;
+	Heroe* heroe = nullptr;
 
 	// distancia entre A y heroe
 	double distanciaEuclideaA;
