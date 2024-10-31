@@ -166,14 +166,14 @@ void Laberinto::checkColision()
 	//Si es nullptr es que ya no tiene perla
 	if (ID != -1 && bloques[ID]->pearl()) {
 
-		sinbad->GetPerl();
+		sinbad->getPearl();
 		updateTextBox();
 
-		PerlGetted(ID);
+		gottenPearl(ID);
 	}
 }
 
-void Laberinto::PerlGetted(int id)
+void Laberinto::gottenPearl(int id)
 {
 	//Quitamos la imagen de la perla
 	bloques[id]->removeEntity();

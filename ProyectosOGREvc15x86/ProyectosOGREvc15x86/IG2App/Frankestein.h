@@ -6,7 +6,7 @@ class Frankestein : public Villano
 public:
 	Frankestein();
 
-	Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
+	Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Heroe* h);
 
 protected:
 	SceneNode* ObjectNode = nullptr;

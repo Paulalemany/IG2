@@ -1,4 +1,5 @@
 #include "Villano.h"
+#include "Heroe.h"
 
 Villano::Villano()
 {
@@ -43,7 +44,7 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 
 	if (dir == Vector3(0,0,0)) {
 		
-		setDir(calculateEuclideanDistance());
+		
 	}
 
 
@@ -55,13 +56,13 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 Vector3 Villano::calculateEuclideanDistance()
 {
 	// h: posicion del bloque destino del heroe
-	Vector3 h = heroe->getProxBlockPos();
+	//Vector3 h = heroe->getProxBlock()->getPosition();
 
 	// saca dist entre a y h
-	//Vector3 a = getProxBlockPos();
+	//Vector3 a = getProxBlock()->getPosition();
 
 	// saca dist entre b y h 
-	//Vector3 b = getProxBlockPos();
+	//Vector3 b = getProxBlock()->getPosition();
 
 	
 	// dist entre a y h

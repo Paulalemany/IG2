@@ -4,8 +4,8 @@ Frankestein::Frankestein()
 {
 }
 
-Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
-    : Villano(initPos, node, sceneMng)
+Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Heroe* h)
+    : Villano(initPos, node, sceneMng, h)
 {
     ///NODOS
     //Nodo padre

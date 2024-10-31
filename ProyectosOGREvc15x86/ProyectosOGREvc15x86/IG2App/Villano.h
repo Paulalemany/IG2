@@ -1,8 +1,9 @@
 #pragma once
 #include "IG2Object.h"
-#include "Heroe.h"
 
 #include <OgreTimer.h>
+
+class Heroe;
 
 class Villano : public IG2Object
 {

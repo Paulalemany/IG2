@@ -135,7 +135,7 @@ class IG2Object : public OgreBites::InputListener {
         // calcula el centro del bloque
         virtual bool Centre();
 
-        virtual Vector3 getProxBlockPos() { return proxBlock->getPosition(); };
+        virtual Bloque* getProxBlock() { return proxBlock; };
 
 
     protected:
@@ -159,8 +159,6 @@ class IG2Object : public OgreBites::InputListener {
         Vector3 dir;
         Vector3 proxDir;
 
-        Bloque* proxBlock;
-
         Laberinto* lab = nullptr;
-        Bloque* blq = nullptr;
+        Bloque* proxBlock = nullptr;
 };
