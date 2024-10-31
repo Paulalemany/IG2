@@ -23,9 +23,9 @@ public:
 
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
-	/// Getters
+	/// Getters & Setters
 	
-	// (...)
+	void setLab(Laberinto* l) { lab = l; }
 
 private:
 

@@ -8,12 +8,10 @@ Villano::Villano()
 Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 	: IG2Object(initPos, node, sceneMng)
 {
-	/*villano = mSM->createEntity("ogrehead.mesh");
+	villano = mSM->createEntity("ogrehead.mesh");
 	node->attachObject(villano);
 
-	node->yaw(Ogre::Degree(180));*/
-
-	dir = Vector3(0, 0, 0);
+	node->yaw(Ogre::Degree(180));
 
 	//actualTime->reset();
 
@@ -21,7 +19,9 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
 
 	//attackTimer->reset
 
-	setDir(Vector3(1, 0, 0));
+	dir = Vector3(1, 0, 0);
+
+
 
 }
 
@@ -35,11 +35,12 @@ void Villano::setDir(Vector3 newDir)
 
 void Villano::frameRendered(const Ogre::FrameEvent& evt)
 {
-	cout << "holaa" << endl;
+	cout << "dir: " << dir << endl;
 
-	//entityMovement(dir);
+	IG2Object::entityMovement(dir);
 
-	//IG2Object::move(dir);
+	//setDir(Vector3(1, 0, 0));
+	IG2Object::move(dir);
 }
 
 
