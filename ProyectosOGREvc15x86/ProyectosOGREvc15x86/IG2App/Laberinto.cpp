@@ -41,6 +41,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'V') {
 
+				// aqui meter al fran 
 
 			}
 			node++;
