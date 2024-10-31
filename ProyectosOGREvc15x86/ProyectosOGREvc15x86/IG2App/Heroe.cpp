@@ -36,9 +36,9 @@ void Heroe::entityMovement(Vector3 newDir)
 	IG2Object::entityMovement(newDir);
 }
 
-void Heroe::GetPerl()
+void Heroe::getPearl()
 {
-	points += perlpoints;
+	points += pearlPoints;
 }
 
 

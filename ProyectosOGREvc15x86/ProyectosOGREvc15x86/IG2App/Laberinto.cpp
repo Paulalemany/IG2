@@ -37,7 +37,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'v') {
 
-				villanos.push_back(new Villano(pos, nodes[node], Sm));
+				villanos.push_back(new Villano(pos, nodes[node], Sm, sinbad));
 			}
 			else if (fila[j] == 'V') {
 
@@ -49,7 +49,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	}
 
 	nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-	fran = new Frankestein(Vector3(0, 100, 1000), nodes[node], Sm);
+	//fran = new Frankestein(Vector3(0, 100, 1000), nodes[node], Sm);
 
 	updateTextBox();
 
@@ -65,7 +65,7 @@ void Laberinto::updateTextBox()
 {
 	lTextBox->clearText();
 	lTextBox->appendText("Lives: " + sinbad->getVidas() +
-						 "\nPoints: " + sinbad->getPoints() ); // TODO 
+						 "\nPoints: " + sinbad->getPoints() );
 
 	lTextBox->refitContents();
 }
@@ -164,7 +164,7 @@ void Laberinto::checkColision()
 	int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
 	
 	//Si es nullptr es que ya no tiene perla
-	if (ID != -1 && bloques[ID]->perl()) {
+	if (ID != -1 && bloques[ID]->pearl()) {
 
 		sinbad->GetPerl();
 		updateTextBox();
@@ -177,7 +177,7 @@ void Laberinto::PerlGetted(int id)
 {
 	//Quitamos la imagen de la perla
 	bloques[id]->removeEntity();
-	bloques[id]->setPerl(false);
+	bloques[id]->setPearl(false);
 }
 
 

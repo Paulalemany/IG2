@@ -13,22 +13,20 @@ public:
 
 	void setDir(Vector3 newDir);
 
-
-	void GetPerl();
+	void getPearl();
 
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
 	/// Getters
+
 	// devuelve en string el numero de vidas
 	string getVidas() { return to_string(sVidas) ; }
-
 	string getPoints() { return to_string(points); }
 
 	// devuelve si Sinbad esta en movimiento
 	bool getIsMoving() { return isMoving; }
 
 	///Setters
-
 	void setLab(Laberinto* l) { lab = l; }
 
 private:
@@ -38,7 +36,7 @@ private:
 	int sVidas;
 
 	int points;
-	int perlpoints = 10;
+	int pearlPoints = 10;
 
 	bool isMoving;
 

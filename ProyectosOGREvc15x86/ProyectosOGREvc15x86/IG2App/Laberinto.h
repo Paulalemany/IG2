@@ -101,6 +101,7 @@ protected:
 	OgreBites::TextBox* lTextBox = nullptr;
 
 private:
-	void PerlGetted(int id);
+	// perla recogida
+	void gottenPearl(int id);
 
 };

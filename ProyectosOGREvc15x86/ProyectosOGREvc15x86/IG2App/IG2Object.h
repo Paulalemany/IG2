@@ -135,6 +135,9 @@ class IG2Object : public OgreBites::InputListener {
         // calcula el centro del bloque
         virtual bool Centre();
 
+        virtual Vector3 getProxBlockPos() { return proxBlock->getPosition(); };
+
+
     protected:
     
         // Scene node representing this element in the scene
@@ -155,6 +158,8 @@ class IG2Object : public OgreBites::InputListener {
         // movimiento
         Vector3 dir;
         Vector3 proxDir;
+
+        Bloque* proxBlock;
 
         Laberinto* lab = nullptr;
         Bloque* blq = nullptr;

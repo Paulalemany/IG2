@@ -18,15 +18,17 @@ public:
 
 	~Bloque() {};
 
-	void setTraspasable(bool trasp) { traspasable = trasp; }
+	// Getters & Setters
+	Vector3 getPosition() { return pos; }
 
+	void setTraspasable(bool trasp) { traspasable = trasp; }
 	bool getTraspasable() { return traspasable; }
 
 	virtual Entity* getPerla() = 0;
 
-	bool perl() { return perla; }
+	bool pearl() { return perla; }
 
-	void setPerl(bool p) { perla = p; }
+	void setPearl(bool p) { perla = p; }
 
 private:
 	Vector3 pos;

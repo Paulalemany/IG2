@@ -1,5 +1,6 @@
 #pragma once
 #include "IG2Object.h"
+#include "Heroe.h"
 
 #include <OgreTimer.h>
 
@@ -8,7 +9,7 @@ class Villano : public IG2Object
 public:
 	Villano();
 
-	Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
+	Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Heroe* h);
 
 	// - Nunca cambia de sentido
 	// Calcula direccion si:
@@ -23,6 +24,8 @@ public:
 
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
+	Vector3 calculateEuclideanDistance();
+
 	/// Getters & Setters
 	
 	void setLab(Laberinto* l) { lab = l; }
@@ -31,14 +34,13 @@ private:
 
 	Ogre::Entity* villano;
 
+	// al que vamos a perseguir
+	Heroe* heroe;
+
 	// distancia entre A y heroe
 	double distanciaEuclideaA;
 	// distancia entre B y heroe
 	double distanciaEuclideaB;
-
-	// 0 para ogrehead,
-	// 1 para personalizado
-	int tipoVillano;
 
 	// tiempo actual
 	Ogre::Timer* actualTime;

@@ -5,23 +5,20 @@ Villano::Villano()
 
 }
 
-Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
+Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, Heroe* h)
 	: IG2Object(initPos, node, sceneMng)
 {
 	villano = mSM->createEntity("ogrehead.mesh");
 	node->attachObject(villano);
-
 	node->yaw(Ogre::Degree(180));
 
-	//actualTime->reset();
+	heroe = h;
 
 	estado = PERSEGUIR;
 
-	//attackTimer->reset
+	attackTimer = new Ogre::Timer(); // inicia el temporizador
 
-	dir = Vector3(1, 0, 0);
-
-
+	proxDir = Vector3(1, 0, 0);
 
 }
 
@@ -35,12 +32,55 @@ void Villano::setDir(Vector3 newDir)
 
 void Villano::frameRendered(const Ogre::FrameEvent& evt)
 {
-	cout << "dir: " << dir << endl;
+
+	// - si esta en un cruce (dir == 0,0,0) se calculan las distancias euclideas y
+	// setteamos setDir la direccion que minimice la distancia
+		// va a ir en la unica posible (no puede volver atras)
+
+
+
+	// --- proxDir sera distinta a dir que llevaba antes (dir = lastDir)
+
+	if (dir == Vector3(0,0,0)) {
+		
+		setDir(calculateEuclideanDistance());
+	}
+
 
 	IG2Object::entityMovement(dir);
 
-	//setDir(Vector3(1, 0, 0));
 	IG2Object::move(dir);
+}
+
+Vector3 Villano::calculateEuclideanDistance()
+{
+	// h: posicion del bloque destino del heroe
+	Vector3 h = heroe->getProxBlockPos();
+
+	// saca dist entre a y h
+	//Vector3 a = getProxBlockPos();
+
+	// saca dist entre b y h 
+	//Vector3 b = getProxBlockPos();
+
+	
+	// dist entre a y h
+	//float ah = a.distance(h);
+	// dist entre b y h
+	//float bh = b.distance(h);
+
+	// comparar cual es menor
+	//if(ah < bh) hacia ah
+	// else hacia bh
+		
+	// xh es menor ->
+	// la proxima direccion del villano sera hacia x
+
+	// 	Vector3 direction;
+	// ...
+
+
+	return Vector3();
 }
 
 
