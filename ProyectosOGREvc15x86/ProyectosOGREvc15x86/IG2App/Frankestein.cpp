@@ -95,10 +95,7 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 #pragma endregion
 
 
-    mNode->setScale(6, 6, 6);
-    //mNode->setPosition(0,0,0);
-
-    mNode->yaw(Degree(180));
+    Ncuerpo->setScale(6, 6, 6);
 }
 
 void Frankestein::frameRendered(const Ogre::FrameEvent& evt)

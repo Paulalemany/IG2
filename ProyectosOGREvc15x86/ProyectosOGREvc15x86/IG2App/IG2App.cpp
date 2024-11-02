@@ -102,8 +102,9 @@ void IG2App::setupScene(void){
     mCamNode->attachObject(cam);
 
     // POLI -> Modifico la camara para q el laberinto se vea desde arriba
-    mCamNode->setPosition(0, 400, 2200);
-    mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+    //mCamNode->setPosition(0, 400, 2200);  //Camara original
+    mCamNode->setPosition(-808.711, 2814.64, -650.698);
+    mCamNode->lookAt(Ogre::Vector3(1, 1, 1), Ogre::Node::TS_WORLD);
     
     // and tell it to render into the main window
     Viewport* vp = getRenderWindow()->addViewport(cam);

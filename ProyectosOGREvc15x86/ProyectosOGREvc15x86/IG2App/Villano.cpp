@@ -49,88 +49,60 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 	if (Centre() && cruce()) {
 
 		//Comprobamos si es mas conveniente girar o seguir recto
-		calculateEuclideanDistance();
-		
+		proxDir = calculateEuclideanDistance();
+
 	}
 	//cout << "dir: " << dir << endl;
-	cout << "proxdir: " << proxDir << endl;
+	//cout << "proxdir: " << proxDir << endl;
 	// - si esta en un cruce (dir == 0,0,0) se calculan las distancias euclideas y
 	// setteamos setDir la direccion que minimice la distancia
 		// va a ir en la unica posible (no puede volver atras)
 
-	if (dir == Vector3(0,0,0)) {
-		
+	if (dir == Vector3(0, 0, 0)) {
+
 		//proxDir = calculateEuclideanDistance();
 		// no entiendo por que peta
 	}
+	
 }
 
 Vector3 Villano::calculateEuclideanDistance()
 {
 	// h: posicion del bloque destino del heroe
-	Bloque* bl = heroe->getProxBlock();
-	Vector3 h = Vector3(0, 0, 0);
+	Vector3 h = heroe->getProxBlock()->getPosition();
 
-	if (bl != nullptr) h = bl->getPosition();
-	else h = heroe->getPosition();
-	
+	// saca dist entre a y h
+	//Vector3 a = getProxBlock()->getPosition();
+	Vector3 a, pd;
 
-	//Posibles direcciones (Dependerá de cuantas direcciones se hayan guardado
-	Vector3 a, b;
 
 	if (posiblesDir.size() == 1) return posiblesDir[0];	//Si solo hay una direccion posible vamos en esa direccion
 
 	//Vamos a hacer la primera por separado
+	//Cogemos el bloque en la direccion que vamos a mirars
+	Bloque* bl = lab->getBloque(mNode->getPosition() + (posiblesDir[0] * 100), 0, lab->getLenght() - 1);
+	
+	a = bl->getPosition();
+	float distance = a.distance(h);
+	pd = posiblesDir[0];
 	
 
-	for (int i = 0; i < posiblesDir.size(); i++) {
-
-
+	for (int i = 1; i < posiblesDir.size(); i++) {
 		//Comparamos distancias y nos quedamos con la mas pequeñas
-		//float distance = b.distance(h);
+		bl = lab->getBloque(mNode->getPosition() + (posiblesDir[i] * 100), 0, lab->getLenght() - 1);
+
+		a = bl->getPosition();
+
+		//Nos guardamos la direccion de la distancia menor
+		if (distance > a.distance(h))
+		{
+			distance = a.distance(h);
+			pd = posiblesDir[i];
+		}
 	}
 
-	//// direcciones posibles
-	//if (lastDir == Vector3(0, 0, -1) || lastDir == Vector3(0, 0, 1)) 
-	//{
-	//	// la proxima sera o left o right
+	return pd;
 
-	//	proxDir = Vector3(1, 0, 0);
-	//	a = getProxBlock()->getPosition();		
-	//	
-	//	proxDir = Vector3(-1, 0, 0);
-	//	b = getProxBlock()->getPosition();
-	//}
-	//else if (lastDir == Vector3(1, 0, 0) || lastDir == Vector3(-1, 0, 0)) 
-	//{
-	//	// la proxima sera o up o down
-	//	proxDir = Vector3(0, 0, 1);
-	//	a = getProxBlock()->getPosition();
-
-	//	proxDir = Vector3(0, 0, -1);
-	//	b = getProxBlock()->getPosition();
-	//}
-
-
-	
-	// dist entre a y h
-	float ah = a.distance(h);
-	// dist entre b y h
-	float bh = b.distance(h);
-
-	// comparar cual es menor
-	//if(ah < bh) hacia ah
-	// else hacia bh
-		
-	// xh es menor ->
-	// la proxima direccion del villano sera hacia x
-
-	// 	Vector3 direction;
-	// ...
-
-	// TO DO
-
-	return Vector3();
 }
 
 bool Villano::cruce()
