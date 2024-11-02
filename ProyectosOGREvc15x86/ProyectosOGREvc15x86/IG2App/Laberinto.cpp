@@ -37,7 +37,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'v') {
 
-				villanos.push_back(new Villano(pos, nodes[node], Sm));
+				//villanos.push_back(new Villano(pos, nodes[node], Sm));
 			}
 			else if (fila[j] == 'V') {
 
@@ -49,7 +49,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	}
 
 	nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-	//fran = new Frankestein(Vector3(0, 100, 1000), nodes[node], Sm);
+	fran = new Frankestein(Vector3(0, 100, 1000), nodes[node], Sm);
 
 	updateTextBox();
 

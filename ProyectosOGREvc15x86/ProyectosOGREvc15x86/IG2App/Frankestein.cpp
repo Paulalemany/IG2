@@ -65,10 +65,15 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Narma2->rotate(Quaternion(Radian(-0.5), Vector3(0, 0, 1)));
     Narma2->setPosition(Vector3(20, -10, 0));
 
-    //Ogre::Entity* Patines1_1 = mSM->createEntity("spine.mesh");
-    //Ogre::Entity* Patines1_2 = mSM->createEntity("spine.mesh");
-    //Ogre::Entity* Patines2_1 = mSM->createEntity("spine.mesh");
-    //Ogre::Entity* Patines2_2 = mSM->createEntity("spine.mesh");
+    Entity* Patines1_1 = mSM->createEntity("sphere.mesh");
+    Npat1_1->attachObject(Patines1_1);
+    Npat1_1->setScale(Vector3(0.5, 1, 2) * PatScale);
+    Npat1_1->rotate(Quaternion(Radian(-0.25), Vector3(5, -1, 0)));
+    Npat1_1->setPosition(Vector3(5, 0, -50));
+
+    //Ogre::Entity* Patines1_2 = mSM->createEntity("sphere.mesh");
+    //Ogre::Entity* Patines2_1 = mSM->createEntity("sphere.mesh");
+    //Ogre::Entity* Patines2_2 = mSM->createEntity("sphere.mesh");
 
     /*node->attachObject(Cuerpo);
     node->attachObject(Nudo); */
