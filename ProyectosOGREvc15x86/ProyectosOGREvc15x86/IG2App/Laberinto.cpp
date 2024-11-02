@@ -174,8 +174,10 @@ int Laberinto::getBloqueID(Vector3 coord, int ini, int fin) const
 	}
 }
 
-void Laberinto::checkColision()
+bool Laberinto::checkColision()
 {
+
+	///Colision con la perla
 	//Necesitamos tambien la caja de la perla
 	int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
 	
@@ -187,6 +189,22 @@ void Laberinto::checkColision()
 
 		gottenPearl(ID);
 	}
+
+	///Colision con los enemigos
+	bool colision = false;
+	int i = 0;
+	AxisAlignedBox villainBox;
+	AxisAlignedBox HeroBox = sinbad->getAABB();
+
+	//Recorremos el vector de villanos y vemos si interseca con el heroe
+	while (!colision && i < villanos.size()) {
+		villainBox = villanos[i]->getAABB();
+
+		colision = HeroBox.intersects(villainBox);
+		i++;
+	}
+
+	return colision;
 }
 
 void Laberinto::gottenPearl(int id)

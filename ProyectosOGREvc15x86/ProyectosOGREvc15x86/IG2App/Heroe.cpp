@@ -30,7 +30,13 @@ void Heroe::setDir(Vector3 newDir)
 
 void Heroe::entityMovement(Vector3 newDir)
 {
-	if (Centre()) lab->checkColision();
+	//if (!mVidas && lab->checkColission()) { mVidas = true; }
+
+	if (Centre() && lab->checkColision()) {
+
+		sVidas--;
+		lab->updateTextBox();
+	}
 
 	// para que llame al del padre (si no no lo llamaria)
 	IG2Object::entityMovement(newDir);
