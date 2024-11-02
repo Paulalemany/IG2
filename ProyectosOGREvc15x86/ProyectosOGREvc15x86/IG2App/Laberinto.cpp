@@ -41,7 +41,8 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'V') {
 
-				// aqui meter al fran 
+				fran = new Frankestein(Vector3(0, 100, 1000), nodes[node], Sm);
+				villanos.push_back(fran);
 
 			}
 			node++;
@@ -49,7 +50,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	}
 
 	nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-	fran = new Frankestein(Vector3(0, 100, 1000), nodes[node], Sm);
+	
 
 	updateTextBox();
 

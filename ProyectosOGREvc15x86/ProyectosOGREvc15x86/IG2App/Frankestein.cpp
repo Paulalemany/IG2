@@ -12,8 +12,8 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     auto Ncuerpo = mNode->createChildSceneNode();
 
     //Nodos atachados al cuerpo
-    auto Nnudo1 = Ncuerpo->createChildSceneNode();  //Vamos a rotar estos dos por lo que a lo mejor 
-    auto Nnudo2 = Ncuerpo->createChildSceneNode();  //nos interesa guardarlo
+    Nnudo1 = Ncuerpo->createChildSceneNode();  //Vamos a rotar estos dos por lo que a lo mejor 
+    Nnudo2 = Ncuerpo->createChildSceneNode();  //nos interesa guardarlo
 
     auto Npet = Ncuerpo->createChildSceneNode();    //Queremos que vaya junto a su dueno
 
@@ -26,7 +26,7 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     auto Narma2 = Npet->createChildSceneNode();
     
     auto Npat2_1 = Npet->createChildSceneNode();
-    auto Npart2_2 = Npet->createChildSceneNode();
+    auto Npat2_2 = Npet->createChildSceneNode();
 
 
     //Cuerpo del enemigo
@@ -83,13 +83,22 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Npat2_1->rotate(Quaternion(Radian(-0.25), Vector3(0, 1, 0)));
     Npat2_1->setPosition(Vector3(-12, -28, 10));
 
-    //Ogre::Entity* Patines2_2 = mSM->createEntity("sphere.mesh");
+    Entity* Patines2_2 = mSM->createEntity("sphere.mesh");
+    Npat2_2->attachObject(Patines2_2);
+    Npat2_2->setScale(Vector3(5, 10, 20) * PatScale);
+    Npat2_2->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
+    Npat2_2->setPosition(Vector3(12, -28, 10));
 
-    /*node->attachObject(Cuerpo);
-    node->attachObject(Nudo); */
     node->setScale(10, 10, 10);
 
-    //this->setEntity(Objeto);
-
     node->yaw(Degree(180));
+}
+
+void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
+{
+    //Por ahora se que queremos que roten las cosas
+    //El movimiento no se si debe ser el mismo que el de los enemigos normales
+    std::cout << "Hola?";
+    Nnudo1->rotate(Quaternion(Radian(25), Vector3(0, 0, 1)));
+    Nnudo2->rotate(Quaternion(Radian(-25), Vector3(0, 0, 1)));
 }
