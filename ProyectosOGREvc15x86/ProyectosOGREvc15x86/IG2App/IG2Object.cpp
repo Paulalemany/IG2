@@ -138,7 +138,7 @@ void IG2Object::entityMovement(Vector3 newDir)
         }
         else {
 
-            if (!b->getTraspasable()) {
+            if (b->getTraspasable() == false) {
 
                 dir = Vector3(0, 0, 0);
                 proxDir = Vector3(0, 0, 0);

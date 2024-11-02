@@ -82,7 +82,6 @@ protected:
 
 	std::vector<Bloque*> bloques;
 	Heroe* sinbad;
-	Frankestein* fran; // fran XD
 	std::vector<Villano*> villanos;
 	
 	// fichero
