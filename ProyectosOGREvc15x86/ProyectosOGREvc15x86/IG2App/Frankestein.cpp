@@ -107,4 +107,6 @@ void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
     //El movimiento no se si debe ser el mismo que el de los enemigos normales
     Nnudo1->rotate(Quaternion(Radian(25), Vector3(0, 0, 1)));
     Nnudo2->rotate(Quaternion(Radian(-25), Vector3(0, 0, 1)));
+
+    Villano::frameRendered(evt);
 }

@@ -27,6 +27,8 @@ public:
 
 	Vector3 calculateEuclideanDistance();
 
+	bool cruce();
+
 	/// Getters & Setters
 	
 	void setLab(Laberinto* l) { lab = l; }
@@ -59,6 +61,9 @@ private:
 	};
 
 	Estado estado;
+
+	std::vector<Vector3> direcciones;
+	std::vector<Vector3> posiblesDir;
 
 	enum Tipo {
 		NORMAL,

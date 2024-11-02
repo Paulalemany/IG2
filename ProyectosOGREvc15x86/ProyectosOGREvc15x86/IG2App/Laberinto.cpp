@@ -34,6 +34,10 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			else if (fila[j] == 'h') {
 
 				sinbad = new Heroe(pos, nodes[node], Sm, 3);
+
+				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
+				node++;
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 			}
 			else if (fila[j] == 'v') {
 
@@ -43,6 +47,11 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 
 				fran = new Frankestein(pos, nodes[node], Sm, 1);
 				villanos.push_back(fran);
+
+				//Cuando hay enemigos tambien hay bloques traspasables debajo
+				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
+				node++;
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 
 			}
 			node++;
