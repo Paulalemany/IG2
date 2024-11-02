@@ -36,6 +36,9 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     //Cuerpo del enemigo
     Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
     Ncuerpo->attachObject(Cuerpo);
+    Ncuerpo->setScale(6, 6, 6);
+    Ncuerpo->yaw(Ogre::Degree(180));
+    Ncuerpo->setPosition(0, 0, -350);
 
 
     Entity* Nudo = mSM->createEntity("knot.mesh");
@@ -93,9 +96,6 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Npat2_2->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
     Npat2_2->setPosition(Vector3(12, -28, 10));
 #pragma endregion
-
-
-    Ncuerpo->setScale(6, 6, 6);
 }
 
 void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
