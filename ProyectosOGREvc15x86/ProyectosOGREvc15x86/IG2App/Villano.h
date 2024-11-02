@@ -41,11 +41,6 @@ private:
 	// al que vamos a perseguir
 	Heroe* heroe = nullptr;
 
-	// distancia entre A y heroe
-	double distanciaEuclideaA;
-	// distancia entre B y heroe
-	double distanciaEuclideaB;
-
 	// tiempo actual
 	Ogre::Timer* actualTime;
 

@@ -53,6 +53,29 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 
 	}
 
+
+	///TIMER AQUI
+	///Definitivamente no se hacer esto
+	///Se podría hacer en otro metodo para que quede mas bonito
+	//Gestionamos el tiempo de los estados
+	/*actualTime++;
+
+	if (estado == PERSEGUIR && actualTime >= attackTimer) 
+	{
+		estado = HUIDA;
+		actualTime = 0;
+
+		cout << "Cambio a huida" << endl;
+	}
+	else if (actualTime >= avoidTimer)
+	{
+		estado = PERSEGUIR;
+		actualTime = 0;
+
+		cout << "Cambio a perseguir" << endl;
+
+	}*/
+
 }
 
 Vector3 Villano::calculateEuclideanDistance()
@@ -81,12 +104,23 @@ Vector3 Villano::calculateEuclideanDistance()
 
 		a = bl->getPosition();
 
-		//Nos guardamos la direccion de la distancia menor
-		if (distance > a.distance(h))
-		{
-			distance = a.distance(h);
-			pd = posiblesDir[i];
+		if (estado == PERSEGUIR) {
+			//Nos guardamos la direccion de la distancia menor
+			if (distance > a.distance(h))
+			{
+				distance = a.distance(h);
+				pd = posiblesDir[i];
+			}
 		}
+		else {
+			//Nos guardamos la direccion de la distancia mayor
+			if (distance < a.distance(h))
+			{
+				distance = a.distance(h);
+				pd = posiblesDir[i];
+			}
+		}
+		
 	}
 
 	//Limpiamos el vector para que no se acumulen
