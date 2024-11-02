@@ -44,7 +44,7 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 
 	move(dir);
 
-	//Si estamos en el centro 
+	//Si estamos en el centro //Calculamos para la siguiente iteracion pero bueno no se descuadra
 	//Y estamos en un cruce
 	if (Centre() && cruce()) {
 
@@ -52,22 +52,7 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 		proxDir = calculateEuclideanDistance();
 
 	}
-	//cout << "dir: " << dir << endl;
-	//cout << "proxdir: " << proxDir << endl;
-	// - si esta en un cruce (dir == 0,0,0) se calculan las distancias euclideas y
-	// setteamos setDir la direccion que minimice la distancia
-		// va a ir en la unica posible (no puede volver atras)
 
-	if (dir == Vector3(0, 0, 0)) {
-
-		//proxDir = calculateEuclideanDistance();
-		// no entiendo por que peta
-
-		cout << "Se ha parado" << endl;
-
-		//Aquí debe llegar cuando la direccion mas rapida es la actual
-	}
-	
 }
 
 Vector3 Villano::calculateEuclideanDistance()
@@ -75,23 +60,21 @@ Vector3 Villano::calculateEuclideanDistance()
 	// h: posicion del bloque destino del heroe
 	Vector3 h = heroe->getProxBlock()->getPosition();
 
-	// saca dist entre a y h
-	//Vector3 a = getProxBlock()->getPosition();
+	// a: saca dist entre a posicion siguiente optima
+	// pd: proxima direccion a seguir por ahora
 	Vector3 a, pd;
 
-
-	if (posiblesDir.size() == 1) return posiblesDir[0];	//Si solo hay una direccion posible vamos en esa direccion
-
-	//Vamos a hacer la primera por separado
-	//Cogemos el bloque en la direccion que vamos a mirars
+	//Vamos a hacer la primera por separado para tener algo con lo que comparar
+	//Cogemos el bloque en la direccion que vamos a mirar
 	Bloque* bl = lab->getBloque(mNode->getPosition() + (posiblesDir[0] * 100), 0, lab->getLenght() - 1);
 	
+	//Calculamos la distancia
 	a = bl->getPosition();
 	float distance = a.distance(h);
 	pd = posiblesDir[0];
 
 	
-
+	//Comparamos la calculada con el resto que haya
 	for (int i = 1; i < posiblesDir.size(); i++) {
 		//Comparamos distancias y nos quedamos con la mas pequeñas
 		bl = lab->getBloque(mNode->getPosition() + (posiblesDir[i] * 100), 0, lab->getLenght() - 1);
@@ -106,38 +89,36 @@ Vector3 Villano::calculateEuclideanDistance()
 		}
 	}
 
+	//Limpiamos el vector para que no se acumulen
 	posiblesDir.clear();
 
 	return pd;
 
 }
 
+//Comprobamos si estamos en un cruce
 bool Villano::cruce()
 {
-	bool cruce = false;
-	//Comprobamos si estamos en un cruce
-
-	for (int i = 0; i < direcciones.size(); i++) {
+	for (int i = 0; i < direcciones.size(); i++) {	//Comprobamos las 4 direcciones posibles
 
 		//Solo cuenta como cruce si la direccion es distinta a la actual
-		// No se puede dar media vuelta
-		//Puede que no haga falta esta comprobacion
-		//Estoy mirando en las 4 direcciones cuando no debería dar media vuelta
+		//No se puede dar media vuelta
 
-		if (direcciones[i] != -dir) {
+		//Si la direccion que estamos mirando es la opuesta a la actual no es una opcion
+		if (direcciones[i] != -dir) {	
 			//Comprobamos el bloque siguiente en la direccion que toque
 			Bloque* b = lab->getBloque(mNode->getPosition() + (direcciones[i] * 100), 0, lab->getLenght() - 1);
 
-			//Si el bloque es traspasable lo añadimos y hacemos cruce a true
+			//Si el bloque es traspasable lo añadimos
 			if (b->getTraspasable()) {
-				cruce = true;
 				posiblesDir.push_back(direcciones[i]);
 			}
 		}
 		
 	}
 
-	//Si es mayor a 1 estamos ante un cruce
+	//Si la unica direccion posible es la actual no estamos en un cruce
+	//Si hay mas estamos en un cruce
 	return posiblesDir.size() > 1;
 }
 
