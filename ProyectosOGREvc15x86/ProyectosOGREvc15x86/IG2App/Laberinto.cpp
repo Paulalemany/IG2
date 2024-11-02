@@ -37,11 +37,11 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'v') {
 
-				//villanos.push_back(new Villano(pos, nodes[node], Sm));
+				//villanos.push_back(new Villano(pos, nodes[node], Sm, 0));
 			}
 			else if (fila[j] == 'V') {
 
-				fran = new Frankestein(Vector3(0, 100, 1000), nodes[node], Sm);
+				fran = new Frankestein(pos, nodes[node], Sm, 1);
 				villanos.push_back(fran);
 
 			}

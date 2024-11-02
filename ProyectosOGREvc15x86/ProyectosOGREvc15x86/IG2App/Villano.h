@@ -10,7 +10,7 @@ class Villano : public IG2Object
 public:
 	Villano();
 
-	Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng);
+	Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int tipo);
 
 	// - Nunca cambia de sentido
 	// Calcula direccion si:
@@ -60,6 +60,9 @@ private:
 
 	Estado estado;
 
-
+	enum Tipo {
+		NORMAL,
+		FRANK
+	};
 };
 

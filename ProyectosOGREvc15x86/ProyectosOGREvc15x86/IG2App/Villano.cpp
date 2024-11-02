@@ -6,12 +6,14 @@ Villano::Villano()
 
 }
 
-Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
+Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int tipo)
 	: IG2Object(initPos, node, sceneMng)
 {
-	villano = mSM->createEntity("ogrehead.mesh");
-	node->attachObject(villano);
-	node->yaw(Ogre::Degree(180));
+	if (tipo == NORMAL) {
+		villano = mSM->createEntity("ogrehead.mesh");
+		node->attachObject(villano);
+		node->yaw(Ogre::Degree(180));
+	}
 
 	estado = PERSEGUIR;
 

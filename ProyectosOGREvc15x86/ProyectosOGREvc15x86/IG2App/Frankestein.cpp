@@ -4,9 +4,11 @@ Frankestein::Frankestein()
 {
 }
 
-Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMng)
-    : Villano(initPos, node, sceneMng)
+Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int tipo)
+    : Villano(initPos, node, sceneMng, tipo)
 {
+
+#pragma region Nodos
     ///NODOS
     //Nodo padre
     auto Ncuerpo = mNode->createChildSceneNode();
@@ -24,11 +26,13 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 
     //Nodos atachados al pet
     auto Narma2 = Npet->createChildSceneNode();
-    
+
     auto Npat2_1 = Npet->createChildSceneNode();
     auto Npat2_2 = Npet->createChildSceneNode();
+#pragma endregion
 
-
+    
+#pragma region Entidades
     //Cuerpo del enemigo
     Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
     Ncuerpo->attachObject(Cuerpo);
@@ -88,17 +92,19 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Npat2_2->setScale(Vector3(5, 10, 20) * PatScale);
     Npat2_2->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
     Npat2_2->setPosition(Vector3(12, -28, 10));
+#pragma endregion
 
-    node->setScale(10, 10, 10);
 
-    node->yaw(Degree(180));
+    mNode->setScale(6, 6, 6);
+    //mNode->setPosition(0,0,0);
+
+    mNode->yaw(Degree(180));
 }
 
 void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
 {
     //Por ahora se que queremos que roten las cosas
     //El movimiento no se si debe ser el mismo que el de los enemigos normales
-    std::cout << "Hola?";
     Nnudo1->rotate(Quaternion(Radian(25), Vector3(0, 0, 1)));
     Nnudo2->rotate(Quaternion(Radian(-25), Vector3(0, 0, 1)));
 }
