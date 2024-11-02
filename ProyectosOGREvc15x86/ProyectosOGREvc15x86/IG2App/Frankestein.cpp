@@ -71,8 +71,18 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Npat1_1->rotate(Quaternion(Radian(-0.25), Vector3(5, -1, 0)));
     Npat1_1->setPosition(Vector3(5, 0, -50));
 
-    //Ogre::Entity* Patines1_2 = mSM->createEntity("sphere.mesh");
-    //Ogre::Entity* Patines2_1 = mSM->createEntity("sphere.mesh");
+    Entity* Patines1_2 = mSM->createEntity("sphere.mesh");
+    Npat1_2->attachObject(Patines1_2);
+    Npat1_2->setScale(Vector3(0.5, 1, 2) * PatScale);
+    Npat1_2->rotate(Quaternion(Radian(-0.25), Vector3(1, 1, 0)));
+    Npat1_2->setPosition(Vector3(0, -1.5, -55));
+
+    Entity* Patines2_1 = mSM->createEntity("sphere.mesh");
+    Npat2_1->attachObject(Patines2_1);
+    Npat2_1->setScale(Vector3(5, 10, 20) * PatScale);
+    Npat2_1->rotate(Quaternion(Radian(-0.25), Vector3(0, 1, 0)));
+    Npat2_1->setPosition(Vector3(-12, -28, 10));
+
     //Ogre::Entity* Patines2_2 = mSM->createEntity("sphere.mesh");
 
     /*node->attachObject(Cuerpo);
