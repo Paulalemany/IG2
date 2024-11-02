@@ -62,6 +62,10 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 
 		//proxDir = calculateEuclideanDistance();
 		// no entiendo por que peta
+
+		cout << "Se ha parado" << endl;
+
+		//Aquí debe llegar cuando la direccion mas rapida es la actual
 	}
 	
 }
@@ -85,6 +89,7 @@ Vector3 Villano::calculateEuclideanDistance()
 	a = bl->getPosition();
 	float distance = a.distance(h);
 	pd = posiblesDir[0];
+
 	
 
 	for (int i = 1; i < posiblesDir.size(); i++) {
@@ -101,6 +106,8 @@ Vector3 Villano::calculateEuclideanDistance()
 		}
 	}
 
+	posiblesDir.clear();
+
 	return pd;
 
 }
@@ -113,8 +120,11 @@ bool Villano::cruce()
 	for (int i = 0; i < direcciones.size(); i++) {
 
 		//Solo cuenta como cruce si la direccion es distinta a la actual
+		// No se puede dar media vuelta
 		//Puede que no haga falta esta comprobacion
-		if (direcciones[i] != dir) {	
+		//Estoy mirando en las 4 direcciones cuando no debería dar media vuelta
+
+		if (direcciones[i] != -dir) {
 			//Comprobamos el bloque siguiente en la direccion que toque
 			Bloque* b = lab->getBloque(mNode->getPosition() + (direcciones[i] * 100), 0, lab->getLenght() - 1);
 
@@ -124,8 +134,11 @@ bool Villano::cruce()
 				posiblesDir.push_back(direcciones[i]);
 			}
 		}
+		
 	}
-	return cruce;
+
+	//Si es mayor a 1 estamos ante un cruce
+	return posiblesDir.size() > 1;
 }
 
 
