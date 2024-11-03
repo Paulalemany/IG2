@@ -70,7 +70,7 @@ public:
 		else return Ogre::Light::LT_DIRECTIONAL;
 	}
 
-	bool checkColision();
+	bool checkCollision();
 
 protected:
 

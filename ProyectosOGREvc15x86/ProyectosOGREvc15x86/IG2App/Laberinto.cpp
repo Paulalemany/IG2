@@ -174,7 +174,7 @@ int Laberinto::getBloqueID(Vector3 coord, int ini, int fin) const
 	}
 }
 
-bool Laberinto::checkColision()
+bool Laberinto::checkCollision()
 {
 
 	///Colision con la perla
@@ -201,6 +201,10 @@ bool Laberinto::checkColision()
 		villainBox = villanos[i]->getAABB();
 
 		colision = HeroBox.intersects(villainBox);
+
+		// MIRAR AQUI
+		if (colision) cout << "villain col" << endl;
+
 		i++;
 	}
 

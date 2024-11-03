@@ -1,6 +1,7 @@
 #pragma once
 #include "IG2Object.h"
 #include "Laberinto.h"
+#include "OgreTimer.h"
 
 class Heroe : public IG2Object
 {
@@ -16,6 +17,8 @@ public:
 	void getPearl();
 
 	void frameRendered(const Ogre::FrameEvent& evt) override;
+
+	void checkImmunity();
 
 	/// Getters
 
@@ -40,6 +43,12 @@ private:
 
 	bool isMoving;
 
-	//void movement();
+	// temporizador
+	Ogre::Timer* timer;
+
+	// tiempo (en ms) en el que sinbad no puede recibir daño
+	int immunityTime;
+
+	bool immune;
 };
 

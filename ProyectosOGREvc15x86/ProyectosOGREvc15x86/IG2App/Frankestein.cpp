@@ -96,6 +96,7 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Npat2_2->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
     Npat2_2->setPosition(Vector3(12, -28, 10));
 #pragma endregion
+
 }
 
 void Frankestein::frameRendered(const Ogre::FrameEvent& evt)

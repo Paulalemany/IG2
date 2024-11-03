@@ -18,7 +18,7 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int t
 	estado = PERSEGUIR;
 	timer = new Ogre::Timer(); // inicia el temporizador
 
-	followTime = 5000;
+	followTime = 10000;
 	avoidTime = 7000;
 
 	proxDir = Vector3(1, 0, 0);
@@ -28,7 +28,6 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int t
 	direcciones.push_back(Vector3(0, 0, 1));	//Abajo
 	direcciones.push_back(Vector3(1, 0, 0));	//Derecha
 	direcciones.push_back(Vector3(-1, 0, 0));	//Izquierda
-
 }
 
 void Villano::setDir(Vector3 newDir)

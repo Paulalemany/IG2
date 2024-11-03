@@ -18,6 +18,10 @@ Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int vidas
 	isMoving = false;
 
 	points = 0;
+
+	timer = new Ogre::Timer();
+	immunityTime = 3000;
+	immune = false;
 }
 
 void Heroe::setDir(Vector3 newDir)
@@ -32,9 +36,22 @@ void Heroe::entityMovement(Vector3 newDir)
 {
 	//if (!mVidas && lab->checkColission()) { mVidas = true; }
 
-	if (Centre() && lab->checkColision()) {
+	if (Centre() && lab->checkCollision()) {
+		
+		// Si colisiona con enemigo: resta vidas y pone inmunidad a true
+		if (!immune) {
+			sVidas--;
+			immune = true;
+			cout << "INMUNE TRUE" << endl;
+			
+			timer->reset();
+		}
 
-		sVidas--;
+		// ^^^^ NO FUNCIONA BIEN
+		// se deberia llamar solo cuando hay colision con villano,
+		// una vez ha colisionado se mantiene llamando aqui,
+		// a veces se llama sin colisionar con villano -> checkear el checkCollision
+
 		lab->updateTextBox();
 	}
 
@@ -55,5 +72,20 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 	IG2Object::move(dir);
 
 	lab->updateLightPos();
+
+	checkImmunity();
+
+	//cout << timer->getMilliseconds() / 1000 << endl;
+}
+
+void Heroe::checkImmunity()
+{
+	// si es inmune y han pasado 3 segundos
+	if (immune && timer->getMilliseconds() >= immunityTime) {
+		// le quitamos inmunidad
+		immune = false;
+
+		cout << "INMUNE FALSE" << endl;
+	}
 }
 
