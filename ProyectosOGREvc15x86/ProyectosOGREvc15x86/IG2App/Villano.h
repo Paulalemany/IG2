@@ -29,6 +29,9 @@ public:
 
 	bool cruce();
 
+	// Cambia el estado actual del villano segun el tiempo transcurrido
+	void manageTime();
+
 	/// Getters & Setters
 	
 	void setLab(Laberinto* l) { lab = l; }
@@ -41,21 +44,28 @@ private:
 	// al que vamos a perseguir
 	Heroe* heroe = nullptr;
 
-	// tiempo actual
-	Ogre::Timer* actualTime;
 
-	// tiempo en el que se persigue al heroe
-	Ogre::Timer* attackTimer;
-
-	//tiempo en el que se huye del heroe
-	Ogre::Timer* avoidTimer;
-
+	// -- ESTADOS --
 	enum Estado {
 		HUIDA,
 		PERSEGUIR,
 	};
 
 	Estado estado;
+	// -------------
+
+	// -- TEMPORIZADOR --
+	// - se inicia con new Ogre::Timer() en la constructora
+	// - se resetea con timer->reset()
+	// - timer->getMilliseconds() devuelve en ms el tiempo transcurrido
+	Ogre::Timer* timer;
+
+	// tiempo (en ms) en el que se mantendra el estado PERSEGUIR
+	int followTime;
+
+	// tiempo (en ms) en el que se mantendra el estado HUIDA
+	int avoidTime;
+	//------------------
 
 	std::vector<Vector3> direcciones;
 	std::vector<Vector3> posiblesDir;

@@ -16,8 +16,10 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int t
 	}
 
 	estado = PERSEGUIR;
+	timer = new Ogre::Timer(); // inicia el temporizador
 
-	attackTimer = new Ogre::Timer(); // inicia el temporizador
+	followTime = 5000;
+	avoidTime = 7000;
 
 	proxDir = Vector3(1, 0, 0);
 
@@ -53,28 +55,7 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 
 	}
 
-
-	///TIMER AQUI
-	///Definitivamente no se hacer esto
-	///Se podría hacer en otro metodo para que quede mas bonito
-	//Gestionamos el tiempo de los estados
-	/*actualTime++;
-
-	if (estado == PERSEGUIR && actualTime >= attackTimer) 
-	{
-		estado = HUIDA;
-		actualTime = 0;
-
-		cout << "Cambio a huida" << endl;
-	}
-	else if (actualTime >= avoidTimer)
-	{
-		estado = PERSEGUIR;
-		actualTime = 0;
-
-		cout << "Cambio a perseguir" << endl;
-
-	}*/
+	manageTime();
 
 }
 
@@ -154,6 +135,23 @@ bool Villano::cruce()
 	//Si la unica direccion posible es la actual no estamos en un cruce
 	//Si hay mas estamos en un cruce
 	return posiblesDir.size() > 1;
+}
+
+void Villano::manageTime()
+{
+	if (estado == PERSEGUIR && timer->getMilliseconds() >= followTime) // cuando pasen 5 segundos pasaremos al estado de huida
+	{
+		estado = HUIDA;
+		cout << "Cambio a huida" << endl;
+
+		timer->reset();
+	}
+	else if (estado == HUIDA && timer->getMilliseconds() >= avoidTime) {
+		estado = PERSEGUIR;
+
+		cout << "cambio a perseguir" << endl;
+		timer->reset();
+	}
 }
 
 
