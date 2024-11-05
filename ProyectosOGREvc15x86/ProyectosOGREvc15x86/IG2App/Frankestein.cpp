@@ -131,6 +131,11 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 
 void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
 {
+    //Por ahora se que queremos que roten las cosas
+    //El movimiento no se si debe ser el mismo que el de los enemigos normales
+    Nnudo1->rotate(Quaternion(Radian(25), Vector3(0, 0, 1)));
+    Nnudo2->rotate(Quaternion(Radian(-25), Vector3(0, 0, 1)));
+
     //Cuando pase el tiempo necesario
     if (timer->getMilliseconds() > time) {
 
@@ -139,14 +144,9 @@ void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
         dir *= -1;
     }
 
-    //Por ahora se que queremos que roten las cosas
-    //El movimiento no se si debe ser el mismo que el de los enemigos normales
-    Nnudo1->rotate(Quaternion(Radian(25), Vector3(0, 0, 1)));
-    Nnudo2->rotate(Quaternion(Radian(-25), Vector3(0, 0, 1)));
-
     Nbola1_1->rotate(Quaternion(Radian(-0.01 * dir), Vector3(1, 0, 0)));
-    Nbola1_2->rotate(Quaternion(Radian(0.01 * dir), Vector3(1, 0, 0)));
-    Nbola1_3->rotate(Quaternion(Radian(0.01 * dir), Vector3(1, 0, 0)));
+    Nbola1_2->rotate(Quaternion(Radian(-0.025 * dir), Vector3(1, 0, 0)));
+    Nbola1_3->rotate(Quaternion(Radian(-0.5 * dir), Vector3(1, 0, 0)));
 
 
     //Villano::frameRendered(evt);
