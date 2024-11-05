@@ -90,12 +90,13 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	input.close();
 
 	///-------SUELO-------------------------------------------------------------
+	double seg = gridSize / 10;
 	MeshManager::getSingleton().createPlane(
 		"plane",
 		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		Plane(Vector3::UNIT_Y, 0),                              // orientacion del plano mediante la normal
 		gridSize, gridSize,                                     // anchura
-		gridSize / 10, gridSize / 10,                           // numero de segmentos 
+		seg, seg,                           // numero de segmentos 
 		true, 1,
 		10, 10,                                                 // [!] veces que se repite la textura
 		Vector3::UNIT_Z                                         // orientacion up 
@@ -106,8 +107,10 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	SceneNode* planeNode = Sm->getRootSceneNode()->createChildSceneNode("planeNode");
 	planeNode->attachObject(planeEnt);
 
+	double poslab = gridSize / 2;	//Ponemos el suelo en la mitad del laberinto
+
 	// para que cuadre con el laberinto:
-	planeNode->setPosition(Vector3(-900, -50, -900));
+	planeNode->setPosition(Vector3(-poslab, -1 * (box / 2), -poslab));
 }
 
 void Laberinto::updateTextBox()
