@@ -12,6 +12,9 @@ public:
 
 protected:
 	SceneNode* ObjectNode = nullptr;
+	Timer* timer;
+	const int time = 2500;
+	int dir = -1;
 
 	double NodeScale = 0.025;
 	double PetScale = 0.1;
