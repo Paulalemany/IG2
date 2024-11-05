@@ -41,7 +41,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'v') {
 
-				villanos.push_back(new Villano(pos, nodes[node], Sm, 0));
+				//villanos.push_back(new Villano(pos, nodes[node], Sm, 0));
 
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
@@ -49,7 +49,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'V') {
 
-				//villanos.push_back(new Frankestein(pos, nodes[node], Sm, 1));
+				villanos.push_back(new Frankestein(pos, nodes[node], Sm, 1));
 
 				//Cuando hay enemigos tambien hay bloques traspasables debajo
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());

@@ -37,9 +37,10 @@ public:
 	void setLab(Laberinto* l) { lab = l; }
 	void setHeroe(Heroe* h) { heroe = h; }
 
-private:
+protected:
 
 	Ogre::Entity* villano;
+	Vector3 boxSize = Vector3(56, 52, 48);
 
 	// al que vamos a perseguir
 	Heroe* heroe = nullptr;

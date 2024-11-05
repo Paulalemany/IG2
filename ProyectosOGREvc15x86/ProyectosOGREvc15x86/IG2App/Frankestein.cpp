@@ -29,9 +29,20 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 
     auto Npat2_1 = Npet->createChildSceneNode();
     auto Npat2_2 = Npet->createChildSceneNode();
+
+    Ncuerpo->showBoundingBox(true);
+    Nnudo1->showBoundingBox(true);
+    Nnudo2->showBoundingBox(true);
+    Npet->showBoundingBox(true);
+    Narma1->showBoundingBox(true);
+    Npat1_1->showBoundingBox(true);
+    Npat1_2->showBoundingBox(true);
+    Npat1_2->showBoundingBox(true);
+    Narma2->showBoundingBox(true);
+    Npat2_1->showBoundingBox(true);
+    Npat2_2->showBoundingBox(true);
 #pragma endregion
 
-    
 #pragma region Entidades
     //Cuerpo del enemigo
     Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
@@ -39,6 +50,9 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Ncuerpo->setScale(6, 6, 6);
     Ncuerpo->yaw(Ogre::Degree(180));
     Ncuerpo->setPosition(0, 0, -350);
+
+    AxisAlignedBox aab = Cuerpo->getBoundingBox();
+    aab.scale(Vector3(0,0,0));
 
 
     Entity* Nudo = mSM->createEntity("knot.mesh");
@@ -97,9 +111,35 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Npat2_2->setPosition(Vector3(12, -28, 10));
 #pragma endregion
 
-    Vector3 boxSize = this->calculateBoxSize();
+#pragma region AABB
 
-    cout << "_BOXSIZE FRAN_: " << boxSize.x << " " << boxSize.y << " " << boxSize.z << endl;
+    aab = Nudo->getBoundingBox();
+    aab.scale(boxSize);
+
+    aab = Nudo2->getBoundingBox();
+    aab.scale(boxSize);
+
+    aab = Pet->getBoundingBox();
+    aab.scale(boxSize);
+
+    aab = Arma->getBoundingBox();
+    aab.scale(boxSize);
+
+    aab = Arma2->getBoundingBox();
+    aab.scale(boxSize);
+
+    aab = Patines1_1->getBoundingBox();
+    aab.scale(boxSize);
+
+    aab = Patines1_2->getBoundingBox();
+    aab.scale(boxSize);
+
+    aab = Patines2_1->getBoundingBox();
+    aab.scale(boxSize);
+
+    aab = Patines2_2->getBoundingBox();
+    aab.scale(boxSize);
+#pragma endregion
 
 }
 

@@ -14,10 +14,8 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int t
 		node->attachObject(villano);
 		node->yaw(Ogre::Degree(180));
 
-
-		Vector3 boxSize = this->calculateBoxSize();
-
-		cout << "_BOXSIZE NORMAL_: " << boxSize.x << " " << boxSize.y << " " << boxSize.z << endl;
+		AxisAlignedBox aab = villano->getBoundingBox();
+		aab.scale(boxSize);
 	}
 
 	estado = PERSEGUIR;
