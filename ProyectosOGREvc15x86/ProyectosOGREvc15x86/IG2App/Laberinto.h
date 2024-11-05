@@ -44,9 +44,6 @@ public:
 
 	Bloque* getBlock(Vector3 pos, int& id);
 
-	int getLenght() { return bloques.size(); }
-
-
 	// n = muro: 0 ; perla: 1 ; suelo: 2
 	string getTexture(int n) {
 		switch (n) {
@@ -74,6 +71,8 @@ public:
 		else if (tipoLuz == "point") return Ogre::Light::LT_POINT;
 		else return Ogre::Light::LT_DIRECTIONAL;
 	}
+
+	int getBoxSize() { return box; }
 
 
 

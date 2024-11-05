@@ -124,7 +124,7 @@ void IG2Object::entityMovement(Vector3 newDir)
     //Si está en el centro comprobamos las cosas
     if (Centre()) {
         int id = 0;
-        Bloque* b = lab->getBlock(mNode->getPosition() + (proxDir * 100), id);
+        Bloque* b = lab->getBlock(mNode->getPosition() + (proxDir * lab->getBoxSize()), id);
         proxBlock = b;
 
         //la direccion debe cambiar, y el bloque es traspasable, giramos
@@ -157,9 +157,11 @@ bool IG2Object::Centre()
     y = mNode->getPosition().y;
     z = mNode->getPosition().z;
 
-    Vector3 centro(x % 100, y % 100, z % 100);
+    int size = lab->getBoxSize();
+    Vector3 centro(x % size, y % size, z % size);
 
     //Si todos los numeros son multiplos de 100 esta en un centro
+    //100 es la distancia que hay entre caja y caja
     return centro == Vector3().ZERO;
 }
 

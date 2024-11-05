@@ -29,18 +29,6 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 
     auto Npat2_1 = Npet->createChildSceneNode();
     auto Npat2_2 = Npet->createChildSceneNode();
-
-    //Ncuerpo->showBoundingBox(true);
-    //Nnudo1->showBoundingBox(true);
-    //Nnudo2->showBoundingBox(true);
-    //Npet->showBoundingBox(true);
-    //Narma1->showBoundingBox(true);
-    //Npat1_1->showBoundingBox(true);
-    //Npat1_2->showBoundingBox(true);
-    //Npat1_2->showBoundingBox(true);
-    //Narma2->showBoundingBox(true);
-    //Npat2_1->showBoundingBox(true);
-    //Npat2_2->showBoundingBox(true);
 #pragma endregion
 
 #pragma region Entidades
@@ -117,36 +105,6 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Npat2_2->setScale(Vector3(5, 10, 20) * PatScale);
     Npat2_2->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
     Npat2_2->setPosition(Vector3(12, -28, 10));
-#pragma endregion
-
-#pragma region AABB
-
-    aab = Nudo->getBoundingBox();
-    aab.scale(boxSize);
-
-    aab = Nudo2->getBoundingBox();
-    aab.scale(boxSize);
-
-    aab = Pet->getBoundingBox();
-    aab.scale(boxSize);
-
-    aab = Arma->getBoundingBox();
-    aab.scale(boxSize);
-
-    aab = Arma2->getBoundingBox();
-    aab.scale(boxSize);
-
-    aab = Patines1_1->getBoundingBox();
-    aab.scale(boxSize);
-
-    aab = Patines1_2->getBoundingBox();
-    aab.scale(boxSize);
-
-    aab = Patines2_1->getBoundingBox();
-    aab.scale(boxSize);
-
-    aab = Patines2_2->getBoundingBox();
-    aab.scale(boxSize);
 #pragma endregion
 
 }
