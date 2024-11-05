@@ -19,7 +19,17 @@ protected:
 	double PatScale = 0.005;
 
 	//Nos guardamos los nodos de las cosas que queremos que roten
+	//Los nudos de las cabezas
 	SceneNode* Nnudo1;
 	SceneNode* Nnudo2;
+
+	//las bolas de las armas
+	SceneNode* Nbola1_1;
+	SceneNode* Nbola1_2;
+	SceneNode* Nbola1_3;
+
+	SceneNode* Nbola2_1;
+	SceneNode* Nbola2_2;
+	SceneNode* Nbola2_3;
 };
 
