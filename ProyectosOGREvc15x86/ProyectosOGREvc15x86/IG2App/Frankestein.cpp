@@ -35,12 +35,6 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 #pragma endregion
 
 #pragma region Entidades
-    //Cuerpo del enemigo ANTIGUO
-    //Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
-    //Ncuerpo->attachObject(Cuerpo);
-    //Ncuerpo->setScale(6, 6, 6);
-    //Ncuerpo->yaw(Ogre::Degree(180));
-    //Ncuerpo->setPosition(0, 0, -350);
 
     // enemigo aplastado:
     Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
@@ -48,10 +42,6 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     //Ncuerpo->setScale(3, 6, 0.7);
     Ncuerpo->setPosition(0, 0, -50);
     Ncuerpo->yaw(Ogre::Degree(180));
-
-
-    //AxisAlignedBox aab = Cuerpo->getBoundingBox();
-    //aab.scale(Vector3(0,0,0));
 
 
     Entity* Nudo = mSM->createEntity("knot.mesh");
@@ -105,23 +95,21 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
 
 
 
-    /*Entity* bola2_1 = mSM->createEntity("sphere.mesh");
+    Entity* bola2_1 = mSM->createEntity("sphere.mesh");
     Nbola2_1->attachObject(bola2_1);
-    Nbola2_1->setScale(Vector3(5, 10, 20) * PatScale);
-    Nbola2_1->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
-    Nbola2_1->setPosition(Vector3(12, -28, 10));
+    Nbola2_1->setScale(Vector3(16, 8, 16) * PatScale);
+    Nbola2_1->rotate(Quaternion(Radian(0.25), Vector3(-5, 1, 0)));
+    Nbola2_1->setPosition(Vector3(45, 40, 5));
     
     Entity* bola2_2 = mSM->createEntity("sphere.mesh");
     Nbola2_2->attachObject(bola2_2);
-    Nbola2_2->setScale(Vector3(5, 10, 20) * PatScale);
-    Nbola2_2->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
-    Nbola2_2->setPosition(Vector3(12, -28, 10));
+    Nbola2_2->setScale(Vector3(0.25, 1, 0.25));
+    Nbola2_2->setPosition(Vector3(0, -230, 0));
     
     Entity* bola2_3 = mSM->createEntity("sphere.mesh");
     Nbola2_3->attachObject(bola2_3);
-    Nbola2_3->setScale(Vector3(5, 10, 20) * PatScale);
-    Nbola2_3->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
-    Nbola2_3->setPosition(Vector3(12, -28, 10));*/
+    Nbola2_3->setScale(Vector3(1.5, 0.5, 1.5));
+    Nbola2_3->setPosition(Vector3(0, -220, 0));
 
     mNode->setScale(100, 100, 100);
 
@@ -147,6 +135,10 @@ void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
     Nbola1_1->rotate(Quaternion(Radian(-0.01 * dir), Vector3(1, 0, 0)));
     Nbola1_2->rotate(Quaternion(Radian(-0.025 * dir), Vector3(1, 0, 0)));
     Nbola1_3->rotate(Quaternion(Radian(-0.5 * dir), Vector3(1, 0, 0)));
+    
+    Nbola2_1->rotate(Quaternion(Radian(-0.01 * dir), Vector3(0, 1, 1)));
+    Nbola2_2->rotate(Quaternion(Radian(-0.025 * dir), Vector3(0, 1, 1)));
+    Nbola2_3->rotate(Quaternion(Radian(-0.5 * dir), Vector3(0, 1, 1)));
 
 
     //Villano::frameRendered(evt);
