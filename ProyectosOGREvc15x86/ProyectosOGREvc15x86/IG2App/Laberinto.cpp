@@ -111,9 +111,10 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	planeNode->attachObject(planeEnt);
 
 	double poslab = gridSize / 2;	//Ponemos el suelo en la mitad del laberinto
+	double offset = box / 2;
 
 	// para que cuadre con el laberinto:
-	planeNode->setPosition(Vector3(-poslab, -1 * (box / 2), -poslab));
+	planeNode->setPosition(Vector3(-poslab + offset, -offset, -poslab + offset));
 
 	///-----------CAMARA--------------------------------------------------------
 	camNode->setPosition(-poslab, 2500, -poslab);

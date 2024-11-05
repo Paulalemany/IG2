@@ -43,6 +43,8 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Ncuerpo->setPosition(0, 0, -50);
     Ncuerpo->yaw(Ogre::Degree(180));
 
+    Ncuerpo->showBoundingBox(true);
+
 
     Entity* Nudo = mSM->createEntity("knot.mesh");
     Nnudo1->attachObject(Nudo);
