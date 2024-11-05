@@ -42,6 +42,7 @@ private:
 	int pearlPoints = 10;
 
 	bool isMoving;
+	bool colision = false;
 
 	// temporizador
 	Ogre::Timer* timer;

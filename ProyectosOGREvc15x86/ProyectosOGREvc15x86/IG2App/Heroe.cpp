@@ -34,25 +34,43 @@ void Heroe::setDir(Vector3 newDir)
 
 void Heroe::entityMovement(Vector3 newDir)
 {
-	//if (!mVidas && lab->checkColission()) { mVidas = true; }
+	
+	colision = lab->checkCollision();
 
-	if (Centre() && lab->checkCollision()) {
-		
-		// Si colisiona con enemigo: resta vidas y pone inmunidad a true
-		if (!immune) {
-			sVidas--;
-			immune = true;
-			cout << "INMUNE TRUE" << endl;
-			
-			timer->reset();
-		}
+	// Si colisiona con enemigo: resta vidas y pone inmunidad a true
+	if (!immune && colision) {
+		sVidas--;
+		immune = true;
+		cout << "INMUNE TRUE" << endl;
 
-		// ^^^^ NO FUNCIONA BIEN
-		// se deberia llamar solo cuando hay colision con villano,
-		// una vez ha colisionado se mantiene llamando aqui,
-		// a veces se llama sin colisionar con villano -> checkear el checkCollision
+		timer->reset();
+		colision = false;
+	}
 
-		lab->updateTextBox();
+	// ^^^^ NO FUNCIONA BIEN
+	// se deberia llamar solo cuando hay colision con villano,
+	// una vez ha colisionado se mantiene llamando aqui,
+	// a veces se llama sin colisionar con villano -> checkear el checkCollision
+
+	lab->updateTextBox();
+
+	if (Centre()) {
+		//
+		//// Si colisiona con enemigo: resta vidas y pone inmunidad a true
+		//if (!immune) {
+		//	sVidas--;
+		//	immune = true;
+		//	cout << "INMUNE TRUE" << endl;
+		//	
+		//	timer->reset();
+		//}
+
+		//// ^^^^ NO FUNCIONA BIEN
+		//// se deberia llamar solo cuando hay colision con villano,
+		//// una vez ha colisionado se mantiene llamando aqui,
+		//// a veces se llama sin colisionar con villano -> checkear el checkCollision
+
+		//lab->updateTextBox();
 	}
 
 	// para que llame al del padre (si no no lo llamaria)

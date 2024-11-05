@@ -41,7 +41,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'v') {
 
-				//villanos.push_back(new Villano(pos, nodes[node], Sm, 0));
+				villanos.push_back(new Villano(pos, nodes[node], Sm, 0));
 
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
@@ -49,7 +49,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'V') {
 
-				villanos.push_back(new Frankestein(pos, nodes[node], Sm, 1));
+				//villanos.push_back(new Frankestein(pos, nodes[node], Sm, 1));
 
 				//Cuando hay enemigos tambien hay bloques traspasables debajo
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
@@ -177,18 +177,18 @@ int Laberinto::getBloqueID(Vector3 coord, int ini, int fin) const
 bool Laberinto::checkCollision()
 {
 
-	///Colision con la perla
-	//Necesitamos tambien la caja de la perla
-	int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
-	
-	//Si es nullptr es que ya no tiene perla
-	if (ID != -1 && bloques[ID]->pearl()) {
+	/////Colision con la perla
+	////Necesitamos tambien la caja de la perla
+	//int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
+	//
+	////Si es nullptr es que ya no tiene perla
+	//if (ID != -1 && bloques[ID]->pearl()) {
 
-		sinbad->getPearl();
-		updateTextBox();
+	//	sinbad->getPearl();
+	//	updateTextBox();	//Esto actualiza los puntos
 
-		gottenPearl(ID);
-	}
+	//	gottenPearl(ID);
+	//}
 
 	///Colision con los enemigos
 	bool colision = false;
@@ -203,7 +203,9 @@ bool Laberinto::checkCollision()
 		colision = HeroBox.intersects(villainBox);
 
 		// MIRAR AQUI
-		if (colision) cout << "villain col" << endl;
+		if (colision) {
+			cout << "villain col" << endl;
+		}
 
 		i++;
 	}

@@ -97,6 +97,10 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Npat2_2->setPosition(Vector3(12, -28, 10));
 #pragma endregion
 
+    Vector3 boxSize = this->calculateBoxSize();
+
+    cout << "_BOXSIZE FRAN_: " << boxSize.x << " " << boxSize.y << " " << boxSize.z << endl;
+
 }
 
 void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
