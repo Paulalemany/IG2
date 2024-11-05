@@ -23,7 +23,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	lost = false;
 
 	// "Pinta" el laberinto a partir del fichero
-	node = 0; // Nosotras haciamos nodes[j], por eso solo se pintaba 1 fila. Necesitabamos un contador para los nodos.
+	node = 0;
 	for (int i = 0; i < NumFilas; i++) {
 		input >> fila;
 
@@ -31,38 +31,45 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			pos = Vector3(-i * box, 0, -j * box);
 			nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 
-			if (fila[j] == 'x') {
+			if (fila[j] == 'x')
+			{
 				bloques.push_back(new Muro(pos, nodes[node], Sm, texturaMuro, false));
 			}
-			else if (fila[j] == 'o') {
+			else if (fila[j] == 'o') 
+			{
 				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 				numPerlas++;
 			}
-			else if (fila[j] == 'h') {
-
+			else if (fila[j] == 'h') 
+			{
 				sinbad = new Heroe(pos, nodes[node], Sm, 3);
 
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
-			}
-			else if (fila[j] == 'v') {
 
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				numPerlas++;
+			}
+			else if (fila[j] == 'v') 
+			{
 				villanos.push_back(new Villano(pos, nodes[node], Sm, 0));
 
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
-			}
-			else if (fila[j] == 'V') {
 
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				numPerlas++;
+			}
+			else if (fila[j] == 'V') 
+			{
 				villanos.push_back(new Frankestein(pos, nodes[node], Sm, 1));
 
 				//Cuando hay enemigos tambien hay bloques traspasables debajo
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				numPerlas++;
 			}
 			node++;
 		}
@@ -127,9 +134,6 @@ void Laberinto::configLight(Ogre::SceneManager* s)
 	{
 		mLightNode->setDirection(Ogre::Vector3(0, -1, 0));
 		updateLightPos();
-	}
-	else {
-		cout << "La luz es direccional" << endl;
 	}
 }
 

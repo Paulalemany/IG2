@@ -131,7 +131,6 @@
     <ClInclude Include="Villano.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bloque.cpp" />
     <ClCompile Include="Frankestein.cpp" />
     <ClCompile Include="Heroe.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />

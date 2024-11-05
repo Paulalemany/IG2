@@ -71,9 +71,6 @@
     <ClCompile Include="Heroe.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="Bloque.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
     <ClCompile Include="Villano.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>

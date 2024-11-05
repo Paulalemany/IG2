@@ -13,12 +13,12 @@ public:
 		pos = initPos;
 		traspasable = pasable;
 
-		perla = pasable;	//Cuando se crean todos los bloques pasables tendran perlas
+		perla = pasable;
 	};
 
 	~Bloque() {};
 
-	// Getters & Setters
+	/// Getters & Setters
 	Vector3 getPosition() { return pos; }
 
 	void setTraspasable(bool trasp) { traspasable = trasp; }

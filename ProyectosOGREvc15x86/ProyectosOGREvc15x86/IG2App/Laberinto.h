@@ -19,16 +19,23 @@ class Laberinto
 {
 public:
 
-	//Constructora
+	// Constructora
 	Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::TextBox* textB);
 
 	// actualiza datos del textBox
 	void updateTextBox();
 
-	// crea la luz y settea su tipo
+	// crea la luz y settea su tipo, default: direccional
 	void configLight(Ogre::SceneManager* s);
-	// actualiza posicion del foco segun la posicion de sinbad
+
+	// actualiza posicion del foco (point o spotlight) segun la posicion de sinbad
 	void updateLightPos();
+
+	bool checkCollision();
+
+	// Comprueba si Sinbad ha obtenido todas las perlas o ha perdido todas las vidas.
+	// Pone win o lose a true dependiendo de que ocurra.
+	void winCondition();
 
 	/// Getters
 
@@ -70,11 +77,7 @@ public:
 		else return Ogre::Light::LT_DIRECTIONAL;
 	}
 
-	bool checkCollision();
 
-	// Comprueba si Sinbad ha obtenido todas las perlas o ha perdido todas las vidas.
-	// Pone win o lose a true dependiendo de que ocurra.
-	void winCondition();
 
 protected:
 
