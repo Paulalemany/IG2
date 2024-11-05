@@ -149,13 +149,20 @@ void Laberinto::updateLightPos()
 }
 
 
-Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin) const
+Bloque* Laberinto::getBlock(Vector3 pos, int& id)
+{
+	return getBloque(pos, 0, bloques.size() - 1, id);
+}
+
+Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin, int& id) const
 {
 	// puede q el bloque no este
 	if (coord == bloques[ini]->getPosition()) {
+		id = ini;
 		return bloques[ini];
 	}
 	else if (fin - ini == 1) {
+		id = -1;
 		return nullptr;
 	}
 
@@ -166,44 +173,15 @@ Bloque* Laberinto::getBloque(Vector3 coord, int ini, int fin) const
 	int x = bloques[mitad]->getPosition().x;
 	if ( x < coord.x ) {
 
-		return getBloque(coord, ini, mitad);
+		return getBloque(coord, ini, mitad, id);
 	}
 
 	if (x == coord.x && bloques[mitad]->getPosition().z < coord.z) {
-		return getBloque(coord, ini, mitad);
+		return getBloque(coord, ini, mitad, id);
 	}
 
 	else {
-		return getBloque(coord, mitad, fin);
-	}
-}
-
-int Laberinto::getBloqueID(Vector3 coord, int ini, int fin) const
-{
-	// puede q el bloque no este
-	if (coord == bloques[ini]->getPosition()) {
-		return ini;
-	}
-	else if (fin - ini == 1) {
-		return -1;
-	}
-
-	int mitad = (ini + fin) / 2;
-
-	//Vamos para la izquierda (Es mas peque�a la que buscamos)
-	//Cuando sean iguales en la x se compara en la z
-	int x = bloques[mitad]->getPosition().x;
-	if (x < coord.x) {
-
-		return getBloqueID(coord, ini, mitad);
-	}
-
-	if (x == coord.x && bloques[mitad]->getPosition().z < coord.z) {
-		return getBloqueID(coord, ini, mitad);
-	}
-
-	else {
-		return getBloqueID(coord, mitad, fin);
+		return getBloque(coord, mitad, fin, id);
 	}
 }
 
@@ -212,7 +190,8 @@ bool Laberinto::checkCollision()
 
 	///Colision con la perla
 	//Necesitamos tambien la caja de la perla
-	int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
+	int ID = 0;
+	getBlock(sinbad->getPosition(), ID);
 	
 	//Si es nullptr es que ya no tiene perla
 	if (ID != -1 && bloques[ID]->pearl()) {

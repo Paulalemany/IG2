@@ -72,7 +72,8 @@ Vector3 Villano::calculateEuclideanDistance()
 
 	//Vamos a hacer la primera por separado para tener algo con lo que comparar
 	//Cogemos el bloque en la direccion que vamos a mirar
-	Bloque* bl = lab->getBloque(mNode->getPosition() + (posiblesDir[0] * 100), 0, lab->getLenght() - 1);
+	int id = 0;
+	Bloque* bl = lab->getBlock(mNode->getPosition() + (posiblesDir[0] * 100), id);
 	
 	//Calculamos la distancia
 	a = bl->getPosition();
@@ -83,7 +84,7 @@ Vector3 Villano::calculateEuclideanDistance()
 	//Comparamos la calculada con el resto que haya
 	for (int i = 1; i < posiblesDir.size(); i++) {
 		//Comparamos distancias y nos quedamos con la mas pequeñas
-		bl = lab->getBloque(mNode->getPosition() + (posiblesDir[i] * 100), 0, lab->getLenght() - 1);
+		bl = lab->getBlock(mNode->getPosition() + (posiblesDir[i] * 100), id);
 
 		a = bl->getPosition();
 
@@ -124,7 +125,8 @@ bool Villano::cruce()
 		//Si la direccion que estamos mirando es la opuesta a la actual no es una opcion
 		if (direcciones[i] != -dir) {	
 			//Comprobamos el bloque siguiente en la direccion que toque
-			Bloque* b = lab->getBloque(mNode->getPosition() + (direcciones[i] * 100), 0, lab->getLenght() - 1);
+			int id = 0;
+			Bloque* b = lab->getBlock(mNode->getPosition() + (direcciones[i] * 100), id);
 
 			//Si el bloque es traspasable lo añadimos
 			if (b->getTraspasable()) {

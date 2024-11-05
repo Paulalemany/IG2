@@ -42,9 +42,7 @@ public:
 	Heroe* getHero() { return sinbad; }
 	std::vector<Villano*> getVillains() const { return villanos; }
 
-	Bloque* getBloque(Vector3 coord, int ini, int fin) const ;
-
-	int getBloqueID(Vector3 coord, int ini, int fin) const;
+	Bloque* getBlock(Vector3 pos, int& id);
 
 	int getLenght() { return bloques.size(); }
 
@@ -126,5 +124,7 @@ private:
 	// para el plano
 	//size_t gridSize = 1800;
 	size_t gridSize = 1900;	//Es el largo del laberinto
+
+	Bloque* getBloque(Vector3 coord, int ini, int fin, int& id) const;
 
 };

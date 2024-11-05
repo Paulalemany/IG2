@@ -123,7 +123,8 @@ void IG2Object::entityMovement(Vector3 newDir)
 {
     //Si está en el centro comprobamos las cosas
     if (Centre()) {
-        Bloque* b = lab->getBloque(mNode->getPosition() + (proxDir * 100), 0, lab->getLenght() - 1);
+        int id = 0;
+        Bloque* b = lab->getBlock(mNode->getPosition() + (proxDir * 100), id);
         proxBlock = b;
 
         //la direccion debe cambiar, y el bloque es traspasable, giramos
