@@ -74,15 +74,18 @@ public:
 
 protected:
 
+	//general
 	Ogre::SceneManager* Sm = nullptr;
 	Ogre::Vector3 pos = Vector3(0, 0, 0);
+	int box = 100;	//Distancia que hay entre cajas
 
-	std::vector<Ogre::SceneNode*> nodes;
+	//Enitidades
 	int node;
-
+	std::vector<Ogre::SceneNode*> nodes;
 	std::vector<Bloque*> bloques;
-	Heroe* sinbad;
 	std::vector<Villano*> villanos;
+	Heroe* sinbad;
+	
 	
 	// fichero
 	int NumFilas = 0;
@@ -103,5 +106,9 @@ protected:
 private:
 	// perla recogida
 	void gottenPearl(int id);
+
+	// para el plano
+	//size_t gridSize = 1800;
+	size_t gridSize = 1900;	//Es el largo del laberinto
 
 };

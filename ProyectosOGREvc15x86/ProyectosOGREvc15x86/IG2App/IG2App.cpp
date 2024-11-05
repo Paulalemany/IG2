@@ -273,26 +273,6 @@ void IG2App::setupScene(void){
     addInputListener(lab->getHero());
     for (auto v : lab->getVillains()) addInputListener(v);
 
-    ///-------SUELO-------------------------------------------------------------
-    MeshManager::getSingleton().createPlane(
-        "plane", 
-        ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-        Plane(Vector3::UNIT_Y, 0),                              // orientacion del plano mediante la normal
-        gridSize, gridSize,                                     // anchura
-        gridSize/10, gridSize/10,                               // numero de segmentos 
-        true, 1, 
-        10, 10,                                                 // [!] veces que se repite la textura
-        Vector3::UNIT_Z                                         // orientacion up 
-    );
-
-    Entity* planeEnt = mSM->createEntity("suelo", "plane");
-    planeEnt->setMaterialName(lab->getTexture(2));
-    SceneNode* planeNode = mSM->getRootSceneNode()->createChildSceneNode("planeNode");
-    planeNode->attachObject(planeEnt);
-
-    // para que cuadre con el laberinto:
-    planeNode->setPosition(Vector3(-900, -50, -900));
-
 }
 
 

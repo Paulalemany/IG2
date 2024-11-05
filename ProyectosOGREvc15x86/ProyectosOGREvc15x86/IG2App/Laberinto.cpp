@@ -16,13 +16,15 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	input >> NumFilas >> NumColumnas;
 	input >> texturaPerla >> texturaMuro >> texturaSuelo >> tipoLuz;
 
+	gridSize = NumFilas * box;	//El tamaño del laberinto es el numero de filas (o columnas es un cuadrado) por la distancia entre bloques
+
 	// "Pinta" el laberinto a partir del fichero
 	node = 0; // Nosotras haciamos nodes[j], por eso solo se pintaba 1 fila. Necesitabamos un contador para los nodos.
 	for (int i = 0; i < NumFilas; i++) {
 		input >> fila;
 
 		for (int j = 0; j < NumColumnas; j++) {
-			pos = Vector3(-i * 100, 0, -j * 100);
+			pos = Vector3(-i * box, 0, -j * box);
 			nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 
 			if (fila[j] == 'x') {
@@ -75,6 +77,26 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	configLight(scene);
 
 	input.close();
+
+	///-------SUELO-------------------------------------------------------------
+	MeshManager::getSingleton().createPlane(
+		"plane",
+		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		Plane(Vector3::UNIT_Y, 0),                              // orientacion del plano mediante la normal
+		gridSize, gridSize,                                     // anchura
+		gridSize / 10, gridSize / 10,                           // numero de segmentos 
+		true, 1,
+		10, 10,                                                 // [!] veces que se repite la textura
+		Vector3::UNIT_Z                                         // orientacion up 
+	);
+
+	Entity* planeEnt = Sm->createEntity("suelo", "plane");
+	planeEnt->setMaterialName(getTexture(2));
+	SceneNode* planeNode = Sm->getRootSceneNode()->createChildSceneNode("planeNode");
+	planeNode->attachObject(planeEnt);
+
+	// para que cuadre con el laberinto:
+	planeNode->setPosition(Vector3(-900, -50, -900));
 }
 
 void Laberinto::updateTextBox()
