@@ -54,7 +54,7 @@ void Heroe::entityMovement(Vector3 newDir)
 
 void Heroe::getPearl()
 {
-	points += pearlPoints;
+	points += pearlPunctuation;
 }
 
 

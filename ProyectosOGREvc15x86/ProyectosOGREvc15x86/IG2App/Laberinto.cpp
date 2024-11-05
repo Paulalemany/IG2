@@ -19,8 +19,8 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	gridSize = NumFilas * box;	//El tamaño del laberinto es el numero de filas (o columnas es un cuadrado) por la distancia entre bloques
 
 	numPerlas = 0;
-	win = false;
-	lose = false;
+	won = false;
+	lost = false;
 
 	// "Pinta" el laberinto a partir del fichero
 	node = 0; // Nosotras haciamos nodes[j], por eso solo se pintaba 1 fila. Necesitabamos un contador para los nodos.
@@ -228,11 +228,6 @@ bool Laberinto::checkCollision()
 
 		colision = HeroBox.intersects(villainBox);
 
-		// MIRAR AQUI
-		if (colision) {
-			//cout << "villain col" << endl;
-		}
-
 		i++;
 	}
 
@@ -241,19 +236,17 @@ bool Laberinto::checkCollision()
 
 void Laberinto::winCondition()
 {
-	//pasamos el string a int
-	int num = std::stoi(sinbad->getPoints());
-
-	if (numPerlas ==  num / 10) {
-		win = true;
+	int points = std::stoi(sinbad->getPoints());
+	// cuidao! aqui suponemos q Heroe::pearlPunctuation es 10.
+	if (numPerlas ==  points / 10 && !lost) {
+		won = true;
 
 		cout << "GAME WON" << endl;
 	}
 	
-	//pasamos el string a int
-	num = std::stoi(sinbad->getVidas());
-	if (num <= 0) {
-		lose = true;
+	int lives = std::stoi(sinbad->getVidas());
+	if (lives <= 0 && !won) {
+		lost = true;
 
 		cout << "GAME LOST" << endl;
 	}

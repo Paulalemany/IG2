@@ -72,6 +72,8 @@ public:
 
 	bool checkCollision();
 
+	// Comprueba si Sinbad ha obtenido todas las perlas o ha perdido todas las vidas.
+	// Pone win o lose a true dependiendo de que ocurra.
 	void winCondition();
 
 protected:
@@ -105,10 +107,14 @@ protected:
 	// caja de informacion
 	OgreBites::TextBox* lTextBox = nullptr;
 
-	// condicion de victoria
+	// contador de perlas en el laberinto
 	int numPerlas;
-	bool win;
-	bool lose;
+
+	// se pone a true si consigue todas las perlas
+	bool won;
+
+	// se pone a false si pierde las vidas
+	bool lost;
 
 private:
 	// perla recogida

@@ -18,18 +18,21 @@ public:
 
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
+	// comprueba si han pasado los segundos de inmunidad y vuelve a poner immune a false en ese caso
 	void checkImmunity();
 
 	/// Getters
 
 	// devuelve en string el numero de vidas
 	string getVidas() { return to_string(sVidas) ; }
+
+	// devuelve en string el numero de puntos
 	string getPoints() { return to_string(points); }
 
 	// devuelve si Sinbad esta en movimiento
 	bool getIsMoving() { return isMoving; }
 
-	///Setters
+	/// Setters
 	void setLab(Laberinto* l) { lab = l; }
 
 private:
@@ -39,7 +42,7 @@ private:
 	int sVidas;
 
 	int points;
-	int pearlPoints = 10;
+	int pearlPunctuation = 10;
 
 	bool isMoving;
 	bool colision = false;
