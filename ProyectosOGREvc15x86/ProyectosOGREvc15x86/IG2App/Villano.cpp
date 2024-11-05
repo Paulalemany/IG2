@@ -141,17 +141,14 @@ bool Villano::cruce()
 
 void Villano::manageTime()
 {
-	if (estado == PERSEGUIR && timer->getMilliseconds() >= followTime) // cuando pasen 5 segundos pasaremos al estado de huida
+	if (estado == PERSEGUIR && timer->getMilliseconds() >= followTime) // cuando pasen 10 segundos pasaremos al estado de huida
 	{
 		estado = HUIDA;
-		cout << "Cambio a huida" << endl;
-
 		timer->reset();
 	}
-	else if (estado == HUIDA && timer->getMilliseconds() >= avoidTime) {
+	else if (estado == HUIDA && timer->getMilliseconds() >= avoidTime) // cuando pasen 7 segundos pasaremos al estado de perseguir
+	{
 		estado = PERSEGUIR;
-
-		cout << "cambio a perseguir" << endl;
 		timer->reset();
 	}
 }

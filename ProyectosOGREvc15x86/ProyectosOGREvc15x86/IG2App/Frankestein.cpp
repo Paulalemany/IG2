@@ -30,26 +30,34 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     auto Npat2_1 = Npet->createChildSceneNode();
     auto Npat2_2 = Npet->createChildSceneNode();
 
-    Ncuerpo->showBoundingBox(true);
-    Nnudo1->showBoundingBox(true);
-    Nnudo2->showBoundingBox(true);
-    Npet->showBoundingBox(true);
-    Narma1->showBoundingBox(true);
-    Npat1_1->showBoundingBox(true);
-    Npat1_2->showBoundingBox(true);
-    Npat1_2->showBoundingBox(true);
-    Narma2->showBoundingBox(true);
-    Npat2_1->showBoundingBox(true);
-    Npat2_2->showBoundingBox(true);
+    //Ncuerpo->showBoundingBox(true);
+    //Nnudo1->showBoundingBox(true);
+    //Nnudo2->showBoundingBox(true);
+    //Npet->showBoundingBox(true);
+    //Narma1->showBoundingBox(true);
+    //Npat1_1->showBoundingBox(true);
+    //Npat1_2->showBoundingBox(true);
+    //Npat1_2->showBoundingBox(true);
+    //Narma2->showBoundingBox(true);
+    //Npat2_1->showBoundingBox(true);
+    //Npat2_2->showBoundingBox(true);
 #pragma endregion
 
 #pragma region Entidades
-    //Cuerpo del enemigo
+    //Cuerpo del enemigo ANTIGUO
+    //Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
+    //Ncuerpo->attachObject(Cuerpo);
+    //Ncuerpo->setScale(6, 6, 6);
+    //Ncuerpo->yaw(Ogre::Degree(180));
+    //Ncuerpo->setPosition(0, 0, -350);
+
+    // enemigo aplastado:
     Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
     Ncuerpo->attachObject(Cuerpo);
-    Ncuerpo->setScale(6, 6, 6);
+    Ncuerpo->setScale(3, 6, 0.7);
+    Ncuerpo->setPosition(0, 0, -50);
     Ncuerpo->yaw(Ogre::Degree(180));
-    Ncuerpo->setPosition(0, 0, -350);
+
 
     AxisAlignedBox aab = Cuerpo->getBoundingBox();
     aab.scale(Vector3(0,0,0));

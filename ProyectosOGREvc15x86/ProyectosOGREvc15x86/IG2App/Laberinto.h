@@ -72,6 +72,8 @@ public:
 
 	bool checkCollision();
 
+	void endGame();
+
 protected:
 
 	//general
@@ -102,6 +104,10 @@ protected:
 
 	// caja de informacion
 	OgreBites::TextBox* lTextBox = nullptr;
+
+	// condicion de victoria
+	int numPerlas;
+	bool win;
 
 private:
 	// perla recogida

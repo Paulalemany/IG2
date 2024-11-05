@@ -20,7 +20,7 @@ Heroe::Heroe(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int vidas
 	points = 0;
 
 	timer = new Ogre::Timer();
-	immunityTime = 3000;
+	immunityTime = 4000;
 	immune = false;
 }
 
@@ -41,37 +41,12 @@ void Heroe::entityMovement(Vector3 newDir)
 	if (!immune && colision) {
 		sVidas--;
 		immune = true;
-		cout << "INMUNE TRUE" << endl;
 
 		timer->reset();
 		colision = false;
 	}
 
-	// ^^^^ NO FUNCIONA BIEN
-	// se deberia llamar solo cuando hay colision con villano,
-	// una vez ha colisionado se mantiene llamando aqui,
-	// a veces se llama sin colisionar con villano -> checkear el checkCollision
-
 	lab->updateTextBox();
-
-	if (Centre()) {
-		//
-		//// Si colisiona con enemigo: resta vidas y pone inmunidad a true
-		//if (!immune) {
-		//	sVidas--;
-		//	immune = true;
-		//	cout << "INMUNE TRUE" << endl;
-		//	
-		//	timer->reset();
-		//}
-
-		//// ^^^^ NO FUNCIONA BIEN
-		//// se deberia llamar solo cuando hay colision con villano,
-		//// una vez ha colisionado se mantiene llamando aqui,
-		//// a veces se llama sin colisionar con villano -> checkear el checkCollision
-
-		//lab->updateTextBox();
-	}
 
 	// para que llame al del padre (si no no lo llamaria)
 	IG2Object::entityMovement(newDir);
@@ -93,17 +68,16 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 
 	checkImmunity();
 
-	//cout << timer->getMilliseconds() / 1000 << endl;
+	lab->endGame();
 }
 
 void Heroe::checkImmunity()
 {
-	// si es inmune y han pasado 3 segundos
+	// si es inmune y han pasado 4 segundos
 	if (immune && timer->getMilliseconds() >= immunityTime) {
 		// le quitamos inmunidad
 		immune = false;
 
-		cout << "INMUNE FALSE" << endl;
 	}
 }
 

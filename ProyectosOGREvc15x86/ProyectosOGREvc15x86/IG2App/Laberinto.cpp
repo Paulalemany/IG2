@@ -18,6 +18,9 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 
 	gridSize = NumFilas * box;	//El tamaño del laberinto es el numero de filas (o columnas es un cuadrado) por la distancia entre bloques
 
+	numPerlas = 0;
+	win = false;
+
 	// "Pinta" el laberinto a partir del fichero
 	node = 0; // Nosotras haciamos nodes[j], por eso solo se pintaba 1 fila. Necesitabamos un contador para los nodos.
 	for (int i = 0; i < NumFilas; i++) {
@@ -32,6 +35,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'o') {
 				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				numPerlas++;
 			}
 			else if (fila[j] == 'h') {
 
@@ -43,7 +47,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'v') {
 
-				//villanos.push_back(new Villano(pos, nodes[node], Sm, 0));
+				villanos.push_back(new Villano(pos, nodes[node], Sm, 0));
 
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
@@ -64,7 +68,6 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	}
 
 	nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-	
 
 	updateTextBox();
 
@@ -199,18 +202,18 @@ int Laberinto::getBloqueID(Vector3 coord, int ini, int fin) const
 bool Laberinto::checkCollision()
 {
 
-	/////Colision con la perla
-	////Necesitamos tambien la caja de la perla
-	//int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
-	//
-	////Si es nullptr es que ya no tiene perla
-	//if (ID != -1 && bloques[ID]->pearl()) {
+	///Colision con la perla
+	//Necesitamos tambien la caja de la perla
+	int ID = getBloqueID(sinbad->getPosition(), 0, bloques.size() - 1);
+	
+	//Si es nullptr es que ya no tiene perla
+	if (ID != -1 && bloques[ID]->pearl()) {
 
-	//	sinbad->getPearl();
-	//	updateTextBox();	//Esto actualiza los puntos
+		sinbad->getPearl();
+		updateTextBox();	//Esto actualiza los puntos
 
-	//	gottenPearl(ID);
-	//}
+		gottenPearl(ID);
+	}
 
 	///Colision con los enemigos
 	bool colision = false;
@@ -226,13 +229,25 @@ bool Laberinto::checkCollision()
 
 		// MIRAR AQUI
 		if (colision) {
-			cout << "villain col" << endl;
+			//cout << "villain col" << endl;
 		}
 
 		i++;
 	}
 
 	return colision;
+}
+
+void Laberinto::endGame()
+{
+	//pasamos el string a int
+	int num = std::stoi(sinbad->getPoints());
+
+	if (numPerlas ==  num / 10) {
+		win = true;
+
+		cout << "GAME WON" << endl;
+	}
 }
 
 void Laberinto::gottenPearl(int id)
