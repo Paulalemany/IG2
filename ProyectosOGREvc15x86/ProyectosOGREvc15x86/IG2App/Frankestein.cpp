@@ -22,15 +22,15 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     auto Narma1 = Ncuerpo->createChildSceneNode();
 
     Nbola1_1 = Ncuerpo->createChildSceneNode();
-    Nbola1_2 = Ncuerpo->createChildSceneNode();
-    Nbola1_3 = Ncuerpo->createChildSceneNode();
+    Nbola1_2 = Nbola1_1->createChildSceneNode();
+    Nbola1_3 = Nbola1_2->createChildSceneNode();
 
     //Nodos atachados al pet
     auto Narma2 = Npet->createChildSceneNode();
 
     Nbola2_1 = Npet->createChildSceneNode();
-    Nbola2_2 = Npet->createChildSceneNode();
-    Nbola2_3 = Npet->createChildSceneNode();
+    Nbola2_2 = Nbola2_1->createChildSceneNode();
+    Nbola2_3 = Nbola2_2->createChildSceneNode();
 #pragma endregion
 
 #pragma region Entidades
@@ -44,7 +44,7 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     // enemigo aplastado:
     Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
     Ncuerpo->attachObject(Cuerpo);
-    Ncuerpo->setScale(3, 6, 0.7);
+    //Ncuerpo->setScale(3, 6, 0.7);
     Ncuerpo->setPosition(0, 0, -50);
     Ncuerpo->yaw(Ogre::Degree(180));
 
@@ -88,41 +88,41 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     //Esto van a dejar de ser patines ahora son bolas que estan en el arma y se mueven (me faltan 2)
     Entity* bola1_1 = mSM->createEntity("sphere.mesh");
     Nbola1_1->attachObject(bola1_1);
-    Nbola1_1->setScale(Vector3(0.5, 1, 2) * PatScale);
+    Nbola1_1->setScale(Vector3(2, 1, 2) * PatScale);
     Nbola1_1->rotate(Quaternion(Radian(-0.25), Vector3(5, -1, 0)));
-    Nbola1_1->setPosition(Vector3(5, 0, -50));
+    Nbola1_1->setPosition(Vector3(7, 15, -57));
 
     Entity* bola1_2 = mSM->createEntity("sphere.mesh");
     Nbola1_2->attachObject(bola1_2);
-    Nbola1_2->setScale(Vector3(0.5, 1, 2) * PatScale);
-    Nbola1_2->rotate(Quaternion(Radian(-0.25), Vector3(1, 1, 0)));
-    Nbola1_2->setPosition(Vector3(0, -1.5, -55));
+    Nbola1_2->setScale(Vector3(0.25, 1, 0.25));
+    Nbola1_2->setPosition(Vector3(0, -230, 0));
 
     Entity* bola1_3 = mSM->createEntity("sphere.mesh");
     Nbola1_3->attachObject(bola1_3);
-    Nbola1_3->setScale(Vector3(5, 10, 20) * PatScale);
-    Nbola1_3->rotate(Quaternion(Radian(-0.25), Vector3(0, 1, 0)));
-    Nbola1_3->setPosition(Vector3(-12, -28, 10));
+    Nbola1_3->setScale(Vector3(1.5, 0.5, 1.5));
+    Nbola1_3->setPosition(Vector3(0, -220, 0));
 
 
 
-    Entity* bola2_1 = mSM->createEntity("sphere.mesh");
+    /*Entity* bola2_1 = mSM->createEntity("sphere.mesh");
     Nbola2_1->attachObject(bola2_1);
     Nbola2_1->setScale(Vector3(5, 10, 20) * PatScale);
     Nbola2_1->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
     Nbola2_1->setPosition(Vector3(12, -28, 10));
     
-    Entity* bola2_1 = mSM->createEntity("sphere.mesh");
-    Nbola2_1->attachObject(bola2_1);
-    Nbola2_1->setScale(Vector3(5, 10, 20) * PatScale);
-    Nbola2_1->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
-    Nbola2_1->setPosition(Vector3(12, -28, 10));
+    Entity* bola2_2 = mSM->createEntity("sphere.mesh");
+    Nbola2_2->attachObject(bola2_2);
+    Nbola2_2->setScale(Vector3(5, 10, 20) * PatScale);
+    Nbola2_2->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
+    Nbola2_2->setPosition(Vector3(12, -28, 10));
     
-    Entity* bola2_1 = mSM->createEntity("sphere.mesh");
-    Nbola2_1->attachObject(bola2_1);
-    Nbola2_1->setScale(Vector3(5, 10, 20) * PatScale);
-    Nbola2_1->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
-    Nbola2_1->setPosition(Vector3(12, -28, 10));
+    Entity* bola2_3 = mSM->createEntity("sphere.mesh");
+    Nbola2_3->attachObject(bola2_3);
+    Nbola2_3->setScale(Vector3(5, 10, 20) * PatScale);
+    Nbola2_3->rotate(Quaternion(Radian(-0.25), Vector3(0, -1, 0)));
+    Nbola2_3->setPosition(Vector3(12, -28, 10));*/
+
+    mNode->setScale(100, 100, 100);
 
 #pragma endregion
 
@@ -135,5 +135,10 @@ void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
     Nnudo1->rotate(Quaternion(Radian(25), Vector3(0, 0, 1)));
     Nnudo2->rotate(Quaternion(Radian(-25), Vector3(0, 0, 1)));
 
-    Villano::frameRendered(evt);
+    Nbola1_1->rotate(Quaternion(Radian(-0.01), Vector3(1, 0, 0)));
+    Nbola1_2->rotate(Quaternion(Radian(0.01), Vector3(1, 0, 0)));
+    Nbola1_3->rotate(Quaternion(Radian(0.01), Vector3(1, 0, 0)));
+
+
+    //Villano::frameRendered(evt);
 }
