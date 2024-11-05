@@ -20,6 +20,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 
 	numPerlas = 0;
 	win = false;
+	lose = false;
 
 	// "Pinta" el laberinto a partir del fichero
 	node = 0; // Nosotras haciamos nodes[j], por eso solo se pintaba 1 fila. Necesitabamos un contador para los nodos.
@@ -238,7 +239,7 @@ bool Laberinto::checkCollision()
 	return colision;
 }
 
-void Laberinto::endGame()
+void Laberinto::winCondition()
 {
 	//pasamos el string a int
 	int num = std::stoi(sinbad->getPoints());
@@ -247,6 +248,14 @@ void Laberinto::endGame()
 		win = true;
 
 		cout << "GAME WON" << endl;
+	}
+	
+	//pasamos el string a int
+	num = std::stoi(sinbad->getVidas());
+	if (num <= 0) {
+		lose = true;
+
+		cout << "GAME LOST" << endl;
 	}
 }
 

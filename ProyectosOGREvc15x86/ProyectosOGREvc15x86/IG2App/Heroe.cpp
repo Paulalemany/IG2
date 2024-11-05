@@ -68,7 +68,7 @@ void Heroe::frameRendered(const Ogre::FrameEvent& evt)
 
 	checkImmunity();
 
-	lab->endGame();
+	lab->winCondition();
 }
 
 void Heroe::checkImmunity()

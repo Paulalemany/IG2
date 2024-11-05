@@ -72,7 +72,7 @@ public:
 
 	bool checkCollision();
 
-	void endGame();
+	void winCondition();
 
 protected:
 
@@ -108,6 +108,7 @@ protected:
 	// condicion de victoria
 	int numPerlas;
 	bool win;
+	bool lose;
 
 private:
 	// perla recogida
