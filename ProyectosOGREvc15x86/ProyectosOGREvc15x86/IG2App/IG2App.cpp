@@ -21,20 +21,20 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         break;
 
     case SDLK_UP:
-        lab->getHero()->setDir(Vector3(0, 0, -1));
-        break;
-
-    case SDLK_DOWN:
         lab->getHero()->setDir(Vector3(0, 0, 1));
         break;
 
+    case SDLK_DOWN:
+        lab->getHero()->setDir(Vector3(0, 0, -1));
+        break;
+
     case SDLK_RIGHT:
-        lab->getHero()->setDir(Vector3(1, 0, 0));
+        lab->getHero()->setDir(Vector3(-1, 0, 0));
         break;
 
     case SDLK_LEFT:
 
-        lab->getHero()->setDir(Vector3(-1, 0, 0));
+        lab->getHero()->setDir(Vector3(1, 0, 0));
         break;
     }
    
@@ -101,9 +101,9 @@ void IG2App::setupScene(void){
     mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
     mCamNode->attachObject(cam);
 
-    // POLI -> Modifico la camara para q el laberinto se vea desde arriba
-    mCamNode->setPosition(0, 400, 2200);  
-    mCamNode->lookAt(Ogre::Vector3(1, 1, 1), Ogre::Node::TS_WORLD);
+    
+    //se supone que así mira hacia abajo
+    mCamNode->lookAt(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_WORLD);
     
     // and tell it to render into the main window
     Viewport* vp = getRenderWindow()->addViewport(cam);
@@ -267,7 +267,7 @@ void IG2App::setupScene(void){
     mCube2Node->setPosition(100, 0, 0);*/
 
     ///-------LABERINTO---------------------------------------------------------
-    lab = new Laberinto(mSM, "stage1.txt", mTextBox);
+    lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
 
     // 
     addInputListener(lab->getHero());

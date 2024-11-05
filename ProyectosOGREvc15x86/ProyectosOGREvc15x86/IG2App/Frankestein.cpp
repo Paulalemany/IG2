@@ -39,7 +39,7 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     // enemigo aplastado:
     Entity* Cuerpo = mSM->createEntity("jaiqua.mesh");
     Ncuerpo->attachObject(Cuerpo);
-    //Ncuerpo->setScale(3, 6, 0.7);
+    Ncuerpo->setScale(3, 6, 0.7);
     Ncuerpo->setPosition(0, 0, -50);
     Ncuerpo->yaw(Ogre::Degree(180));
 
@@ -111,7 +111,7 @@ Frankestein::Frankestein(Vector3 initPos, SceneNode* node, SceneManager* sceneMn
     Nbola2_3->setScale(Vector3(1.5, 0.5, 1.5));
     Nbola2_3->setPosition(Vector3(0, -220, 0));
 
-    mNode->setScale(100, 100, 100);
+    //mNode->setScale(100, 100, 100);
 
 #pragma endregion
 
@@ -141,5 +141,5 @@ void Frankestein::frameRendered(const Ogre::FrameEvent& evt)
     Nbola2_3->rotate(Quaternion(Radian(-0.5 * dir), Vector3(0, 1, 1)));
 
 
-    //Villano::frameRendered(evt);
+    Villano::frameRendered(evt);
 }

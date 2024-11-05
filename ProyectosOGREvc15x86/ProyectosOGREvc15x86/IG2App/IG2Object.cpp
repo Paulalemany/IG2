@@ -130,7 +130,7 @@ void IG2Object::entityMovement(Vector3 newDir)
         //la direccion debe cambiar, y el bloque es traspasable, giramos
         if (dir != proxDir) {
 
-            if (b->getTraspasable()) {
+            if (b == nullptr || b->getTraspasable()) {
                 dir = proxDir;
 
                 Quaternion q = this->getOrientation().getRotationTo(dir);
@@ -139,7 +139,7 @@ void IG2Object::entityMovement(Vector3 newDir)
         }
         else {
 
-            if (b->getTraspasable() == false) {
+            if (b == nullptr || b->getTraspasable() == false) {
 
                 dir = Vector3(0, 0, 0);
                 proxDir = Vector3(0, 0, 0);

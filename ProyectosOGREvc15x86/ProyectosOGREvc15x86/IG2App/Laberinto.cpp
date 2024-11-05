@@ -1,7 +1,7 @@
 #include "Laberinto.h"
 #include "Heroe.h"
 
-Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::TextBox* tb)
+Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::TextBox* tb, SceneNode* camNode)
 {
 	Sm = scene;
 	lTextBox = tb;
@@ -75,8 +75,9 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 		}
 	}
 
-	nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-	villanos.push_back(new Frankestein(Vector3(0,0,0), nodes[node], Sm, 1));
+	//Si se quiere ver bien a fran descomentar esto
+	/*nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
+	villanos.push_back(new Frankestein(Vector3(0,0,0), nodes[node], Sm, 1));*/
 
 
 	updateTextBox();
@@ -113,6 +114,9 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 
 	// para que cuadre con el laberinto:
 	planeNode->setPosition(Vector3(-poslab, -1 * (box / 2), -poslab));
+
+	///-----------CAMARA--------------------------------------------------------
+	camNode->setPosition(-poslab, 2500, -poslab);
 }
 
 void Laberinto::updateTextBox()
