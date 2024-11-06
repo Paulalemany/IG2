@@ -6,13 +6,13 @@ mat/grass
 directional
 xxxxxxxxxxxxxxxxxxxxxxxxxx
 xoooooxxxxxoooooxxxxooooox
-xoxxxoooooooxxxooooooxxxox
+xoxxxoooooooxxxoVooooxxxox
 xoooooxoxoxoxxxoxxoxooooox
 xoxxxoxoxoxooooooooxoxxxox
 xoxxxoxoxoxoxxxxxoxxoxxoox
 xoooooooooooooooooooooooxx
 xoxxxxoxxoxxxxxxxoxxxoxoxx
-xoooooooooooooooooooooooox
+xooooooooooooooooovoooooox
 xoxoxoxxoxoxxxxxxoxoxoxxxx
 xoooooxxoxooooooooxoxoxxxx
 xoxxxoxxoxxoxxoxxoooooooox
@@ -20,5 +20,5 @@ xoooooooooooooooooxxxoxxox
 xoxoxxxoxxxxxxxxxoooooooox
 xoooooooooooooooooxxxoxxxx
 xoxxoxxoxxxxxxxxxoooooooox
-xoooooooooooooooooxxxoxxxx
+xoooohooooooooooooxxxoxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxx
