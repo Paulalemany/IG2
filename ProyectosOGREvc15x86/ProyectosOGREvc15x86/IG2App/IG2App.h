@@ -31,7 +31,9 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
+
     virtual void setupGameScene();
+    virtual void setupIntroScene();
     
     
 #pragma region practica_0
@@ -66,9 +68,18 @@ protected:
     Ogre::Light* light = nullptr;
     Ogre::SceneNode* mLightParent = nullptr;
     Ogre::SceneNode* mLightNode = nullptr;
-    
+   
+
+    /// Camaras por escenas
+    Viewport* vp = nullptr;
+
+    //Smn
     Ogre::SceneNode* mCamNode = nullptr;
     OgreBites::CameraMan* mCamMgr = nullptr;
+
+    //Intro
+    Ogre::SceneNode* mIntroCamNode = nullptr;
+    OgreBites::CameraMan* mICamMgr = nullptr;
 
     Laberinto* lab = nullptr;
 
