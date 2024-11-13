@@ -356,7 +356,7 @@ void IG2App::setupIntroScene(void)
 
     // and tell it to render into the main window
     vp = getRenderWindow()->addViewport(cam);
-    vp->setBackgroundColour(Ogre::ColourValue(0, 0, 0));
+    vp->setBackgroundColour(Ogre::ColourValue(0.72, 0.20, 0.42));
 
     mICamMgr = new OgreBites::CameraMan(mCamNode);
     addInputListener(mICamMgr);
