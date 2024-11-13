@@ -5,39 +5,64 @@ using namespace std;
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
 
-    switch (evt.keysym.sym) {
+    //El input cambia dependiendo de la escena
+    if (scene == _Intro) {
+        switch (evt.keysym.sym)
+        {
+        case SDLK_s:
+            cout << "__CHANGE SCENE__" << endl;
+            IS->clearScene();
+            setupGameScene();
+            scene = _Game;
+            break;
 
-        // ESC key finished the rendering...
-    case SDLK_ESCAPE:
-        getRoot()->queueEndRendering();
-        break;
-
-    case SDLK_k:
-        cout << "Position of the camera: " << mCamNode->getPosition() << endl;
-        break; 
-
-    case SDLK_l:
-        lab->updateLightPos();
-        break;
-
-    case SDLK_UP:
-        lab->getHero()->setDir(Vector3(0, 0, 1));
-        break;
-
-    case SDLK_DOWN:
-        lab->getHero()->setDir(Vector3(0, 0, -1));
-        break;
-
-    case SDLK_RIGHT:
-        lab->getHero()->setDir(Vector3(-1, 0, 0));
-        break;
-
-    case SDLK_LEFT:
-
-        lab->getHero()->setDir(Vector3(1, 0, 0));
-        break;
+        default:
+            break;
+        }
     }
-   
+    else if (scene == _Game) {
+        switch (evt.keysym.sym) {
+
+        case SDLK_l:
+            lab->updateLightPos();
+            break;
+
+            ///Input del heroe
+        case SDLK_UP:
+            lab->getHero()->setDir(Vector3(0, 0, 1));
+            break;
+
+        case SDLK_DOWN:
+            lab->getHero()->setDir(Vector3(0, 0, -1));
+            break;
+
+        case SDLK_RIGHT:
+            lab->getHero()->setDir(Vector3(-1, 0, 0));
+            break;
+
+        case SDLK_LEFT:
+
+            lab->getHero()->setDir(Vector3(1, 0, 0));
+            break;
+        }
+    }
+    else {
+        switch (evt.keysym.sym) {
+
+            // ESC key finished the rendering...
+        case SDLK_ESCAPE:
+            getRoot()->queueEndRendering();
+            break;
+
+        case SDLK_k:
+            cout << "Position of the camera: " << mCamNode->getPosition() << endl;
+            break;
+
+        default:
+            break;
+
+        }
+    }
   return true;
 }
 
@@ -63,6 +88,8 @@ void IG2App::setup(void){
 
     // Create the scene manager
     mSM = mRoot->createSceneManager();
+    GS = mRoot->createSceneManager();
+    IS = mRoot->createSceneManager();
 
     // Registra el scene manager en el RTSS
     mShaderGenerator->addSceneManager(mSM);
@@ -84,7 +111,7 @@ void IG2App::setup(void){
     addInputListener(this);
 
     // Invoca setupScene()
-    setupScene();
+    setupIntroScene();
 }
 
 void IG2App::setupScene(void){
@@ -274,9 +301,70 @@ void IG2App::setupScene(void){
         for (auto v : lab->getVillains()) addInputListener(v);
     }
 
-    ///------INTRO SCENE--------------------------------------------------------
-    intro = new IntroScene(mSM, mTextBox, mCamNode);
+    
    
+}
+
+void IG2App::setupGameScene()
+{
+    //------------------------------------------------------------------------
+    // Creating the camera
+
+    Camera* cam = mSM->createCamera("Cam");
+    cam->setNearClipDistance(1);
+    cam->setFarClipDistance(10000);
+    cam->setAutoAspectRatio(true);
+    //cam->setPolygonMode(Ogre::PM_WIREFRAME);
+
+    mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
+    mCamNode->attachObject(cam);
+
+
+    //se supone que así mira hacia abajo
+    mCamNode->lookAt(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_WORLD);
+
+    // and tell it to render into the main window
+    getRenderWindow()->removeViewport(0);   //Elimina el viewport de la escena anterior
+    vp = getRenderWindow()->addViewport(cam);
+    vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
+
+    mCamMgr = new OgreBites::CameraMan(mCamNode);
+    addInputListener(mCamMgr);
+    mCamMgr->setStyle(OgreBites::CS_ORBIT);
+
+    ///-------LABERINTO---------------------------------------------------------
+    lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
+
+    // 
+    addInputListener(lab->getHero());
+    for (auto v : lab->getVillains()) addInputListener(v);
+}
+
+void IG2App::setupIntroScene(void)
+{
+    //Creating de Camera
+    Camera* cam = IS->createCamera("ICam");
+    cam->setNearClipDistance(1);
+    cam->setFarClipDistance(10000);
+    cam->setAutoAspectRatio(true);
+
+    mCamNode = IS->getRootSceneNode()->createChildSceneNode("nICam");
+    mCamNode->attachObject(cam);
+
+
+    //se supone que así mira hacia abajo
+    mCamNode->lookAt(Ogre::Vector3(1, 0, 0), Ogre::Node::TS_WORLD);
+
+    // and tell it to render into the main window
+    vp = getRenderWindow()->addViewport(cam);
+    vp->setBackgroundColour(Ogre::ColourValue(0.72, 0.20, 0.42));
+
+    mICamMgr = new OgreBites::CameraMan(mCamNode);
+    addInputListener(mICamMgr);
+    mICamMgr->setStyle(OgreBites::CS_ORBIT);
+
+    ///------INTRO SCENE--------------------------------------------------------
+    intro = new IntroScene(IS, mTextBox, mCamNode);
 }
 
 
