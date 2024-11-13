@@ -15,6 +15,7 @@
 #include <string>
 
 #include "Laberinto.h"
+#include "IntroScene.h"
 #include "Heroe.h"
 #include "Frankestein.h"
 
@@ -88,6 +89,8 @@ protected:
         Intro,
         Game
     };
+    
+    IntroScene* intro = nullptr;
 };
 
 #endif

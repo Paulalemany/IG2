@@ -36,3 +36,16 @@ material mat/nm_up{
 		}
     }
 }
+
+material mat/MRAMOR{
+    technique 
+	{ 
+		pass {  
+			texture_unit 
+			{
+				texture MRAMOR6X6.jpg
+				
+			}
+		}
+    }
+}

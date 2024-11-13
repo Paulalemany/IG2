@@ -296,12 +296,16 @@ void IG2App::setupScene(void){
     mCube2Node->setPosition(100, 0, 0);*/
 
     ///-------LABERINTO---------------------------------------------------------
-    lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
+    //lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
 
-    // 
-    addInputListener(lab->getHero());
-    for (auto v : lab->getVillains()) addInputListener(v);
+    if (lab != nullptr) {
+        addInputListener(lab->getHero());
+        for (auto v : lab->getVillains()) addInputListener(v);
+    }
 
+    ///------INTRO SCENE--------------------------------------------------------
+    intro = new IntroScene(mSM, mTextBox, mCamNode);
+   
 }
 
 void IG2App::setupGameScene()
