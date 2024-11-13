@@ -93,11 +93,9 @@ void IG2App::setup(void){
 
     // Registra el scene manager en el RTSS
     mShaderGenerator->addSceneManager(mSM);
-    mShaderGenerator->addSceneManager(IS);
 
     // Configuracion del overlay system
     mSM->addRenderQueueListener(mOverlaySystem);
-    IS->addRenderQueueListener(mOverlaySystem);
     mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
     mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT); // el cuadro de fps, etc
     addInputListener(mTrayMgr);
