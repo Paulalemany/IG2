@@ -6,21 +6,21 @@ using namespace std;
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
 
     //El input cambia dependiendo de la escena
-    if (scene == Intro) {
+    if (scene == _Intro) {
         switch (evt.keysym.sym)
         {
         case SDLK_s:
             cout << "__CHANGE SCENE__" << endl;
-            IntroScene->clearScene();
+            IS->clearScene();
             setupGameScene();
-            scene = Game;
+            scene = _Game;
             break;
 
         default:
             break;
         }
     }
-    else if (scene == Game) {
+    else if (scene == _Game) {
         switch (evt.keysym.sym) {
 
         case SDLK_l:
@@ -88,16 +88,16 @@ void IG2App::setup(void){
 
     // Create the scene manager
     mSM = mRoot->createSceneManager();
-    GameScene = mRoot->createSceneManager();
-    IntroScene = mRoot->createSceneManager();
+    GS = mRoot->createSceneManager();
+    IS = mRoot->createSceneManager();
 
     // Registra el scene manager en el RTSS
     mShaderGenerator->addSceneManager(mSM);
-    mShaderGenerator->addSceneManager(IntroScene);
+    mShaderGenerator->addSceneManager(IS);
 
     // Configuracion del overlay system
     mSM->addRenderQueueListener(mOverlaySystem);
-    IntroScene->addRenderQueueListener(mOverlaySystem);
+    IS->addRenderQueueListener(mOverlaySystem);
     mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
     mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT); // el cuadro de fps, etc
     addInputListener(mTrayMgr);
@@ -303,8 +303,7 @@ void IG2App::setupScene(void){
         for (auto v : lab->getVillains()) addInputListener(v);
     }
 
-    ///------INTRO SCENE--------------------------------------------------------
-    intro = new IntroScene(mSM, mTextBox, mCamNode);
+    
    
 }
 
@@ -346,12 +345,12 @@ void IG2App::setupGameScene()
 void IG2App::setupIntroScene(void)
 {
     //Creating de Camera
-    Camera* cam = IntroScene->createCamera("ICam");
+    Camera* cam = IS->createCamera("ICam");
     cam->setNearClipDistance(1);
     cam->setFarClipDistance(10000);
     cam->setAutoAspectRatio(true);
 
-    mCamNode = IntroScene->getRootSceneNode()->createChildSceneNode("nICam");
+    mCamNode = IS->getRootSceneNode()->createChildSceneNode("nICam");
     mCamNode->attachObject(cam);
 
 
@@ -365,6 +364,9 @@ void IG2App::setupIntroScene(void)
     mICamMgr = new OgreBites::CameraMan(mCamNode);
     addInputListener(mICamMgr);
     mICamMgr->setStyle(OgreBites::CS_ORBIT);
+
+    ///------INTRO SCENE--------------------------------------------------------
+    intro = new IntroScene(IS, mTextBox, mCamNode);
 }
 
 

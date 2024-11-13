@@ -57,8 +57,8 @@ protected:
 #pragma endregion
       
     Ogre::SceneManager* mSM = nullptr;
-    Ogre::SceneManager* IntroScene = nullptr;
-    Ogre::SceneManager* GameScene = nullptr;
+    Ogre::SceneManager* IS = nullptr;
+    Ogre::SceneManager* GS = nullptr;
 
 
     OgreBites::TrayManager* mTrayMgr = nullptr;
@@ -86,8 +86,8 @@ protected:
 
     int scene = 0;
     enum _scene {
-        Intro,
-        Game
+        _Intro,
+        _Game
     };
     
     IntroScene* intro = nullptr;
