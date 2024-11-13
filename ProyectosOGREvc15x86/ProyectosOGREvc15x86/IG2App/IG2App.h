@@ -31,6 +31,7 @@ protected:
     virtual void setup();
     virtual void shutdown();
     virtual void setupScene();
+    virtual void setupGameScene();
     
     
 #pragma region practica_0
@@ -51,14 +52,12 @@ protected:
     Ogre::SceneNode* mCuerpoNode = nullptr;
     Ogre::SceneNode* mOmbligoNode = nullptr;*/
 #pragma endregion
-
-    //Ogre::SceneNode* mCubeNode = nullptr;
-    //Ogre::SceneNode* mCube2Node = nullptr;
-
-    Frankestein* Objeto = nullptr;
-    Ogre::SceneNode* FrankNode = nullptr;
       
     Ogre::SceneManager* mSM = nullptr;
+    Ogre::SceneManager* IntroScene = nullptr;
+    Ogre::SceneManager* GameScene = nullptr;
+
+
     OgreBites::TrayManager* mTrayMgr = nullptr;
     OgreBites::TrayManager* mLevelOverlayMgr = nullptr;
     OgreBites::Label* mLabel;

@@ -16,10 +16,17 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         cout << "Position of the camera: " << mCamNode->getPosition() << endl;
         break; 
 
+    case SDLK_s:
+        cout << "change Scene" << endl;
+        //IntroScene->clearScene();
+        setupGameScene();
+
     case SDLK_l:
         lab->updateLightPos();
         break;
 
+
+        ///Input del heroe
     case SDLK_UP:
         lab->getHero()->setDir(Vector3(0, 0, 1));
         break;
@@ -63,6 +70,7 @@ void IG2App::setup(void){
 
     // Create the scene manager
     mSM = mRoot->createSceneManager();
+    GameScene = mRoot->createSceneManager();
 
     // Registra el scene manager en el RTSS
     mShaderGenerator->addSceneManager(mSM);
@@ -84,7 +92,7 @@ void IG2App::setup(void){
     addInputListener(this);
 
     // Invoca setupScene()
-    setupScene();
+    //setupScene();
 }
 
 void IG2App::setupScene(void){
@@ -273,6 +281,40 @@ void IG2App::setupScene(void){
     addInputListener(lab->getHero());
     for (auto v : lab->getVillains()) addInputListener(v);
 
+}
+
+void IG2App::setupGameScene()
+{
+    //------------------------------------------------------------------------
+    // Creating the camera
+
+    Camera* cam = mSM->createCamera("Cam");
+    cam->setNearClipDistance(1);
+    cam->setFarClipDistance(10000);
+    cam->setAutoAspectRatio(true);
+    //cam->setPolygonMode(Ogre::PM_WIREFRAME);
+
+    mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
+    mCamNode->attachObject(cam);
+
+
+    //se supone que así mira hacia abajo
+    mCamNode->lookAt(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_WORLD);
+
+    // and tell it to render into the main window
+    Viewport* vp = getRenderWindow()->addViewport(cam);
+    vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
+
+    mCamMgr = new OgreBites::CameraMan(mCamNode);
+    addInputListener(mCamMgr);
+    mCamMgr->setStyle(OgreBites::CS_ORBIT);
+
+    ///-------LABERINTO---------------------------------------------------------
+    lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
+
+    // 
+    addInputListener(lab->getHero());
+    for (auto v : lab->getVillains()) addInputListener(v);
 }
 
 
