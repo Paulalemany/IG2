@@ -4,6 +4,7 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
 {
 	sm = scene;
 	iTextBox = textB;
+    camN = camNode;
 
     // Entidades
     sinbadEnt = sm->createEntity("Sinbad.mesh");
@@ -13,16 +14,16 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     sinbadNode->setPosition(0, 25, 0); // On the floor!
     sinbadNode->setInitialState();
 
-
 	addGround();
 
 	configTextBox();
 
     configLight();
 
-    camN = camNode;
-
     configCamera();
+
+    // inicia el temporizador
+    timer = new Ogre::Timer();
 }
 
 void IntroScene::configTextBox()
@@ -63,5 +64,13 @@ void IntroScene::configCamera()
 {
     camN->setPosition(0, 20, 130);
     camN->lookAt(Ogre::Vector3(0, 20, 0), Ogre::Node::TS_WORLD);
+
+}
+
+void IntroScene::configAnims()
+{
+    animationStateDance = sinbadEnt->getAnimationState("Dance");
+    animationStateRunBase = sinbadEnt->getAnimationState("RunBase");
+    animationStateRunTop = sinbadEnt->getAnimationState("RunTop");
 
 }
