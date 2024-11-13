@@ -125,6 +125,7 @@
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="IG2Object.h" />
+    <ClInclude Include="IntroScene.h" />
     <ClInclude Include="Laberinto.h" />
     <ClInclude Include="Muro.h" />
     <ClInclude Include="Perla.h" />
@@ -137,10 +138,14 @@
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />
     <ClCompile Include="IG2Object.cpp" />
+    <ClCompile Include="IntroScene.cpp" />
     <ClCompile Include="Laberinto.cpp" />
     <ClCompile Include="Muro.cpp" />
     <ClCompile Include="Perla.cpp" />
     <ClCompile Include="Villano.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\media\IG2App\example.material" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

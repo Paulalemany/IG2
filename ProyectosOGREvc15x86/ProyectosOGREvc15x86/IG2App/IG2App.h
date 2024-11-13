@@ -15,6 +15,7 @@
 #include <string>
 
 #include "Laberinto.h"
+#include "IntroScene.h"
 #include "Heroe.h"
 #include "Frankestein.h"
 
@@ -72,6 +73,7 @@ protected:
     OgreBites::CameraMan* mCamMgr = nullptr;
 
     Laberinto* lab = nullptr;
+    IntroScene* intro = nullptr;
 };
 
 #endif
