@@ -71,6 +71,12 @@ protected:
     OgreBites::CameraMan* mCamMgr = nullptr;
 
     Laberinto* lab = nullptr;
+
+    int scene = 0;
+    enum _scene {
+        Intro,
+        Game
+    };
 };
 
 #endif

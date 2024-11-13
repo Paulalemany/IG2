@@ -5,45 +5,65 @@ using namespace std;
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
 
-    switch (evt.keysym.sym) {
+    //El input cambia dependiendo de la escena
+    if (scene == Intro) {
+        switch (evt.keysym.sym)
+        {
+        case SDLK_s:
+            cout << "change Scene" << endl;
+            //IntroScene->clearScene();
+            setupGameScene();
+            scene = Game;
+            break;
 
-        // ESC key finished the rendering...
-    case SDLK_ESCAPE:
-        getRoot()->queueEndRendering();
-        break;
-
-    case SDLK_k:
-        cout << "Position of the camera: " << mCamNode->getPosition() << endl;
-        break; 
-
-    case SDLK_s:
-        cout << "change Scene" << endl;
-        //IntroScene->clearScene();
-        setupGameScene();
-
-    case SDLK_l:
-        lab->updateLightPos();
-        break;
-
-
-        ///Input del heroe
-    case SDLK_UP:
-        lab->getHero()->setDir(Vector3(0, 0, 1));
-        break;
-
-    case SDLK_DOWN:
-        lab->getHero()->setDir(Vector3(0, 0, -1));
-        break;
-
-    case SDLK_RIGHT:
-        lab->getHero()->setDir(Vector3(-1, 0, 0));
-        break;
-
-    case SDLK_LEFT:
-
-        lab->getHero()->setDir(Vector3(1, 0, 0));
-        break;
+        default:
+            break;
+        }
     }
+    else if (scene == Game) {
+        switch (evt.keysym.sym) {
+
+        case SDLK_l:
+            lab->updateLightPos();
+            break;
+
+            ///Input del heroe
+        case SDLK_UP:
+            lab->getHero()->setDir(Vector3(0, 0, 1));
+            break;
+
+        case SDLK_DOWN:
+            lab->getHero()->setDir(Vector3(0, 0, -1));
+            break;
+
+        case SDLK_RIGHT:
+            lab->getHero()->setDir(Vector3(-1, 0, 0));
+            break;
+
+        case SDLK_LEFT:
+
+            lab->getHero()->setDir(Vector3(1, 0, 0));
+            break;
+        }
+    }
+    else {
+        switch (evt.keysym.sym) {
+
+            // ESC key finished the rendering...
+        case SDLK_ESCAPE:
+            getRoot()->queueEndRendering();
+            break;
+
+        case SDLK_k:
+            cout << "Position of the camera: " << mCamNode->getPosition() << endl;
+            break;
+
+        default:
+            break;
+
+        }
+    }
+    
    
   return true;
 }
