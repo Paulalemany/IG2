@@ -332,7 +332,7 @@ void IG2App::setupGameScene()
     mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
     ///-------LABERINTO---------------------------------------------------------
-    lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
+    lab = new Laberinto(mSM, "stage2.txt", mTextBox, mCamNode);
 
     // 
     addInputListener(lab->getHero());
