@@ -11,15 +11,16 @@ public:
 
 	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string textura, bool pasable);
 
-	void GetPerl();
+	bool pearl() override { return perla; }
+
 
 	//Pendiente
 	~Perla();
 
-	Entity* getPerla() override  { return perla; }
+	Entity* getPerla() override  { return _perla; }
 
 protected:
-	Ogre::Entity* perla;
+	Ogre::Entity* _perla;
 
 };
 

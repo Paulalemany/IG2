@@ -1,6 +1,6 @@
 #pragma once
-#include "IG2Object.h"
 
+#include "IG2Object.h"
 #include <OgreTimer.h>
 
 class Heroe;
@@ -18,7 +18,7 @@ public:
 
 	Vector3 calculateEuclideanDistance();
 
-	bool cruce();
+	bool cruce();	//Calcula si el villano está en un cruce y puede girar
 
 	// Cambia el estado actual del villano segun el tiempo transcurrido
 	void manageTime();

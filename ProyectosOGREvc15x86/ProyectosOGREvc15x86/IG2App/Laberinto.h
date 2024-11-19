@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Bloque.h"
+//#include "Bloque.h"
 #include "Muro.h"
 #include "Perla.h"
-#include "Villano.h"
+//#include "Villano.h"
 #include "Frankestein.h"
 
 #include <vector>

@@ -26,11 +26,11 @@ public:
 
 	virtual Entity* getPerla() = 0;
 
-	bool pearl() { return perla; }
+	virtual bool pearl() = 0;
 
 	void setPearl(bool p) { perla = p; }
 
-private:
+protected:
 	Vector3 pos;
 
 	bool traspasable;
