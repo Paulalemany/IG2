@@ -94,11 +94,13 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 
 	///-------SUELO-------------------------------------------------------------
 	double seg = gridSize / 10;
+	double ancho = NumFilas * box;
+	double alto = NumColumnas * box;
 	MeshManager::getSingleton().createPlane(
 		"plane",
 		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
 		Plane(Vector3::UNIT_Y, 0),                              // orientacion del plano mediante la normal
-		gridSize, gridSize,                                     // anchura
+		ancho, alto,                                     // anchura
 		seg, seg,                           // numero de segmentos 
 		true, 1,
 		10, 10,                                                 // [!] veces que se repite la textura
@@ -110,14 +112,15 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	SceneNode* planeNode = Sm->getRootSceneNode()->createChildSceneNode("planeNode");
 	planeNode->attachObject(planeEnt);
 
-	double poslab = gridSize / 2;	//Ponemos el suelo en la mitad del laberinto
+	double poslabx = (alto / 2);	//Ponemos el suelo en la mitad del laberinto
+	double poslabz = (ancho / 2);	//Ponemos el suelo en la mitad del laberinto
 	double offset = box / 2;
 
 	// para que cuadre con el laberinto:
-	planeNode->setPosition(Vector3(-poslab + offset, -offset, -poslab + offset));
+	planeNode->setPosition(Vector3(-poslabz + offset, -offset, -poslabx + offset));
 
 	///-----------CAMARA--------------------------------------------------------
-	camNode->setPosition(-poslab, 2500, -poslab);
+	camNode->setPosition(-poslabz, 2500, -poslabx);
 }
 
 void Laberinto::updateTextBox()
