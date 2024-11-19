@@ -2,7 +2,7 @@
 
 #include "OgreTimer.h"
 #include "IG2Object.h"
-#include <OgreTimer.h>
+//#include <OgreTimer.h>
 
 #include <vector>
 #include <iostream> 

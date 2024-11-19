@@ -120,7 +120,9 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	planeNode->setPosition(Vector3(-poslabz + offset, -offset, -poslabx + offset));
 
 	///-----------CAMARA--------------------------------------------------------
-	camNode->setPosition(-poslabz, 2500, -poslabx);
+	//Tiene que haber alguna manera de generalizar el alto de la camara
+	//Stage 1 -> 2500;
+	camNode->setPosition(-poslabz, 3000, -poslabx);
 }
 
 void Laberinto::updateTextBox()

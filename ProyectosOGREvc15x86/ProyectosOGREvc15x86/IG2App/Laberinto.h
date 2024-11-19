@@ -1,9 +1,7 @@
 #pragma once
 
-//#include "Bloque.h"
 #include "Muro.h"
 #include "Perla.h"
-//#include "Villano.h"
 #include "Frankestein.h"
 
 #include <vector>
@@ -14,7 +12,6 @@
 using namespace std;
 
 class Heroe;
-
 class Laberinto
 {
 public:
