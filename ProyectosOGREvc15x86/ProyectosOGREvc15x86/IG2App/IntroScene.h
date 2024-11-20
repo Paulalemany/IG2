@@ -2,6 +2,7 @@
 
 #include "OgreTimer.h"
 #include "IG2Object.h"
+//#include <OgreTimer.h>
 
 #include <vector>
 #include <iostream> 
@@ -30,7 +31,16 @@ public:
 	// configura la camara
 	void configCamera();
 
+	// configura las animaciones
+	void configAnims();
+
+	//addKeyFrame (nodeAnimationTrack, giro, posición, más parámetros…);
+	//void addKeyFrame(NodeAnimationTrack a, Ogre::Quaternion giro, Vector3 pos);
+
 protected:
+
+	// tiempo que dura la animacion
+	Ogre::Timer* timer = nullptr;
 
 	Ogre::SceneNode* camN = nullptr;
 
@@ -44,8 +54,18 @@ protected:
 	Ogre::Light* light = nullptr;
 	Ogre::SceneNode* mLightNode = nullptr;
 
-	//Enitidades
+	// entidades
 	Ogre::SceneNode* sinbadNode = nullptr;
 	Ogre::Entity* sinbadEnt;
+
+	// Animation states for Sinbad
+	Ogre::AnimationState* animationStateDance;
+	Ogre::AnimationState* animationStateRunBase;
+	Ogre::AnimationState* animationStateRunTop;
+
+	// Flags to control the animations
+	bool isDancing = false;
+	bool isRunning = false;
+
 };
 

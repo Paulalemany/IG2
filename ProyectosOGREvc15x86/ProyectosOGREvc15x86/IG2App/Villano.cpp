@@ -9,7 +9,7 @@ Villano::Villano()
 Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int tipo)
 	: IG2Object(initPos, node, sceneMng)
 {
-	if (tipo == NORMAL) {
+	if (tipo == NORMAL) {	//Si es el enemigo normal ponemos su malla
 		villano = mSM->createEntity("ogrehead.mesh");
 		node->attachObject(villano);
 		node->yaw(Ogre::Degree(180));
@@ -24,7 +24,7 @@ Villano::Villano(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, int t
 	followTime = 10000;
 	avoidTime = 7000;
 
-	proxDir = Vector3(1, 0, 0);
+	proxDir = Vector3(1, 0, 0);	//Inicializamos el movimiento hacia delante
 
 	//Las cuatro direcciones a comprobar en cada cruce
 	direcciones.push_back(Vector3(0, 0, -1));	//Arriba
@@ -64,7 +64,10 @@ void Villano::frameRendered(const Ogre::FrameEvent& evt)
 Vector3 Villano::calculateEuclideanDistance()
 {
 	// h: posicion del bloque destino del heroe
-	Vector3 h = heroe->getProxBlock()->getPosition();
+	Vector3 h;
+	if (heroe->getIsMoving())
+		h = heroe->getProxBlock()->getPosition();
+	else h = heroe->getPosition();
 
 	// a: saca dist entre a posicion siguiente optima
 	// pd: proxima direccion a seguir por ahora

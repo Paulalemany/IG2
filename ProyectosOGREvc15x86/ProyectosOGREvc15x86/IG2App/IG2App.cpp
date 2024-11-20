@@ -46,22 +46,21 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
             break;
         }
     }
-    else {
-        switch (evt.keysym.sym) {
+   
+    switch (evt.keysym.sym) {
 
-            // ESC key finished the rendering...
-        case SDLK_ESCAPE:
-            getRoot()->queueEndRendering();
-            break;
+        // ESC key finished the rendering...
+    case SDLK_ESCAPE:
+        getRoot()->queueEndRendering();
+        break;
 
-        case SDLK_k:
-            cout << "Position of the camera: " << mCamNode->getPosition() << endl;
-            break;
+    case SDLK_k:
+        cout << "Position of the camera: " << mCamNode->getPosition() << endl;
+        break;
 
-        default:
-            break;
+    default:
+        break;
 
-        }
     }
   return true;
 }
@@ -333,7 +332,7 @@ void IG2App::setupGameScene()
     mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
     ///-------LABERINTO---------------------------------------------------------
-    lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
+    lab = new Laberinto(mSM, "stage2.txt", mTextBox, mCamNode);
 
     // 
     addInputListener(lab->getHero());

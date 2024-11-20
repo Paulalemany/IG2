@@ -11,17 +11,19 @@ public:
 	void frameRendered(const Ogre::FrameEvent& evt) override;
 
 protected:
+
 	SceneNode* ObjectNode = nullptr;
 	Timer* timer;
 	const int time = 2500;
 	int dir = -1;
 
+	//Escalas de los objetos
 	double NodeScale = 0.025;
 	double PetScale = 0.1;
 	double ArmaScale = 0.05;
 	double PatScale = 0.005;
 
-	//Nos guardamos los nodos de las cosas que queremos que roten
+	///Nos guardamos los nodos de las cosas que queremos que roten
 	//Los nudos de las cabezas
 	SceneNode* Nnudo1;
 	SceneNode* Nnudo2;
