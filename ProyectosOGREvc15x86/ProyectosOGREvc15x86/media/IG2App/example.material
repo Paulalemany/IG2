@@ -50,7 +50,7 @@ material mat/MRAMOR{
     }
 }
 
-//Particulas
+//__________Particulas_____________________________
 material smoke{
 	technique{
 		pass{
@@ -60,6 +60,21 @@ material smoke{
 			diffuse vertexcolour
 			texture_unit{
 				texture smoke.png
+				text_address_mode clamp
+			}
+		}
+	}
+}
+
+material fire{
+	technique{
+		pass{
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			diffuse vertexcolour
+			texture_unit{
+				texture smokeColors.png
 				text_address_mode clamp
 			}
 		}
