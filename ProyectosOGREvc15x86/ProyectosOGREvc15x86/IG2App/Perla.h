@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Bloque.h"
+#include <OgreParticleSystem.h>
 
 
 class Perla : public Bloque
@@ -9,7 +10,7 @@ public:
 
 	Perla();
 
-	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string textura, bool pasable);
+	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string textura, bool pasable, string psName);
 
 	bool pearl() override { return perla; }
 
@@ -21,6 +22,9 @@ public:
 
 protected:
 	Ogre::Entity* _perla;
+
+	//HUMO PARA EL LABERINTO
+	ParticleSystem* pSys = nullptr;
 
 };
 
