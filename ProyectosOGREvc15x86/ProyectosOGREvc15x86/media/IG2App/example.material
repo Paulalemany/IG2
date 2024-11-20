@@ -49,3 +49,19 @@ material mat/MRAMOR{
 		}
     }
 }
+
+//Particulas
+material smoke{
+	technique{
+		pass{
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			diffuse vertexcolour
+			texture_unit{
+				texture smoke.png
+				text_address_mode clamp
+			}
+		}
+	}
+}

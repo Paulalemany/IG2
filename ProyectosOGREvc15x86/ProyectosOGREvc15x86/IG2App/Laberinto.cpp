@@ -37,7 +37,8 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'o') 
 			{
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				string name = "par" + to_string(node);
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true, name));
 				numPerlas++;
 			}
 			else if (fila[j] == 'h') 
@@ -47,7 +48,8 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
 
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				string name = "par" + to_string(node);
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true, name));
 				numPerlas++;
 			}
 			else if (fila[j] == 'v') 
@@ -57,7 +59,8 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
 
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				string name = "par" + to_string(node);
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true, name));
 				numPerlas++;
 			}
 			else if (fila[j] == 'V') 
@@ -68,16 +71,13 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
 
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				string name = "par" + to_string(node);
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true, name));
 				numPerlas++;
 			}
 			node++;
 		}
 	}
-
-	//Si se quiere ver bien a fran descomentar esto
-	/*nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-	villanos.push_back(new Frankestein(Vector3(0,0,0), nodes[node], Sm, 1));*/
 
 
 	updateTextBox();
@@ -118,6 +118,12 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 
 	///-----------CAMARA--------------------------------------------------------
 	camNode->setPosition(-poslab, 2500, -poslab);
+
+	///-----------SISTEMA DE PARTICULAS-----------------------------------------
+	/*ParticleSystem* pSys = Sm->createParticleSystem("psSmoke", "smokeParticleSystem");
+	SceneNode* mPSNode = Sm->getRootSceneNode()->createChildSceneNode();
+	pSys->setEmitting(true);
+	mPSNode->attachObject(pSys);*/
 }
 
 void Laberinto::updateTextBox()
