@@ -73,6 +73,7 @@ protected:
 
     /// Camaras por escenas
     Viewport* vp = nullptr;
+    Camera* cam = nullptr;
 
     //Smn
     Ogre::SceneNode* mCamNode = nullptr;

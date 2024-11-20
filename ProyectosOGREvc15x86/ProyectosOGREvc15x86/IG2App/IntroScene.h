@@ -9,14 +9,31 @@
 #include <fstream>
 #include <OgreTrays.h>
 
+#include "IG2ApplicationContext.h"
+#include <OgreSceneManager.h>
+#include <OgreSceneNode.h>
+#include <OgreCameraMan.h>
+#include <OgreEntity.h>
+#include <OgreInput.h>
+#include <SDL_keycode.h>
+#include <OgreMeshManager.h>
+#include <OgreEntity.h>
+#include <OgreSkeletonInstance.h>
+#include <OgreBone.h>
+#include <OgreKeyFrame.h>
+#include <sstream>
+
+
 using namespace std;
 using namespace Ogre;
 
-class IntroScene
+class IntroScene : public OgreBites::InputListener
 {
 public:
 	// Constructora
 	IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogre::SceneNode* camNode);
+
+	void frameRendered(const Ogre::FrameEvent& evt) override;
 
 
 	// configura la caja de informacion
@@ -41,6 +58,9 @@ protected:
 
 	// tiempo que dura la animacion
 	Ogre::Timer* timer = nullptr;
+	int danceTime = 4000;
+	int movingTime = 5000;
+
 
 	Ogre::SceneNode* camN = nullptr;
 
@@ -57,15 +77,28 @@ protected:
 	// entidades
 	Ogre::SceneNode* sinbadNode = nullptr;
 	Ogre::Entity* sinbadEnt;
+	Ogre::Entity* swordLeftEnt;
+	Ogre::Entity* swordRightEnt;
+
+	// Flags to control the attached swords
+	bool attachedLeftSword = false;
+	bool attachedRightSword = false;
 
 	// Animation states for Sinbad
 	Ogre::AnimationState* animationStateDance;
 	Ogre::AnimationState* animationStateRunBase;
 	Ogre::AnimationState* animationStateRunTop;
 
+	// Animation state
+	Ogre::AnimationState* animationState;
+
+	// Animation
+	Ogre::Animation* animation = nullptr;
+
 	// Flags to control the animations
 	bool isDancing = false;
 	bool isRunning = false;
+	bool isMoving = false;
 
 };
 

@@ -125,6 +125,15 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 	camNode->setPosition(-poslabz, 3000, -poslabx);
 }
 
+Laberinto::~Laberinto()
+{
+	bloques.clear();
+	villanos.clear();
+	nodes.clear();
+
+	delete sinbad;
+}
+
 void Laberinto::updateTextBox()
 {
 	lTextBox->clearText();

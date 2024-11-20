@@ -19,6 +19,8 @@ public:
 	// Constructora
 	Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::TextBox* textB, SceneNode* camNode);
 
+	~Laberinto();
+
 	// actualiza datos del textBox
 	void updateTextBox();
 

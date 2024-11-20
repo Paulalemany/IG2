@@ -44,6 +44,14 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
 
             lab->getHero()->setDir(Vector3(1, 0, 0));
             break;
+
+        case SDLK_s:
+            cout << "__CHANGE SCENE__" << endl;
+            mSM->clearScene();
+            setupIntroScene();
+            scene = _Intro;
+            break;
+
         }
     }
    
@@ -118,7 +126,7 @@ void IG2App::setupScene(void){
     //------------------------------------------------------------------------
     // Creating the camera
     
-    Camera* cam = mSM->createCamera("Cam");
+    cam = mSM->createCamera("Cam");
     cam->setNearClipDistance(1);
     cam->setFarClipDistance(10000);
     cam->setAutoAspectRatio(true);
@@ -309,7 +317,7 @@ void IG2App::setupGameScene()
     //------------------------------------------------------------------------
     // Creating the camera
 
-    Camera* cam = mSM->createCamera("Cam");
+    cam = mSM->createCamera("Cam");
     cam->setNearClipDistance(1);
     cam->setFarClipDistance(10000);
     cam->setAutoAspectRatio(true);
@@ -342,10 +350,12 @@ void IG2App::setupGameScene()
 void IG2App::setupIntroScene(void)
 {
     //Creating de Camera
-    Camera* cam = IS->createCamera("ICam");
-    cam->setNearClipDistance(1);
-    cam->setFarClipDistance(10000);
-    cam->setAutoAspectRatio(true);
+    if (!IS->hasCamera("ICam")) {
+        cam = IS->createCamera("ICam");
+        cam->setNearClipDistance(1);
+        cam->setFarClipDistance(10000);
+        cam->setAutoAspectRatio(true);
+    }
 
     mCamNode = IS->getRootSceneNode()->createChildSceneNode("nICam");
     mCamNode->attachObject(cam);
@@ -355,6 +365,7 @@ void IG2App::setupIntroScene(void)
     mCamNode->lookAt(Ogre::Vector3(1, 0, 0), Ogre::Node::TS_WORLD);
 
     // and tell it to render into the main window
+    getRenderWindow()->removeViewport(0);   //Elimina el viewport de la escena anterior
     vp = getRenderWindow()->addViewport(cam);
     vp->setBackgroundColour(Ogre::ColourValue(0.72, 0.20, 0.42));
 
@@ -364,6 +375,8 @@ void IG2App::setupIntroScene(void)
 
     ///------INTRO SCENE--------------------------------------------------------
     intro = new IntroScene(IS, mTextBox, mCamNode);
+
+    addInputListener(intro);
 }
 
 
