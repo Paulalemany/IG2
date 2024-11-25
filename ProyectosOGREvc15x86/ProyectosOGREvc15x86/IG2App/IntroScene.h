@@ -106,7 +106,7 @@ protected:
 	//Fuego
 	std::vector<ParticleSystem*> fueguitos;
 	std::vector<SceneNode*> nodes;
-	Ogre::Vector3 pos {-120, 15, -100};
+	Ogre::Vector3 pos {-120, 15, -100};	//POsicion del primer fuego que se genera
 
 	//humillo
 	ParticleSystem* humillo = nullptr;
