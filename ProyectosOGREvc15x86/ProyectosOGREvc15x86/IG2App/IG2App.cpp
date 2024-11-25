@@ -118,7 +118,7 @@ void IG2App::setup(void){
     addInputListener(this);
 
     // Invoca setupScene()
-    setupIntroScene();
+    setupIntroScene();    
 }
 
 void IG2App::setupScene(void){

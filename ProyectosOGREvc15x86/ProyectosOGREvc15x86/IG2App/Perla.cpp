@@ -16,10 +16,10 @@ Perla::Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string te
 	this->setEntity(esfera);
 
 	//------ SISTEMA DE PARTICULAS ----------------------------------------------------------
-	cout << psName << endl;
+	//cout << psName << endl;
 	pSys = sceneMng->createParticleSystem(psName, "smokeParticleSystem");
-	SceneNode* mPSNode = node->createChildSceneNode();
-	pSys->setEmitting(true);
+	SceneNode* mPSNode = node->createChildSceneNode();	//Nodo del sistema de particulas
+	pSys->setEmitting(true);	//Hace que se emita el sistema de particulas
 	mPSNode->attachObject(pSys);
 }
 

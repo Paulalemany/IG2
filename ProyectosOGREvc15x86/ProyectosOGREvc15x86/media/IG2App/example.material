@@ -74,7 +74,7 @@ material fire{
 			depth_write off
 			diffuse vertexcolour
 			texture_unit{
-				texture smokeColors.png
+				texture smoke.png
 				text_address_mode clamp
 			}
 		}

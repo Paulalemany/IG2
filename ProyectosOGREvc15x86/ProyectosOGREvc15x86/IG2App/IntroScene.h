@@ -3,6 +3,7 @@
 #include "OgreTimer.h"
 #include "IG2Object.h"
 //#include <OgreTimer.h>
+#include <OgreParticleSystem.h>
 
 #include <vector>
 #include <iostream> 
@@ -99,6 +100,14 @@ protected:
 	bool isDancing = false;
 	bool isRunning = false;
 	bool isMoving = false;
+
+
+	///Sistema de particulas
+	//Fuego
+	ParticleSystem* fuego = nullptr;
+
+	//humillo
+	ParticleSystem* humillo = nullptr;
 
 };
 

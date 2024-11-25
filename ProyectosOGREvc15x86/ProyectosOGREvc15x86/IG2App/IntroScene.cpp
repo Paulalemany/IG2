@@ -25,12 +25,20 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     configLight();
 
     configCamera();
-
     
     configAnims();
 
     // inicia el temporizador
     timer = new Ogre::Timer();
+
+
+    ///-----------SISTEMA DE PARTICULAS--------------------
+    fuego = sm->createParticleSystem("fueguito", "fireParticleSystem");
+    SceneNode* fuegoNode = sm->getRootSceneNode()->createChildSceneNode();
+    fuego->setEmitting(true);
+    fuegoNode->attachObject(fuego);
+
+    //fuegoNode->setPosition({ 100,0,0 });
 }
 
 void IntroScene::configTextBox()
