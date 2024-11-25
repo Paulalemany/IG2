@@ -33,12 +33,23 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
 
 
     ///-----------SISTEMA DE PARTICULAS--------------------
-    fuego = sm->createParticleSystem("fueguito", "fireParticleSystem");
-    SceneNode* fuegoNode = sm->getRootSceneNode()->createChildSceneNode();
-    fuego->setEmitting(true);
-    fuegoNode->attachObject(fuego);
+    
+    //Fuegos de fondo
+    for (int i = 0; i < 25; i++) {
 
-    //fuegoNode->setPosition({ 100,0,0 });
+        nodes.push_back(sm->getRootSceneNode()->createChildSceneNode());
+
+        //Nombre para el sistema de particulas
+        string name = "fuego" + to_string(i);
+        fueguitos.push_back(
+            sm->createParticleSystem(name, "fireParticleSystem"));
+        fueguitos[i]->setEmitting(true);
+
+        //Necesito que esten atachados a un nodo
+        nodes[i]->attachObject(fueguitos[i]);
+        nodes[i]->setPosition(pos);
+        pos.x += 10;
+    }
 }
 
 void IntroScene::configTextBox()

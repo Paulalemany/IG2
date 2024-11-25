@@ -104,7 +104,9 @@ protected:
 
 	///Sistema de particulas
 	//Fuego
-	ParticleSystem* fuego = nullptr;
+	std::vector<ParticleSystem*> fueguitos;
+	std::vector<SceneNode*> nodes;
+	Ogre::Vector3 pos {-120, 15, -100};
 
 	//humillo
 	ParticleSystem* humillo = nullptr;
