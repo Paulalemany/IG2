@@ -105,19 +105,21 @@ material cieloSpace{
 			scene_blend alpha_blend
 			depth_write off
 			diffuse vertexcolour
+			
 
 			//Textura principal
 			texture_unit{	
 				texture spacesky.jpg
 				colour_op modulate
-				scroll_anim <1 (1)> <0 (1)>
+				scroll_anim 0.1 0.1
 			}
 
-			//Textura secundaria
-			texture_unit{s
+			Textura secundaria
+			texture_unit{
 				texture flare.png
 				rotate 1.57 
 				colour_op add
+				scroll_anim 0.05 0.05
 			}
 		}
 	}
