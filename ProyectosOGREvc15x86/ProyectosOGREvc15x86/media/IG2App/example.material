@@ -41,6 +41,7 @@ material mat/MRAMOR{
     technique 
 	{ 
 		pass {  
+			
 			texture_unit 
 			{
 				texture MRAMOR6X6.jpg
@@ -109,11 +110,13 @@ material cieloSpace{
 			texture_unit{	
 				texture spacesky.jpg
 				colour_op modulate
+				scroll_anim <1 (1)> <0 (1)>
 			}
 
 			//Textura secundaria
-			texture_unit{
+			texture_unit{s
 				texture flare.png
+				rotate 1.57 
 				colour_op add
 			}
 		}
