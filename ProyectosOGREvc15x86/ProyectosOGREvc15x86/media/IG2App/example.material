@@ -104,9 +104,17 @@ material cieloSpace{
 			scene_blend alpha_blend
 			depth_write off
 			diffuse vertexcolour
-			texture_unit{
+
+			//Textura principal
+			texture_unit{	
 				texture spacesky.jpg
-				text_address_mode clamp
+				colour_op modulate
+			}
+
+			//Textura secundaria
+			texture_unit{
+				texture flare.png
+				colour_op add
 			}
 		}
 	}
