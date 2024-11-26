@@ -95,3 +95,19 @@ material ogreSmoke{
 		}
 	}
 }
+
+//__________CIELO_____________________________
+material cieloSpace{
+	technique{
+		pass{
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			diffuse vertexcolour
+			texture_unit{
+				texture spacesky.jpg
+				text_address_mode clamp
+			}
+		}
+	}
+}
