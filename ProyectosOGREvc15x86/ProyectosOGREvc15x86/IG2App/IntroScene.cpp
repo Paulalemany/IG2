@@ -82,6 +82,8 @@ void IntroScene::configLight()
 
 void IntroScene::addGround()
 {
+
+    //El suelo va a ser un espejo
     MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
         Plane(Vector3::UNIT_Y, 0),
         1500, 1500, 200, 200, true, 1, 5, 5,
@@ -92,6 +94,34 @@ void IntroScene::addGround()
     ent->setMaterialName("mat/MRAMOR");
     SceneNode* floor = sm->getRootSceneNode()->createChildSceneNode();
     floor->attachObject(ent);
+
+
+    ///Reflejo del suelo
+    //Anadimos una camara para que haga el reflejo
+    Camera* camRef = sm->createCamera("refCam");
+
+    //Frustrum igual al de la camara de la escena
+    camRef->setNearClipDistance(1);
+    camRef->setFarClipDistance(10000);
+
+    //La adjuntamos al nodo de la camara de la escena
+    camN->attachObject(camRef);
+
+    //Este sera el reflejo
+    MovablePlane* mpRef = new MovablePlane(Vector3::UNIT_Y, 0); //El vector debe ser igual al del plano
+    floor->attachObject(mpRef);
+
+    //Configuramos la camara para que refleje
+    camRef->enableReflection(mpRef);
+    camRef->enableCustomNearClipPlane(mpRef);
+
+    ///Trabajamos la textura
+    TexturePtr rttRef = TextureManager::getSingleton().createManual("rttReflejo", 
+        ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, TEX_TYPE_2D, 
+        (Real)getRenderWindow()->getViewport(0)->getActualWidth(),
+        (Real)camRef->getViewport()->getActualHeight(),
+        0, PF_R8G8B8, TU_RENDERTARGET);
+
 }
 
 void IntroScene::configCamera()
