@@ -4,10 +4,6 @@
 #include "IG2Object.h"
 #include <OgreParticleSystem.h>
 
-#include "OgreTextureManager.h"
-#include "OgreRenderWindow.h"
-#include "OgreMovablePlane.h"
-
 #include <vector>
 #include <iostream> 
 #include <fstream>
@@ -31,7 +27,7 @@
 using namespace std;
 using namespace Ogre;
 
-class IntroScene : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener
+class IntroScene : OgreBites::InputListener
 {
 public:
 	// Constructora
