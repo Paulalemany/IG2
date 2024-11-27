@@ -60,7 +60,7 @@ protected:
 
 	// tiempo que dura la animacion
 	Ogre::Timer* timer = nullptr;
-	int danceTime = 4000;
+	int danceTime = 2500; // en milisecs
 	int movingTime = 5000;
 
 

@@ -105,61 +105,110 @@ void IntroScene::configAnims()
 
     // Variables
     int movementLength = 50;
-    Ogre::Real duration = 16.0;
+    Ogre::Real duration = 21.0;
     Vector3 keyframePos(0, 0, 0);
-    Ogre::Real durStep = duration / 4.0;
+    Ogre::Real durStep = duration / 10.0;
+    Quaternion keyframeRot(0, 0, 0, 0);
 
-
-    animation = sm->createAnimation("sinbadWalking", duration);
+    animation = sm->createAnimation("sinbadMoving", duration);
     animation->setInterpolationMode(Ogre::Animation::IM_SPLINE);
     NodeAnimationTrack* track = animation->createNodeTrack(0);
     track->setAssociatedNode(sinbadNode);
 
     // Keyframes
     TransformKeyFrame* kf;
-    // Keyframe 0: Init state
+
+    // Keyframe 0 (Init state)
     kf = track->createNodeKeyFrame(durStep * 0);
+    keyframeRot = Quaternion(Degree(0), Vector3(0, 1, 0));
+
+    kf->setRotation(keyframeRot);
     kf->setTranslate(keyframePos);
-    // Keyframe 1: Go to the right
+
+    // Keyframe 1 GIRA DCH
     kf = track->createNodeKeyFrame(durStep * 1);
-    keyframePos += Ogre::Vector3::UNIT_X * movementLength;
+    keyframeRot = Quaternion(Degree(90), Vector3(0, 1, 0));
+
+    kf->setRotation(keyframeRot);
     kf->setTranslate(keyframePos);
-    // Keyframe 2: Go to the initial position
+
+    // Keyframe 2: Go to the right
     kf = track->createNodeKeyFrame(durStep * 2);
-    keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
-    kf->setTranslate(keyframePos);
-    // Keyframe 3: Go to the left
-    kf = track->createNodeKeyFrame(durStep * 3);
-    keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
-    kf->setTranslate(keyframePos);
-    // Keyframe 4: Go to the right (initital position)
-    kf = track->createNodeKeyFrame(durStep * 4);
     keyframePos += Ogre::Vector3::UNIT_X * movementLength;
+    keyframeRot = Quaternion(Degree(90), Vector3(0, 1, 0));
+
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
+
+    // Keyframe 3 Stop
+    kf = track->createNodeKeyFrame(durStep * 3);
+    keyframeRot = Quaternion(Degree(90), Vector3(0, 1, 0));
+
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
+
+    //  Keyframe 4 GIRA IZQ
+    kf = track->createNodeKeyFrame(durStep * 4);
+    keyframeRot = Quaternion(Degree(-90), Vector3(0, 1, 0));
+
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
+
+    // Keyframe 5: Vuelve
+    kf = track->createNodeKeyFrame(durStep * 5);
+    keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
+
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
+
+    // Keyframe 6: Sigue volviendo
+    kf = track->createNodeKeyFrame(durStep * 6);
+    keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
+
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
+
+    //  Keyframe 7 Stop
+    kf = track->createNodeKeyFrame(durStep * 7);
+
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
+
+    //  Keyframe 8 GIRA DCH
+    kf = track->createNodeKeyFrame(durStep * 8);
+    keyframeRot = Quaternion(Degree(90), Vector3(0, 1, 0));
+
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
+
+    // Keyframe 9: Go to the right
+    kf = track->createNodeKeyFrame(durStep * 9);
+    keyframePos += Ogre::Vector3::UNIT_X * movementLength;
+
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
+
+    //  Keyframe 10 Initial pos
+    kf = track->createNodeKeyFrame(durStep * 10);
+    keyframeRot = Quaternion(Degree(0), Vector3(0, 1, 0));
+
+    kf->setRotation(keyframeRot);
     kf->setTranslate(keyframePos);
 
     // Our defined animation
-    animationState = sm->createAnimationState("sinbadWalking");
+    animationState = sm->createAnimationState("sinbadMoving");
     animationState->setLoop(true);
     animationState->setEnabled(true);
 
-    isDancing = true;
-    isMoving = false;
+    // aparte
+    animationStateRunTop->setEnabled(false);
+    animationStateRunBase->setEnabled(false);
+
+    animationStateDance->setEnabled(true); // empieza bailando
+
+    isDancing = false;
+    isMoving = true; // movimiento
     isRunning = false;
-
-    animationStateDance->setEnabled(true);
-
-    //// pone a bailar y le quita las espadas
-    //if (!isDancing) {
-    //    isRunning = false;
-    //    isDancing = true;
-    //    animationStateDance->setEnabled(true);
-    //    animationStateRunTop->setEnabled(false);
-    //    animationStateRunBase->setEnabled(false);
-
-    //    // le quita las espadas si las tiene
-    //    if (attachedLeftSword) sinbadEnt->detachObjectFromBone(swordLeftEnt);
-    //    if (attachedRightSword) sinbadEnt->detachObjectFromBone(swordRightEnt);
-    //}
 
 }
 
@@ -171,39 +220,26 @@ void IntroScene::stop()
 void IntroScene::frameRendered(const Ogre::FrameEvent& evt)
 {
     if (_stop) return;
-    // cuando lleguemos al danceTime pasamos a correr
-    if (timer->getMilliseconds() >= danceTime && isDancing) {
-        // pone a correr y le da las espadas
-        if (!isRunning) {
-            isDancing = false;
-            isRunning = true;
-            //isMoving = true;
-            animationStateDance->setEnabled(false);
-            animationStateRunTop->setEnabled(true);
-            animationStateRunBase->setEnabled(true);
 
-            //espadas (cuando llegue a la derecha)  // TO DO
-            //sinbadEnt->attachObjectToBone("Hand.L", swordLeftEnt);
-            //sinbadEnt->attachObjectToBone("Hand.R", swordRightEnt);
-        }
+    // cuando lleguemos al danceTime pasamos a correr
+    if (timer->getMilliseconds() >= danceTime && 
+        animationStateDance->getEnabled()) 
+    {
+        animationStateDance->setEnabled(false); // deja de bailar
+
+        animationStateRunTop->setEnabled(true);
+        animationStateRunBase->setEnabled(true);
+
+        ////espadas (cuando llegue a la derecha)  // TO DO
+        ////sinbadEnt->attachObjectToBone("Hand.L", swordLeftEnt);
+        ////sinbadEnt->attachObjectToBone("Hand.R", swordRightEnt);
+        
         timer->reset();
     }
-    else if (timer->getMilliseconds() >= movingTime && isRunning) {
 
-    }
-
-    // duda: como hacemos que se mueva hacia los lados y se reproduzca la animacion de correr a la vez?
-    // tambien hay que girar a sinbad hacia la direccion a la que mire
-    if (isMoving) {
-        animationState->addTime(evt.timeSinceLastFrame); 
-    }
-    else if (isRunning) {
-        animationStateRunBase->addTime(evt.timeSinceLastFrame);
-        animationStateRunTop->addTime(evt.timeSinceLastFrame);
-    }
-    else if (isDancing) 
-    {
-        animationStateDance->addTime(evt.timeSinceLastFrame);
-    }
+    animationState->addTime(evt.timeSinceLastFrame);
+    animationStateRunBase->addTime(evt.timeSinceLastFrame);
+    animationStateRunTop->addTime(evt.timeSinceLastFrame);
+    animationStateDance->addTime(evt.timeSinceLastFrame);
 
 }
