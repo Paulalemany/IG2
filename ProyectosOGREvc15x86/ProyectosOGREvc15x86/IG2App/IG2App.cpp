@@ -374,6 +374,9 @@ void IG2App::setupIntroScene(void)
     addInputListener(mICamMgr);
     mICamMgr->setStyle(OgreBites::CS_ORBIT);
 
+    ///------ESPEJO-------------------------------------------------------------
+
+
     ///------INTRO SCENE--------------------------------------------------------
     intro = new IntroScene(IS, mTextBox, mCamNode);
 
