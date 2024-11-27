@@ -22,7 +22,6 @@
 #include "OgreSubEntity.h"
 #include "OgreTechnique.h"
 #include "OgreRenderTargetListener.h"
-#include "OgreMovablePlane.h"
 
 #include "Laberinto.h"
 #include "IntroScene.h"
@@ -46,6 +45,7 @@ protected:
 
     virtual void setupGameScene();
     virtual void setupIntroScene();
+    void addMirror();
     
     
 #pragma region practica_0
