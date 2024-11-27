@@ -14,6 +14,8 @@
 #include <iostream>
 #include <string>
 
+#include "OgreRenderTargetListener.h"
+
 #include "Laberinto.h"
 #include "IntroScene.h"
 #include "Heroe.h"
@@ -21,7 +23,8 @@
 
 class MovablePlane;
 
-class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener{
+class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener
+    , Viewport::Listener, RenderTargetListener{
 
 public:
     explicit IG2App() : IG2ApplicationContext("IG2App") { };  // new -> setup()
