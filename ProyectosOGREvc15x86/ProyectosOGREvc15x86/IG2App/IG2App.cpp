@@ -376,7 +376,7 @@ void IG2App::setupIntroScene(void)
     mICamMgr->setStyle(OgreBites::CS_ORBIT);
 
     ///------ESPEJO-------------------------------------------------------------
-
+    addMirror();
 
     ///------INTRO SCENE--------------------------------------------------------
     intro = new IntroScene(IS, mTextBox, mCamNode);
@@ -387,16 +387,16 @@ void IG2App::setupIntroScene(void)
 void IG2App::addMirror()
 {
     //El suelo va a ser un espejo
-    MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+    MeshManager::getSingleton().createPlane("mirror", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
         Plane(Vector3::UNIT_Y, 0),
         1500, 1500, 200, 200, true, 1, 5, 5,
         Vector3::UNIT_Z);
 
     // Creating the plane
-    Entity* ent = IS->createEntity("exampleFloor", "floor");
+    Entity* ent = IS->createEntity("examplemirror", "mirror");
     ent->setMaterialName("mat/MRAMOR");
-    SceneNode* floor = IS->getRootSceneNode()->createChildSceneNode();
-    floor->attachObject(ent);
+    SceneNode* mirror = IS->getRootSceneNode()->createChildSceneNode();
+    mirror->attachObject(ent);
 
 
     ///Reflejo del suelo
@@ -412,7 +412,7 @@ void IG2App::addMirror()
 
     //Este sera el reflejo
     Ogre::MovablePlane* mpRef = new Ogre::MovablePlane(Vector3::UNIT_Y, 0); //El vector debe ser igual al del plano
-    floor->attachObject(mpRef);
+    mirror->attachObject(mpRef);
 
     //Configuramos la camara para que refleje
     camRef->enableReflection(mpRef);
