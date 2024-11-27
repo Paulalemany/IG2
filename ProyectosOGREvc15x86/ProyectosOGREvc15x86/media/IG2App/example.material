@@ -114,12 +114,49 @@ material cieloSpace{
 				scroll_anim 0.1 0.1
 			}
 
-			Textura secundaria
+			//Textura secundaria
 			texture_unit{
 				texture flare.png
 				rotate 1.57 
 				colour_op add
 				scroll_anim 0.05 0.05
+			}
+		}
+	}
+}
+
+
+//__________SHADERS_____________________________
+
+vertex_program zoomVS glsl{
+	source zoomVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+}
+
+fragment_program zoomFS glsl{
+	source zoomFS.glsl
+	default_params{
+		param_named texturaL	int 0
+		param_named texturaM	int 1
+		param_named BF			float 0.5
+		param_named intLuzAmb	float 1.0
+	}
+}
+
+material cieloZoom{
+	technique{
+		pass{	
+			vertex_program_ref zoomVS{}
+			fragment_program_ref zoomFS{}
+
+			texture_unit{
+				texture spacesky.jpg
+			}
+
+			texture_unit{
+				texture flare.png
 			}
 		}
 	}
