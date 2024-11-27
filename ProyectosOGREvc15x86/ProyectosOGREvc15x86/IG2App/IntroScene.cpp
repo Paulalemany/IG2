@@ -51,13 +51,6 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
         pos.x += 10;
     }
 
-    ///----------- CIELO --------------------
-
-    Ogre::Plane cielo;
-    cielo.d = 1000;
-    cielo.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
-    sm->setSkyPlane(true, cielo, "cieloSpace", 1500, 50, true, 1.5, 50, 50);
-
 }
 
 void IntroScene::configTextBox()

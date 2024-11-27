@@ -119,6 +119,13 @@ void IG2App::setup(void){
     // Anyade el objeto en el Listener
     addInputListener(this);
 
+    ///----------- CIELO --------------------
+
+    Ogre::Plane cielo;
+    cielo.d = 1000;
+    cielo.normal = Ogre::Vector3::NEGATIVE_UNIT_Y;
+    IS->setSkyPlane(true, cielo, "cieloSpace", 1500, 50, true, 1.5, 50, 50);
+
     // Invoca setupScene()
     setupIntroScene();    
 }
@@ -309,9 +316,6 @@ void IG2App::setupScene(void){
         addInputListener(lab->getHero());
         for (auto v : lab->getVillains()) addInputListener(v);
     }
-
-    
-   
 }
 
 void IG2App::setupGameScene()
@@ -342,11 +346,16 @@ void IG2App::setupGameScene()
     mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
     ///-------LABERINTO---------------------------------------------------------
-    lab = new Laberinto(mSM, "stage2.txt", mTextBox, mCamNode);
+    lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
 
     // 
     addInputListener(lab->getHero());
     for (auto v : lab->getVillains()) addInputListener(v);
+
+    Ogre::Plane cielo;
+    cielo.d = 1000;
+    cielo.normal = Ogre::Vector3::UNIT_Y;
+    mSM->setSkyPlane(true, cielo, "cieloSpace", 250, 50, true, 1.5, 50, 50);
 }
 
 void IG2App::setupIntroScene(void)

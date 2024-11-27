@@ -2,7 +2,7 @@ particle_system smokeParticleSystem{
     billboard_type point
     particle_width 35
     particle_height 35
-    quota 200
+    quota 500
     material smoke
     emitter Point{
         direction 0 1 0
