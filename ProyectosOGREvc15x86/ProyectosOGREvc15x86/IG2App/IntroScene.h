@@ -27,7 +27,7 @@
 using namespace std;
 using namespace Ogre;
 
-class IntroScene : OgreBites::InputListener
+class IntroScene : public OgreBites::InputListener
 {
 public:
 	// Constructora
