@@ -51,6 +51,8 @@ public:
 	// configura las animaciones
 	void configAnims();
 
+	void stop();
+
 	//addKeyFrame (nodeAnimationTrack, giro, posición, más parámetros…);
 	//void addKeyFrame(NodeAnimationTrack a, Ogre::Quaternion giro, Vector3 pos);
 
@@ -99,6 +101,7 @@ protected:
 	bool isDancing = false;
 	bool isRunning = false;
 	bool isMoving = false;
+	bool _stop = false;
 
 
 	///Sistema de particulas

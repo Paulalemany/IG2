@@ -170,8 +170,14 @@ void IntroScene::configAnims()
 
 }
 
+void IntroScene::stop()
+{
+    _stop = true;
+}
+
 void IntroScene::frameRendered(const Ogre::FrameEvent& evt)
 {
+    if (_stop) return;
     // cuando lleguemos al danceTime pasamos a correr
     if (timer->getMilliseconds() >= danceTime && isDancing) {
         // pone a correr y le da las espadas

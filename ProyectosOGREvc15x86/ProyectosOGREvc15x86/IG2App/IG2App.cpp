@@ -11,6 +11,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
         {
         case SDLK_s:
             cout << "__CHANGE SCENE__" << endl;
+            intro->stop();
             IS->clearScene();
             setupGameScene();
             scene = _Game;

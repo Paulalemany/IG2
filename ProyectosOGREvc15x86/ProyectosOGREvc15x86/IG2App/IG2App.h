@@ -15,6 +15,14 @@
 #include <string>
 
 #include "OgreRenderTargetListener.h"
+#include "OgreTextureManager.h"
+#include "OgreRenderWindow.h"
+#include "OgreHardwarePixelBuffer.h"
+#include "OgreRenderTexture.h"
+#include "OgreSubEntity.h"
+#include "OgreTechnique.h"
+#include "OgreRenderTargetListener.h"
+#include "OgreMovablePlane.h"
 
 #include "Laberinto.h"
 #include "IntroScene.h"
