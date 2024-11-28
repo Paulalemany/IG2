@@ -356,7 +356,7 @@ void IG2App::setupGameScene()
     cielo.d = 1000;
     cielo.normal = Ogre::Vector3::UNIT_Y;
     //Estaba en 250
-    mSM->setSkyPlane(true, cielo, "shaderOrange", 250, 50, true, 1.5, 50, 50);
+    mSM->setSkyPlane(true, cielo, "cieloZoom", 250, 50, true, 1.5, 50, 50);
 }
 
 void IG2App::setupIntroScene(void)

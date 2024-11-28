@@ -138,10 +138,10 @@ vertex_program zoomVS glsl{
 fragment_program zoomFS glsl{
 	source zoomFS.glsl
 	default_params{
-		param_named texturaL	int 0
-		param_named texturaM	int 1
-		param_named BF			float 0.5
-		param_named intLuzAmb	float 1.0
+		param_named spacesky	int 0
+		param_named flare		int 1
+		param_named BF			float 0.7
+		param_named intLuzAmb	float 2.0
 	}
 }
 
@@ -165,7 +165,7 @@ material cieloZoom{
 fragment_program shaderOrangeFS glsl{
 	source shaderOrangeFS.glsl
 	default_params{
-
+		param_named spacesky	int 0
 	}
 }
 
@@ -181,6 +181,10 @@ material shaderOrange{
 		pass{
 			vertex_program_ref shaderOrangeVS{}
 			fragment_program_ref shaderOrangeFS{}
+
+			texture_unit{
+				texture spacesky.jpg 2d
+			}
 		}
 	}
 }
