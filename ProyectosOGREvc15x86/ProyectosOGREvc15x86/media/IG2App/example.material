@@ -161,3 +161,26 @@ material cieloZoom{
 		}
 	}
 }
+
+fragment_program shaderOrangeFS glsl{
+	source shaderOrangeFS.glsl
+	default_params{
+
+	}
+}
+
+vertex_program shaderOrangeVS glsl{
+	source shaderOrangeVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+}
+
+material shaderOrange{
+	technique{
+		pass{
+			vertex_program_ref shaderOrangeVS{}
+			fragment_program_ref shaderOrangeFS{}
+		}
+	}
+}
