@@ -29,6 +29,7 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     configAnims();
 
     danceTime = durStep[0] * 1000;
+    swordsTime = durStep[2] * 1000;
     movingTime = durStep[7] * 1000;
 
     // inicia el temporizador
@@ -111,7 +112,8 @@ void IntroScene::configAnims()
     Vector3 keyframePos(0, 0, 0);
     Quaternion keyframeRot(0, 0, 0, 0);
 
-    durStep[0] = 3;    // duracion kf 0
+    // duracion de los keyframes
+    durStep[0] = 3;                   // kf 0
     durStep[1] = 1 + durStep[0];      // kf1 + acumulado
     durStep[2] = 3 + durStep[1];      // kf2 + acumulado
     durStep[3] = 1 + durStep[2];      // kf3 + acumulado
@@ -119,7 +121,7 @@ void IntroScene::configAnims()
     durStep[5] = 3 + durStep[4];      // kf5 + acumulado
     durStep[6] = 1 + durStep[5];      // kf6 + acumulado
     durStep[7] = 3 + durStep[6];      // kf7 + acumulado
-    durStep[8] = 3 + durStep[7];    // kf8 + acumulado -> suma 21 que seria la duracion total
+    durStep[8] = 3 + durStep[7];      // kf8 + acumulado -> suma 21 que seria la duracion total
 
     animation = sm->createAnimation("sinbadMoving", durStep[8]); // importante la duracion total!!
     animation->setInterpolationMode(Ogre::Animation::IM_SPLINE);
@@ -206,6 +208,7 @@ void IntroScene::configAnims()
     animationState = sm->createAnimationState("sinbadMoving");
     animationState->setLoop(true);
     animationState->setEnabled(true);
+    
 
     // aparte
     animationStateRunTop->setEnabled(false);
@@ -214,8 +217,6 @@ void IntroScene::configAnims()
 
     isDancing = false;
     isMoving = true; // movimiento
-    isRunning = false;
-
 }
 
 void IntroScene::stop()
@@ -235,8 +236,15 @@ void IntroScene::frameRendered(const Ogre::FrameEvent& evt)
 
         animationStateRunTop->setEnabled(true);
         animationStateRunBase->setEnabled(true);
+    }
 
-        timer->reset();
+    if (timer->getMilliseconds() >= swordsTime
+        && !swordsAttached)
+    {
+        sinbadEnt->attachObjectToBone("Hand.L", swordLeftEnt);
+        sinbadEnt->attachObjectToBone("Hand.R", swordRightEnt);
+
+        swordsAttached = true;
     }
 
     if (timer->getMilliseconds() >= movingTime
@@ -246,11 +254,23 @@ void IntroScene::frameRendered(const Ogre::FrameEvent& evt)
         animationStateRunTop->setEnabled(false);
         animationStateRunBase->setEnabled(false);
 
-        animationStateDance->setEnabled(true); // vuelve a bailar
+        if (swordsAttached) {
+            sinbadEnt->detachObjectFromBone(swordLeftEnt);
+            sinbadEnt->detachObjectFromBone(swordRightEnt);
 
+            swordsAttached = false;
+        }
+
+        animationStateDance->setEnabled(true); // vuelve a bailar
+    }
+
+    // cuando llega al final de la animacion reseteamos el timer
+    if (timer->getMilliseconds() >= animationState->getLength() * 1000) 
+    {
         timer->reset();
     }
 
+    // para que se actualicen las animaciones
     animationState->addTime(evt.timeSinceLastFrame);
     animationStateRunBase->addTime(evt.timeSinceLastFrame);
     animationStateRunTop->addTime(evt.timeSinceLastFrame);

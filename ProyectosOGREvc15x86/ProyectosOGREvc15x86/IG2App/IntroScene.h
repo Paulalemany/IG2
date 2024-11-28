@@ -62,6 +62,7 @@ protected:
 	Ogre::Timer* timer = nullptr;
 
 	int danceTime; // durStep[0] * 1000
+	int swordsTime; // durStep[4] * 1000
 	int movingTime; // durStep[7] * 1000
 
 	// duracion de cada keyframe (son 9)
@@ -102,8 +103,8 @@ protected:
 
 	// Flags to control the animations
 	bool isDancing = false;
-	bool isRunning = false;
 	bool isMoving = false;
+	bool swordsAttached = false;
 	bool _stop = false;
 
 
