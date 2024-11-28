@@ -28,6 +28,9 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     
     configAnims();
 
+    danceTime = durStep[0] * 1000;
+    movingTime = durStep[7] * 1000;
+
     // inicia el temporizador
     timer = new Ogre::Timer();
 
@@ -107,8 +110,6 @@ void IntroScene::configAnims()
     int movementLength = 50;
     Vector3 keyframePos(0, 0, 0);
     Quaternion keyframeRot(0, 0, 0, 0);
-
-    Ogre::Real durStep[9]; // 9 keyframes
 
     durStep[0] = 3;    // duracion kf 0
     durStep[1] = 1 + durStep[0];      // kf1 + acumulado
@@ -227,18 +228,26 @@ void IntroScene::frameRendered(const Ogre::FrameEvent& evt)
     if (_stop) return;
 
     // cuando lleguemos al danceTime pasamos a correr
-    if (timer->getMilliseconds() >= danceTime && 
-        animationStateDance->getEnabled()) 
+    if (timer->getMilliseconds() >= danceTime 
+        && animationStateDance->getEnabled()) 
     {
         animationStateDance->setEnabled(false); // deja de bailar
 
         animationStateRunTop->setEnabled(true);
         animationStateRunBase->setEnabled(true);
 
-        ////espadas (cuando llegue a la derecha)  // TO DO
-        ////sinbadEnt->attachObjectToBone("Hand.L", swordLeftEnt);
-        ////sinbadEnt->attachObjectToBone("Hand.R", swordRightEnt);
-        
+        timer->reset();
+    }
+
+    if (timer->getMilliseconds() >= movingTime
+        && animationStateRunBase->getEnabled()
+        && animationStateRunTop->getEnabled())
+    {
+        animationStateRunTop->setEnabled(false);
+        animationStateRunBase->setEnabled(false);
+
+        animationStateDance->setEnabled(true); // vuelve a bailar
+
         timer->reset();
     }
 

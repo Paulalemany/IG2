@@ -58,11 +58,14 @@ public:
 
 protected:
 
-	// tiempo que dura la animacion
+	// timer para hacer enable del baile, andares o espadas
 	Ogre::Timer* timer = nullptr;
-	int danceTime = 2500; // en milisecs
-	int movingTime = 5000;
 
+	int danceTime; // durStep[0] * 1000
+	int movingTime; // durStep[7] * 1000
+
+	// duracion de cada keyframe (son 9)
+	Ogre::Real durStep[9];
 
 	Ogre::SceneNode* camN = nullptr;
 
