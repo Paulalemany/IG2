@@ -49,7 +49,8 @@ public:
 	void configCamera();
 
 	// configura las animaciones
-	void configAnims();
+	void configSinbadAnim();
+	void configOgreheadAnim();
 
 	void stop();
 
@@ -65,8 +66,9 @@ protected:
 	int swordsTime; // durStep[4] * 1000
 	int movingTime; // durStep[7] * 1000
 
-	// duracion de cada keyframe (son 9)
-	Ogre::Real durStep[9];
+	// duracion de cada keyframe
+	Ogre::Real sDurStep[9];	// sinbad
+	Ogre::Real oDurStep[6]; // ogrehead
 
 	Ogre::SceneNode* camN = nullptr;
 
@@ -82,7 +84,9 @@ protected:
 
 	// entidades
 	Ogre::SceneNode* sinbadNode = nullptr;
+	Ogre::SceneNode* ogreheadNode = nullptr;
 	Ogre::Entity* sinbadEnt;
+	Ogre::Entity* ogreheadEnt;
 	Ogre::Entity* swordLeftEnt;
 	Ogre::Entity* swordRightEnt;
 
@@ -97,9 +101,11 @@ protected:
 
 	// Animation state
 	Ogre::AnimationState* animationState;
+	Ogre::AnimationState* ogreheadAnimationState;
 
 	// Animation
-	Ogre::Animation* animation = nullptr;
+	Ogre::Animation* sinbadAnim = nullptr;
+	Ogre::Animation* ogreAnim = nullptr;
 
 	// Flags to control the animations
 	bool isDancing = false;

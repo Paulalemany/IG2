@@ -88,5 +88,8 @@
     <None Include="..\media\IG2App\example.material">
       <Filter>Archivos de recursos</Filter>
     </None>
+    <None Include="..\bin\resources.cfg">
+      <Filter>Archivos de recursos</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -145,6 +145,7 @@
     <ClCompile Include="Villano.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\bin\resources.cfg" />
     <None Include="..\media\IG2App\example.material" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
