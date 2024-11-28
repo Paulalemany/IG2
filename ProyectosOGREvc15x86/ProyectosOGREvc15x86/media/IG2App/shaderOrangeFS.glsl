@@ -1,8 +1,12 @@
 #version 330 core
 
 in vec2 vUv0;
+uniform sampler2D spacesky;
 out vec4 fFragColor;
 
 void main() {
-    fFragColor = vec4(1.0, 0.5, 0.0, 1.0);
+
+    vec3 color = vec3(texture(spacesky, vUv0));
+    
+    fFragColor = vec4(color, 1.0);
 }
