@@ -68,7 +68,7 @@ protected:
 
 	// duracion de cada keyframe
 	Ogre::Real sDurStep[9];	// sinbad
-	Ogre::Real oDurStep[6]; // ogrehead
+	Ogre::Real oDurStep[7]; // ogrehead
 
 	Ogre::SceneNode* camN = nullptr;
 

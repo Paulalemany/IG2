@@ -20,6 +20,7 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     ogreheadEnt = sm->createEntity("ogrehead.mesh");
     ogreheadNode = sm->getRootSceneNode()->createChildSceneNode();
     ogreheadNode->attachObject(ogreheadEnt);
+    ogreheadNode->scale(0.7, 0.7, 0.7);
 
     ogreheadNode->setPosition(0, 25, 0); // On the floor!
     ogreheadNode->setInitialState();
@@ -39,10 +40,6 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     configSinbadAnim();
 
     configOgreheadAnim();
-
-    danceTime = sDurStep[0] * 1000;
-    swordsTime = sDurStep[2] * 1000;
-    movingTime = sDurStep[7] * 1000;
 
     // inicia el temporizador
     timer = new Ogre::Timer();
@@ -91,7 +88,6 @@ void IntroScene::configLight()
 
 void IntroScene::addGround()
 {
-
     //El suelo va a ser un espejo
     MeshManager::getSingleton().createPlane("floor", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
         Plane(Vector3::UNIT_Y, 0),
@@ -103,14 +99,12 @@ void IntroScene::addGround()
     ent->setMaterialName("mat/MRAMOR");
     SceneNode* floor = sm->getRootSceneNode()->createChildSceneNode();
     floor->attachObject(ent);
-
 }
 
 void IntroScene::configCamera()
 {
     camN->setPosition(0, 25, 130);
     camN->lookAt(Ogre::Vector3(0, 20, 0), Ogre::Node::TS_WORLD);
-
 }
 
 void IntroScene::configSinbadAnim()
@@ -220,14 +214,15 @@ void IntroScene::configSinbadAnim()
     animationState->setLoop(true);
     animationState->setEnabled(true);
     
-
-    // aparte
+    // enables de las animaciones
     animationStateRunTop->setEnabled(false);
     animationStateRunBase->setEnabled(false);
     animationStateDance->setEnabled(true); // empieza bailando
 
-    isDancing = false;
-    isMoving = true; // movimiento
+    // timings
+    danceTime = sDurStep[0] * 1000;
+    swordsTime = sDurStep[2] * 1000;
+    movingTime = sDurStep[7] * 1000;
 }
 
 void IntroScene::configOgreheadAnim()
@@ -238,14 +233,15 @@ void IntroScene::configOgreheadAnim()
     Quaternion keyframeRot(0, 0, 0, 0);
 
     // duracion de los keyframes
-    oDurStep[0] = 3;                   // kf 0
+    oDurStep[0] = 3;                    // kf 0 - init state
     oDurStep[1] = 3 + oDurStep[0];      // kf1 + acumulado
     oDurStep[2] = 3 + oDurStep[1];      // kf2 + acumulado
-    oDurStep[3] = 1 + oDurStep[2];      // kf3 + acumulado
+    oDurStep[3] = 3 + oDurStep[2];      // kf3 + acumulado
     oDurStep[4] = 3 + oDurStep[3];      // kf4 + acumulado
     oDurStep[5] = 3 + oDurStep[4];      // kf5 + acumulado
+    oDurStep[6] = 3 + oDurStep[5];      // kf6 + acumulado
 
-    ogreAnim = sm->createAnimation("ogreheadMoving", oDurStep[5]); // importante la duracion total!!
+    ogreAnim = sm->createAnimation("ogreheadMoving", oDurStep[6]); // importante la duracion total!!
     ogreAnim->setInterpolationMode(Ogre::Animation::IM_SPLINE);
     NodeAnimationTrack* track = ogreAnim->createNodeTrack(0);
     track->setAssociatedNode(ogreheadNode);
@@ -285,7 +281,7 @@ void IntroScene::configOgreheadAnim()
 
     //  Keyframe 4 Movimiento a la izquierda
     kf = track->createNodeKeyFrame(oDurStep[3]);
-    keyframePos += Ogre::Vector3::NEGATIVE_UNIT_X * movementLength;
+    keyframePos = Vector3(-100, 0, 0);;
 
     kf->setRotation(keyframeRot);
     kf->setTranslate(keyframePos);
@@ -299,13 +295,18 @@ void IntroScene::configOgreheadAnim()
 
     // Keyframe 5: Movimiento a la izquierda y escala
     kf = track->createNodeKeyFrame(oDurStep[5]);
-    keyframePos += Ogre::Vector3::UNIT_X * movementLength;
-    
+    keyframePos = Vector3(0, 0, 0);
+
     kf->setScale(Vector3(0.1, 0.1, 0.1));
     kf->setRotation(keyframeRot);
     kf->setTranslate(keyframePos);
 
+    // kf6: repetimos kf5 para esperar 
+    kf = track->createNodeKeyFrame(oDurStep[6]);
 
+    kf->setScale(Vector3(0.1, 0.1, 0.1));
+    kf->setRotation(keyframeRot);
+    kf->setTranslate(keyframePos);
 
     // Our defined animation
     ogreheadAnimationState = sm->createAnimationState("ogreheadMoving");
@@ -372,4 +373,5 @@ void IntroScene::frameRendered(const Ogre::FrameEvent& evt)
     animationStateRunTop->addTime(evt.timeSinceLastFrame);
     animationStateDance->addTime(evt.timeSinceLastFrame);
 
+    //cout << timer->getMilliseconds() / 1000 << endl;
 }
