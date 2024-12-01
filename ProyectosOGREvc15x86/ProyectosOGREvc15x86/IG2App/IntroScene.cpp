@@ -64,6 +64,17 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
         pos.x += 10;
     }
 
+    ///-----------ELEMENTOS CON SHADERS--------------------
+
+    //Ponemos una esfera en la intro
+    Ogre::Entity* esfera = sm->createEntity("sphere.mesh");
+    //esfera->setMaterialName("shaderSphere");
+
+    Ogre::SceneNode* node = sm->getRootSceneNode()->createChildSceneNode();
+    node->attachObject(esfera);
+    node->setScale(0.25, 0.25, 0.25);
+    node->setPosition(15, 25, -30);
+    esfera->setMaterialName("shaderSphere");
 }
 
 void IntroScene::configTextBox()

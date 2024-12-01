@@ -30,7 +30,7 @@ particle_system fireParticleSystem{
 
     affector Scaler{
         rate 20
-        scale_range 1 1
+        
     }
 
     affector Rotator{

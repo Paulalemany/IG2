@@ -169,3 +169,45 @@ material cieloZoom{
 		}
 	}
 }
+
+vertex_program shaderSphereVS glsl{
+	source shaderSphereVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+	}
+}
+
+fragment_program shaderSphereFS glsl{
+	source shaderSphereFS.glsl
+	default_params{
+		param_named_auto target render_target_flipping
+		param_named tCorrosion	int 0
+		param_named tBumpy		int 1
+		param_named tDirt		int 2
+	}
+}
+
+material shaderSphere{
+	technique{
+		pass{
+			lighting off
+			cull_hardware none
+			cull_software none
+
+			vertex_program_ref shaderSphereVS {}
+			fragment_program_ref shaderSphereFS {}
+
+			texture_unit{
+				texture corrosion.jpg
+			}
+
+			texture_unit{
+				texture BumpyMetal.jpg
+			}
+
+			texture_unit{
+				texture Dirt.jpg
+			}
+		}
+	}
+}
