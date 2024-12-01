@@ -67,9 +67,7 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     ///-----------ELEMENTOS CON SHADERS--------------------
 
     //Ponemos una esfera en la intro
-    Ogre::Entity* esfera = sm->createEntity("sphere.mesh");
-    //esfera->setMaterialName("shaderSphere");
-
+    Ogre::Entity* esfera = sm->createEntity("uv_sphere.mesh");
     Ogre::SceneNode* node = sm->getRootSceneNode()->createChildSceneNode();
     node->attachObject(esfera);
     node->setScale(0.25, 0.25, 0.25);
