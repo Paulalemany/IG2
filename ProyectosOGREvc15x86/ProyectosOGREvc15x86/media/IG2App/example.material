@@ -143,13 +143,14 @@ fragment_program zoomFS glsl{
 		param_named BF			float 0.7
 		param_named intLuzAmb	float 2.0
 
-		param_named_auto timer sintime_0_2pi
+		param_named_auto timer sintime_0_2pi 50
 	}
 }
 
 material cieloZoom{
 	technique{
 		pass{	
+			lighting off
 			vertex_program_ref zoomVS{}
 			fragment_program_ref zoomFS{}
 
