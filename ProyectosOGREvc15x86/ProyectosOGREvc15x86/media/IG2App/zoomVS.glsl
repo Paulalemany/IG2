@@ -1,20 +1,23 @@
 #version 330 core
 
 in vec4 vertex;
-in vec2 uv0;
 uniform mat4 modelViewProjMat;
+uniform float timer;
+uniform float minZoom;
+uniform float maxZoom;
+
+in vec2 uv0;
 out vec2 vUv0;
 
 void main(){
 
-    //Diria que va por aqui arriba las cosas de zoom
+    float a = (minZoom * maxZoom)/2;
+    float b = maxZoom - a;
 
-    //float ZF =  0.8 + 0.4 * abs(sin(timer));
-    //El 2 es el ZF para conseguir el efecto necesitamos que varie mientras pasa el tiempo
-    //vUv0.s = (uv0.s - 0.5) * ZF + 0.5;
-    //vUv0.t = (uv0.t - 0.5) * ZF + 0.5;
+    float ZF = (timer * b) + a;
 
-    vUv0 = uv0;
+    vUv0.s = (uv0.s - minZoom) * ZF + minZoom;
+    vUv0.t = (uv0.t - minZoom) * ZF + minZoom;
 
     gl_Position = modelViewProjMat * vertex;
 }

@@ -4,27 +4,30 @@ in vec2 vUv0;
 uniform sampler2D spacesky;
 uniform sampler2D flare;
 
-uniform float BF;
-uniform float intLuzAmb;
+uniform float minLight;
+uniform float maxLight;
 
 uniform float timer;
 
 out vec4 fFragColor;
 
 void main(){
-    // Calcula un factor de zoom dinámico para la primera textura
-    float zoomFactorBase = 0.8 + 0.4 * abs(sin(timer));
-    vec2 zoomedUVBase = (vUv0 - 0.5) * zoomFactorBase + 0.5;
 
-    // Calcula un factor de zoom dinámico (o fijo) para la segunda textura
-    float zoomFactorOverlay = 1.0; // No hacemos zoom dinámico en esta textura
-    vec2 zoomedUVOverlay = (vUv0 - 0.5) * zoomFactorBase + 0.5;
+    vec3 t1 = vec3(texture(spacesky,vUv0));
+    vec3 t2 = vec3(texture(flare,vUv0));
 
-    // Muestra ambas texturas
-    vec4 baseColor = texture(spacesky, zoomedUVBase);
-    vec4 overlayColor = texture(flare, zoomedUVOverlay);
+    vec3 mezcla = mix(t1, t2, 0.5);
 
+    float diff = maxLight - minLight;
+
+    float lfactor = minLight + (diff*( (timer+1) / 2));
+
+    fFragColor =  vec4( mezcla.x * lfactor,
+                        mezcla.y * lfactor,
+                        mezcla.z * lfactor, 1); 
+
+    vec3 color = t1 * t2 * lfactor;
+
+    fFragColor =  vec4(color , 1); 
     
-    // Combina las texturas (por ejemplo, multiplicación)
-    fFragColor = baseColor * overlayColor;
 }

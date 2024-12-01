@@ -132,6 +132,10 @@ vertex_program zoomVS glsl{
 	source zoomVS.glsl
 	default_params{
 		param_named_auto modelViewProjMat worldviewproj_matrix
+		param_named_auto timer sintime_0_2pi 100
+
+		param_named minZoom float 0.3
+		param_named maxZoom float 1
 	}
 }
 
@@ -140,10 +144,11 @@ fragment_program zoomFS glsl{
 	default_params{
 		param_named spacesky	int 0
 		param_named flare		int 1
-		param_named BF			float 0.7
-		param_named intLuzAmb	float 2.0
+		
+		param_named minLight float 0.1
+		param_named maxLight float 1
 
-		param_named_auto timer sintime_0_2pi 50
+		param_named_auto timer sintime_0_2pi 100	//No habia puesto la cota 
 	}
 }
 
