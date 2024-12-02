@@ -91,5 +91,14 @@
     <None Include="..\bin\resources.cfg">
       <Filter>Archivos de recursos</Filter>
     </None>
+    <None Include="..\media\IG2App\ogreSmoke.particle">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="..\media\IG2App\fire.particle">
+      <Filter>Archivos de recursos</Filter>
+    </None>
+    <None Include="..\media\IG2App\smoke.particle">
+      <Filter>Archivos de recursos</Filter>
+    </None>
   </ItemGroup>
 </Project>

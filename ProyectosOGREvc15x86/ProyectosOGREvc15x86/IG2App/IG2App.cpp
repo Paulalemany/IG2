@@ -43,22 +43,21 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
             break;
 
         case SDLK_LEFT:
-
             lab->getHero()->setDir(Vector3(1, 0, 0));
             break;
 
+            /// Cambio de escena
         case SDLK_s:
             cout << "__CHANGE SCENE__" << endl;
             mSM->clearScene();
             setupIntroScene();
             scene = _Intro;
             break;
-
         }
     }
    
-    switch (evt.keysym.sym) {
-
+    switch (evt.keysym.sym) 
+    {
         // ESC key finished the rendering...
     case SDLK_ESCAPE:
         getRoot()->queueEndRendering();
@@ -70,9 +69,9 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt){
 
     default:
         break;
-
     }
-  return true;
+
+    return true;
 }
 
 void IG2App::shutdown(){
