@@ -346,8 +346,8 @@ void IntroScene::frameRendered(const Ogre::FrameEvent& evt)
     if (timer->getMilliseconds() >= swordsTime
         && !swordsAttached)
     {
-        sinbadEnt->attachObjectToBone("Hand.L", swordLeftEnt);
-        sinbadEnt->attachObjectToBone("Hand.R", swordRightEnt);
+        sinbadEnt->attachObjectToBone("Handle.L", swordLeftEnt);
+        sinbadEnt->attachObjectToBone("Handle.R", swordRightEnt);
 
         swordsAttached = true;
     }
