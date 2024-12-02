@@ -37,18 +37,50 @@ material mat/nm_up{
     }
 }
 
+//Material del suelo (Le voy a poner directamente aqui los shaders)
+
+vertex_program aguaVS glsl{
+	source aguaVS.glsl
+	default_params{
+		param_named_auto modelViewProjMat worldviewproj_matrix
+		param_named_auto timer sintime_0_2pi 100
+
+	}
+}
+fragment_program aguaFS glsl{
+	source aguaFL.glsl
+	default_params{
+		param_named water int 0
+	}
+}
 material mat/MRAMOR{
     technique 
 	{ 
 		pass {  
+
+			lighting off
+			vertex_program_ref aguaVS {}
+			fragment_program_ref aguaFS {}
 			
 			texture_unit 
 			{
-				texture MRAMOR6X6.jpg
+				texture Water01.jpg
 				
 			}
 		}
     }
+}
+
+material agua{
+	technique
+	{
+		pass{
+
+			texture_unit{
+				texture MRAMOR6X6.jpg
+			}
+		}
+	}
 }
 
 //__________Particulas_____________________________

@@ -106,6 +106,7 @@ void IntroScene::addGround()
     // Creating the plane
     Entity* ent = sm->createEntity("exampleFloor", "floor");
     ent->setMaterialName("mat/MRAMOR");
+    //ent->setMaterialName("agua");
     SceneNode* floor = sm->getRootSceneNode()->createChildSceneNode();
     floor->attachObject(ent);
 }

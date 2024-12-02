@@ -405,6 +405,7 @@ void IG2App::addMirror()
     // Creating the plane
     Entity* ent = IS->createEntity("examplemirror", "mirror");
     ent->setMaterialName("mat/MRAMOR");
+    //ent->setMaterialName("agua");
     SceneNode* mirror = IS->getRootSceneNode()->createChildSceneNode();
     mirror->attachObject(ent);
 
