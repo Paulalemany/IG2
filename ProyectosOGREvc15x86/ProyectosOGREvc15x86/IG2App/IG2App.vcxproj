@@ -147,6 +147,9 @@
   <ItemGroup>
     <None Include="..\bin\resources.cfg" />
     <None Include="..\media\IG2App\example.material" />
+    <None Include="..\media\IG2App\fire.particle" />
+    <None Include="..\media\IG2App\ogreSmoke.particle" />
+    <None Include="..\media\IG2App\smoke.particle" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

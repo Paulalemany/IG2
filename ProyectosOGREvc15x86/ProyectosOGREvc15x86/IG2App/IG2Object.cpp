@@ -165,8 +165,6 @@ bool IG2Object::Centre()
     return centro == Vector3().ZERO;
 }
 
-
-
 const AxisAlignedBox& IG2Object::getAABB(){    
     return mNode->_getWorldAABB();
 }

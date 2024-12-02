@@ -120,10 +120,12 @@ material ogreSmoke{
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
-			diffuse vertexcolour
+			diffuse 0 0 0 1
+			ambient 0 0 0
 			texture_unit{
 				texture smoke.png
 				text_address_mode clamp
+				colour_op modulate
 			}
 		}
 	}

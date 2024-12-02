@@ -25,6 +25,13 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     ogreheadNode->setPosition(0, 25, 0); // On the floor!
     ogreheadNode->setInitialState();
 
+    /// Particulas del ogrehead
+    humillo = sm->createParticleSystem("humillo", "ogreSmokeEstela");
+    humillo->setEmitting(true);
+    nodes.push_back(sm->getRootSceneNode()->createChildSceneNode());
+    ogreheadNode->attachObject(humillo);
+
+
     // swords
     swordLeftEnt = sm->createEntity("Sword.mesh");
     swordRightEnt = sm->createEntity("Sword.mesh");
