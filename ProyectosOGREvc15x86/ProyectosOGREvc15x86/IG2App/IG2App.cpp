@@ -104,14 +104,16 @@ void IG2App::setup(void){
 
     // Configuracion del overlay system
     mSM->addRenderQueueListener(mOverlaySystem);
+    IS->addRenderQueueListener(mOverlaySystem);
+
     mTrayMgr = new OgreBites::TrayManager("TrayGUISystem", mWindow.render);
     mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT); // el cuadro de fps, etc
     addInputListener(mTrayMgr);
 
     /// P1 - Apartado 5 - Overlay System
     mLevelOverlayMgr = new OgreBites::TrayManager("LevelMngr", mWindow.render);
-    mLabel = mLevelOverlayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "stageLabel", "Stage", 200);
-    mTextBox = mLevelOverlayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "gameTextBox", "Game Info", 200, 100);
+    mLabel = mLevelOverlayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "stageLabel", "Stage", 300);
+    mTextBox = mLevelOverlayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "gameTextBox", "Game Info", 300, 100);
 
     addInputListener(mLevelOverlayMgr);
     

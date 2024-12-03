@@ -86,7 +86,7 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
 void IntroScene::configTextBox()
 {
 	iTextBox->clearText();
-	iTextBox->appendText("Pulsa S para iniciar el juego");
+	iTextBox->appendText("Pulsa S");
 
 	iTextBox->refitContents();
 }
