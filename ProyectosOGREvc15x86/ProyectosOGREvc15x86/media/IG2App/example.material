@@ -53,7 +53,7 @@ fragment_program aguaFS glsl{
 		param_named water int 0
 	}
 }
-material mat/MRAMOR{
+material  agua{
     technique 
 	{ 
 		pass {  
@@ -71,7 +71,7 @@ material mat/MRAMOR{
     }
 }
 
-material agua{
+material mat/MRAMOR{
 	technique
 	{
 		pass{
@@ -242,6 +242,17 @@ material shaderSphere{
 			texture_unit{
 				texture Dirt.jpg
 			}
+		}
+	}
+}
+
+material ogreRosa{
+	technique{
+		pass{
+			lighting on
+
+			diffuse 0.87 0.29 0.54 1.0
+
 		}
 	}
 }
