@@ -18,6 +18,7 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
 
     // ogrehead
     ogreheadEnt = sm->createEntity("ogrehead.mesh");
+    ogreheadEnt->setMaterialName("ogreRosa");
     ogreheadNode = sm->getRootSceneNode()->createChildSceneNode();
     ogreheadNode->attachObject(ogreheadEnt);
     ogreheadNode->scale(0.7, 0.7, 0.7);
@@ -36,7 +37,7 @@ IntroScene::IntroScene(Ogre::SceneManager* scene, OgreBites::TextBox* textB, Ogr
     swordLeftEnt = sm->createEntity("Sword.mesh");
     swordRightEnt = sm->createEntity("Sword.mesh");
 
-	addGround();
+	//addGround();
 
 	configTextBox();
 

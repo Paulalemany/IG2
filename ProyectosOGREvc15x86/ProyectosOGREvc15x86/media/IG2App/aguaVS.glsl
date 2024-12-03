@@ -17,8 +17,8 @@ void main() {
     float a = 50;   //Velocidad
     float b = 1;    //Altura
 
-    coordenadas.y += sin(coordenadas.x + (timer * a)) * b
-                    + sin(coordenadas.z + centre + (timer * a)) * b;
+    coordenadas.y += sin(coordenadas.x + (timer * a)) * b       //Movimiento vertical
+                    + sin(coordenadas.z + centre + (timer * a)) * b;    //Movimiento horizontal
 
     gl_Position = modelViewProjMat * coordenadas;
 }
