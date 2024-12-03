@@ -89,7 +89,9 @@ protected:
 	std::vector<Villano*> villanos;
 	Heroe* sinbad;
 	
-	
+	// Sistema de particulas
+	ParticleSystem* pSys;
+
 	// fichero
 	int NumFilas = 0;
 	int NumColumnas = 0;

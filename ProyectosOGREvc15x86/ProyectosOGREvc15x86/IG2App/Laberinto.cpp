@@ -37,8 +37,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 			}
 			else if (fila[j] == 'o') 
 			{
-				string name = "par" + to_string(node);
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true, name));
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 				numPerlas++;
 			}
 			else if (fila[j] == 'h') 
@@ -48,8 +47,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
 
-				string name = "par" + to_string(node);
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true, name));
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 				numPerlas++;
 			}
 			else if (fila[j] == 'v') 
@@ -59,8 +57,7 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
 
-				string name = "par" + to_string(node);
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true, name));
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 				numPerlas++;
 			}
 			else if (fila[j] == 'V') 
@@ -71,9 +68,27 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
 				node++;
 
-				string name = "par" + to_string(node);
-				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true, name));
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 				numPerlas++;
+			}
+			else if (fila[j] == 's') {
+
+
+				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
+				numPerlas++;
+
+				//------ SISTEMA DE PARTICULAS ----------------------------------------------------------
+				//cout << psName << endl;
+				string name = "par" + to_string(node);
+				pSys = Sm->createParticleSystem(name, "smokeParticleSystem");
+
+				//Nodo del sistema de particulas (el mismo que el de la posicion de la perla)
+				SceneNode* mPSNode = nodes[node]->createChildSceneNode();	
+				pSys->setEmitting(true);	//Hace que se emita el sistema de particulas
+				mPSNode->attachObject(pSys);
+
+				//nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
+				//node++;
 			}
 			node++;
 		}

@@ -10,7 +10,7 @@ public:
 
 	Perla();
 
-	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string textura, bool pasable, string psName);
+	Perla(Vector3 initPos, SceneNode* node, SceneManager* sceneMng, string textura, bool pasable);
 
 	bool pearl() override { return perla; }
 
@@ -22,9 +22,5 @@ public:
 
 protected:
 	Ogre::Entity* _perla;
-
-	//HUMO PARA EL LABERINTO
-	ParticleSystem* pSys = nullptr;
-
 };
 
