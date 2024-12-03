@@ -71,9 +71,8 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 				numPerlas++;
 			}
-			else if (fila[j] == 's') {
-
-
+			else if (fila[j] == 's') 
+			{
 				bloques.push_back(new Perla(pos, nodes[node], Sm, texturaPerla, true));
 				numPerlas++;
 
@@ -86,9 +85,6 @@ Laberinto::Laberinto(Ogre::SceneManager* scene, const string& mapa, OgreBites::T
 				SceneNode* mPSNode = nodes[node]->createChildSceneNode();	
 				pSys->setEmitting(true);	//Hace que se emita el sistema de particulas
 				mPSNode->attachObject(pSys);
-
-				//nodes.push_back(Sm->getRootSceneNode()->createChildSceneNode());
-				//node++;
 			}
 			node++;
 		}

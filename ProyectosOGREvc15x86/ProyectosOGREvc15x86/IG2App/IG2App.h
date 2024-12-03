@@ -67,10 +67,8 @@ protected:
     Ogre::SceneNode* mOmbligoNode = nullptr;*/
 #pragma endregion
       
-    Ogre::SceneManager* mSM = nullptr;
-    Ogre::SceneManager* IS = nullptr;
-    Ogre::SceneManager* GS = nullptr;
-
+    Ogre::SceneManager* mSM = nullptr; // SM para el laberinto
+    Ogre::SceneManager* IS = nullptr; // SceneManager para el IntroScene
 
     OgreBites::TrayManager* mTrayMgr = nullptr;
     OgreBites::TrayManager* mLevelOverlayMgr = nullptr;

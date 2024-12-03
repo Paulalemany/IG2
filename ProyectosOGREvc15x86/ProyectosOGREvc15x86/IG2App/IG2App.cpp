@@ -96,7 +96,7 @@ void IG2App::setup(void){
 
     // Create the scene manager
     mSM = mRoot->createSceneManager();
-    GS = mRoot->createSceneManager();
+    //GS = mRoot->createSceneManager();
     IS = mRoot->createSceneManager();
 
     // Registra el scene manager en el RTSS
@@ -108,7 +108,7 @@ void IG2App::setup(void){
     mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT); // el cuadro de fps, etc
     addInputListener(mTrayMgr);
 
-    /// Apartado 5 - Overlay System
+    /// P1 - Apartado 5 - Overlay System
     mLevelOverlayMgr = new OgreBites::TrayManager("LevelMngr", mWindow.render);
     mLabel = mLevelOverlayMgr->createLabel(OgreBites::TL_BOTTOMRIGHT, "stageLabel", "Stage", 200);
     mTextBox = mLevelOverlayMgr->createTextBox(OgreBites::TL_BOTTOMRIGHT, "gameTextBox", "Game Info", 200, 100);
@@ -142,7 +142,6 @@ void IG2App::setupScene(void){
             
     mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
     mCamNode->attachObject(cam);
-
     
     //se supone que así mira hacia abajo
     mCamNode->lookAt(Ogre::Vector3(0, 1, 0), Ogre::Node::TS_WORLD);
@@ -311,10 +310,10 @@ void IG2App::setupScene(void){
     ///-------LABERINTO---------------------------------------------------------
     //lab = new Laberinto(mSM, "stage1.txt", mTextBox, mCamNode);
 
-    if (lab != nullptr) {
-        addInputListener(lab->getHero());
-        for (auto v : lab->getVillains()) addInputListener(v);
-    }
+    //if (lab != nullptr) {
+    //    addInputListener(lab->getHero());
+    //    for (auto v : lab->getVillains()) addInputListener(v);
+    //}
 }
 
 void IG2App::setupGameScene()
@@ -371,7 +370,6 @@ void IG2App::setupIntroScene(void)
     mCamNode = IS->getRootSceneNode()->createChildSceneNode("nICam");
     mCamNode->attachObject(cam);
 
-
     //se supone que así mira hacia abajo
     mCamNode->lookAt(Ogre::Vector3(1, 0, 0), Ogre::Node::TS_WORLD);
 
@@ -386,6 +384,10 @@ void IG2App::setupIntroScene(void)
 
     ///------ESPEJO-------------------------------------------------------------
     addMirror();
+
+    ///-----CAJA DE INFO--------------------------------------------------------
+
+    // to do
 
     ///------INTRO SCENE--------------------------------------------------------
     intro = new IntroScene(IS, mTextBox, mCamNode);
