@@ -387,10 +387,6 @@ void IG2App::setupIntroScene(void)
     ///------ESPEJO-------------------------------------------------------------
     addMirror();
 
-    ///-----CAJA DE INFO--------------------------------------------------------
-
-    // to do
-
     ///------INTRO SCENE--------------------------------------------------------
     intro = new IntroScene(IS, mTextBox, mCamNode);
 
