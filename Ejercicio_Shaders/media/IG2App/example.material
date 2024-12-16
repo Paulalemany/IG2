@@ -1,0 +1,180 @@
+material example/stonesFloor{
+    technique {
+	pass {
+	    texture_unit {
+			texture BeachStones.jpg
+	    }
+	}
+    }
+}
+
+material example/sky{
+ technique{
+        pass{
+            
+            lighting off
+            
+            texture_unit {
+                texture spaceSky.jpg
+            }
+        }
+    }
+}
+
+vertex_program skyVS glsl{ 
+    source skyVS.glsl 
+    default_params
+    { 
+        param_named_auto modelViewProjMat worldviewproj_matrix 
+    } 
+}  
+
+fragment_program skyFS glsl{
+   source skyFS.glsl
+   default_params
+   {
+        param_named space int 0
+        param_named light int 1
+
+        param_named intLuzAmb float 0.8
+   }
+}
+
+material example/spaceSkyShader{
+    technique{
+        pass{
+
+            vertex_program_ref skyVS{} 
+            fragment_program_ref skyFS{}
+
+            texture_unit{
+                texture spaceSky.jpg
+                tex_address_mode clamp 
+                filtering bilinear
+            }
+
+            texture_unit{
+                texture lightMap.jpg
+                tex_address_mode wrap
+				colour_op modulate
+            }
+        }
+    }
+}
+
+vertex_program purpleVS glsl{ 
+    source purpleVS.glsl 
+    default_params
+    { 
+        param_named_auto modelViewProjMat worldviewproj_matrix 
+    } 
+}  
+
+fragment_program purpleFS glsl{
+   source purpleFS.glsl
+   default_params{
+
+   }
+}
+
+material example/purple{
+    technique{
+        pass{
+
+            vertex_program_ref purpleVS{} 
+            fragment_program_ref purpleFS{}
+
+        }
+    }
+}
+
+
+vertex_program multiEsferaVS glsl{ 
+    source multiEsferaVS.glsl 
+    default_params
+    { 
+        param_named_auto modelViewProjMat worldviewproj_matrix 
+    } 
+}  
+
+fragment_program multiEsferaFS glsl{
+   source multiEsferaFS.glsl
+   default_params{
+        param_named checker int 0
+        param_named corrosion int 1
+        param_named bumpyMetal int 2
+
+        param_named intLuzAmb float 0.8
+
+   }
+}
+
+material multiEsfera{
+    technique{
+        pass{
+            vertex_program_ref multiEsferaVS{} 
+            fragment_program_ref multiEsferaFS{}
+
+            texture_unit{
+                texture checker.png
+                tex_address_mode clamp 
+            }
+
+            texture_unit{
+                texture corrosion.jpg
+                tex_address_mode clamp
+            }
+
+            texture_unit{
+                texture BumpyMetal.jpg
+                tex_address_mode clamp
+            }
+
+        }
+    }
+}
+
+vertex_program esferaHuecaVS glsl{ 
+    source esferaHuecaVS.glsl 
+    default_params
+    { 
+        param_named_auto modelViewProjMat worldviewproj_matrix 
+    } 
+}  
+
+fragment_program esferaHuecaFS glsl{
+   source esferaHuecaFS.glsl
+   default_params{
+        param_named checker int 0
+        param_named bumpyMetal int 1
+
+        param_named intLuzAmb float 0.8
+
+   }
+}
+
+material esferaHueca{
+    technique{
+        pass{
+            vertex_program_ref esferaHuecaVS{} 
+            fragment_program_ref esferaHuecaFS{}
+
+            cull_hardware none
+            cull_software none
+
+            texture_unit{
+                texture checker.png
+                tex_address_mode clamp 
+            }
+
+            texture_unit{
+                texture BumpyMetal.jpg
+                tex_address_mode clamp
+            }
+
+        }
+    }
+}
+
+
+
